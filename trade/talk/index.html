@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<meta name="referrer" content="no-referrer">
+<meta name="color-scheme" content="light dark">
+<title>שיחה עם המראיין</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Secular+One&family=Assistant:wght@400;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="talk.css?v=mwuud74n">
+</head>
+<body>
+<div id="app" data-view="boot">
+  <section class="v-boot center" aria-live="polite">
+    <div class="dots" aria-hidden="true"><i></i><i></i><i></i></div>
+    <p class="note" id="boot-note">רגע, פותח את הדף.</p>
+  </section>
+
+  <section class="v-gate center">
+    <h1>הדף הזה נפתח מהקישור האישי</h1>
+    <p id="gate-note">פתח את הקישור שקיבלת בהודעה. אם יש לך קוד גישה, אפשר להדביק אותו כאן.</p>
+    <form id="gate-form" autocomplete="off">
+      <input id="gate-code" type="text" inputmode="text" autocapitalize="characters" spellcheck="false" aria-label="קוד גישה" placeholder="קוד גישה">
+      <button class="btn go" type="submit">כניסה</button>
+    </form>
+  </section>
+
+  <section class="v-lobby">
+    <div class="topline">
+      <span class="mono">igentics · דסק היבוא</span>
+      <a href="../" id="plan-link">למסמך ←</a>
+    </div>
+    <div class="demo" id="demo" hidden></div>
+    <div class="hello">
+      <div class="facebox" id="face-lobby"></div>
+      <h1 id="hello-title">נעים מאוד</h1>
+      <p class="lead" id="hello-lead"></p>
+      <div class="warn" id="hello-warn" hidden></div>
+      <div class="cta">
+        <button class="btn go" id="start-voice" type="button"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8.5 21h7"/></svg><span>מתחילים לדבר</span></button>
+        <button class="btn" id="start-text" type="button"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 20h4l10-10-4-4L4 16v4zM13.5 6.5l4 4"/></svg><span>מעדיף לכתוב</span></button>
+      </div>
+      <p class="fine" id="hello-fine">אפשר לעצור בכל רגע. השיחה מתומללת ונשמרת כדי שאזכור אותה בפעם הבאה. ההקלטה עצמה לא נשמרת.</p>
+    </div>
+    <ul class="three" id="three">
+      <li><b>מה כבר ברור</b>כל מה שתספר נרשם כעובדה, עם מספר ועם מי שאחראי.</li>
+      <li><b>מה עוד חסר</b>איפה שאין תשובה, אני מסמן פער ושואל מי יודע.</li>
+      <li><b id="three-pilot">מה לברר לפני פיילוט</b>רשימה קצרה של דברים לשאול בעסק שבו נתחיל.</li>
+    </ul>
+    <div class="since" id="since" hidden></div>
+  </section>
+
+  <section class="v-talk">
+    <header class="bar">
+      <span class="mono brand" id="bar-brand">שיחה עם המראיין</span>
+      <div class="acts">
+        <button type="button" class="board-tab" id="board-tab" aria-controls="board" aria-expanded="false">הלוח<span class="n" id="board-n"></span></button>
+        <button type="button" class="end" id="end">סיימנו להיום</button>
+      </div>
+    </header>
+    <div class="cols">
+      <div class="main">
+        <div class="who">
+          <div class="facebox" id="face-talk"></div>
+          <div class="cap" aria-live="polite">
+            <span class="mono" id="cap-name"></span>
+            <b id="cap-state">מתחבר</b>
+            <span id="cap-sub"></span>
+          </div>
+        </div>
+        <div class="log" id="log" role="log" aria-live="polite" aria-label="תמלול השיחה"></div>
+        <footer class="composer" id="composer" data-mode="voice">
+          <button type="button" class="mic" id="mic" data-s="hold" aria-label="מיקרופון">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3M8.5 21h7"/><path class="off" d="M4 4l16 16"/></svg>
+          </button>
+          <form class="type" id="type">
+            <textarea id="text" rows="1" placeholder="אפשר גם לכתוב כאן" aria-label="הודעה כתובה" enterkeyhint="send"></textarea>
+            <button type="submit" id="send" aria-label="שליחה" disabled><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 12H5M11 6l-6 6 6 6"/></svg></button>
+          </form>
+          <p class="hint" id="hint"></p>
+        </footer>
+      </div>
+      <aside class="board" id="board" aria-label="הלוח">
+        <div class="head">
+          <div class="row"><h3>הלוח</h3><button type="button" class="close" id="board-close" aria-label="סגירת הלוח"><svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+          <div class="meter" aria-hidden="true"><i id="meter"></i></div>
+          <span class="note" id="meter-note"></span>
+        </div>
+        <div class="body" id="board-body"></div>
+      </aside>
+    </div>
+    <div class="scrim" id="scrim"></div>
+  </section>
+
+  <section class="v-wrap">
+    <div class="inner">
+      <div class="top">
+        <div class="facebox" id="face-wrap"></div>
+        <div><h2 id="wrap-title">הכול נשמר</h2><p class="note" id="wrap-note"></p></div>
+      </div>
+      <div class="sum pending" id="wrap-sum">אני מסכם עכשיו את השיחה, כדי לזכור אותה בפעם הבאה.</div>
+      <div class="grid" id="wrap-board"></div>
+      <div class="cta">
+        <button class="btn go" id="again" type="button">ממשיכים עוד קצת</button>
+        <a class="btn" href="../">חזרה למסמך</a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div class="sheet" id="sheet" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+  <div class="head"><h3 id="sheet-title"></h3><button type="button" class="btn quiet" id="sheet-close">סגירה</button></div>
+  <div class="body" id="sheet-body"></div>
+</div>
+
+<script>window.DESK_CONF={endpoint:"https://cjtzqurhgoblgtzungka.supabase.co/functions/v1/desk",plan:"../",build:"mwuud74n"};</script>
+<script src="talk.js?v=mwuud74n" defer></script>
+</body>
+</html>

@@ -5,11 +5,11 @@
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
 <title>ההזדמנות ביבוא ובסחר</title>
-<meta name="description" content="סוכני AI אצל יבואנים ומפיצים: מה השתנה, איפה הכסף, מי המתחרים ומה הסיכונים. מסמך חי, עם סרט של 7 דקות ו-58 שאלות.">
+<meta name="description" content="סוכני AI אצל יבואנים ומפיצים: מה השתנה, איפה הכסף, מי המתחרים, החזון והשותפות. מסמך חי, עם סרט, 58 שאלות ומראיין שאפשר לדבר איתו.">
 <meta property="og:type" content="article">
 <meta property="og:locale" content="he_IL">
 <meta property="og:title" content="ההזדמנות ביבוא ובסחר: תוכנית עסקית ראשונה">
-<meta property="og:description" content="סוכני AI אצל יבואנים ומפיצים: מה השתנה, איפה הכסף, מי המתחרים ומה הסיכונים. מסמך חי, עם סרט של 7 דקות ו-58 שאלות.">
+<meta property="og:description" content="סוכני AI אצל יבואנים ומפיצים: מה השתנה, איפה הכסף, מי המתחרים, החזון והשותפות. מסמך חי, עם סרט, 58 שאלות ומראיין שאפשר לדבר איתו.">
 <meta property="og:url" content="https://ctomata41.github.io/igentics.ai/trade/">
 <meta property="og:image" content="https://ctomata41.github.io/igentics.ai/trade/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -410,6 +410,75 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
   .tablebox td+td[data-label]::before{content:attr(data-label);display:block;font-family:var(--mono);font-weight:500;font-size:11px;letter-spacing:.06em;color:var(--muted)}
 }
 
+/* ---------- version 1.1: the interviewer card and the answer boxes ---------- */
+.ido{display:grid;grid-template-columns:84px minmax(0,1fr);gap:16px;align-items:center;background:var(--paper);border:1px solid var(--line);border-inline-start:4px solid var(--box);padding:14px 18px}
+.ido img{display:block;width:84px;height:84px;border-radius:50%;background:var(--bg)}
+.ido .txt{display:flex;flex-direction:column;gap:6px;min-width:0}
+.ido .txt b{font-family:var(--display);font-weight:400;font-size:20px;line-height:1.25}
+.ido .txt p{margin:0;font-size:15.5px;color:var(--ink)}
+.ido .row{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:4px}
+.ido a.btn{text-decoration:none;display:inline-block}
+@media (max-width:560px){.ido{grid-template-columns:60px minmax(0,1fr);gap:12px;padding:12px 14px}.ido img{width:60px;height:60px}}
+#desk[hidden]{display:none}
+.desk-line{margin:0;padding:8px 14px;background:var(--box-soft);border-inline-start:4px solid var(--ok)}
+.qlist li .ans{grid-column:2;display:flex;flex-direction:column;gap:6px;margin-top:8px;min-width:0}
+.ans textarea{display:block;width:100%;box-sizing:border-box;min-height:44px;resize:none;overflow:auto;font:inherit;font-size:16px;line-height:1.45;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:0;padding:9px 12px}
+.ans textarea:focus{outline:2px solid var(--box);outline-offset:1px;background:var(--paper)}
+.ans textarea::placeholder{color:var(--muted)}
+.qlist .ans .ans-st{display:block;min-height:1em;font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+.qlist .ans .ans-st[data-s=saved]{color:var(--ok)}
+.qlist .ans .ans-st[data-s=error]{color:var(--cut)}
+.qlist .ans .ans-ro{white-space:pre-wrap;font-size:16px;color:var(--ink);background:var(--bg);border:1px solid var(--line);padding:9px 12px}
+.qlist .ans .ans-note{font-size:15px;color:var(--ink);border-inline-start:3px solid var(--steel);padding:4px 10px;background:var(--bg)}
+.qlist .ans .ans-note b{font-weight:700;color:var(--steel)}
+
+/* ---------- version 1.1: show less, open for more (folds inside cards, answers and columns) ---------- */
+
+/* a figure that stands alone under a takeaway sentence */
+.clip.solo{max-width:640px}
+
+/* a box in a narrow place (a phone, a column, a card): the hint goes under the title instead of squeezing beside it */
+details.more{container-type:inline-size}
+@container (max-width:520px){
+  details.more>summary{display:grid;grid-template-columns:auto minmax(0,1fr);gap:2px 12px;align-items:start}
+  details.more>summary span{grid-column:2}
+}
+
+/* competitor cards: the "what it means for us" line leads, the rest opens */
+.comp header+.us{border-top:0;padding-top:0;color:var(--ink);font-size:15.5px}
+.comp>details.more{background:none;border:0;border-top:1px dashed var(--line);margin-top:auto}
+.comp>details.more>summary{display:flex;flex-wrap:wrap;align-items:center;padding:8px 0 0;font-size:14.5px;gap:2px 8px;color:var(--steel)}
+.comp>details.more>summary::before{width:18px;height:18px;font-size:13px}
+.comp>details.more>summary span{font-size:14px}
+.comp>details.more>.in{padding:10px 0 2px;border-top:0;gap:8px}
+
+/* risk answers: the first paragraph stays, the rest opens */
+.riskgrid .ans>details.more{background:none;border:0;margin-top:8px}
+.riskgrid .ans>details.more>summary{padding:0;font-size:15px;gap:2px 8px;color:var(--steel)}
+.riskgrid .ans>details.more>summary::before{width:18px;height:18px;font-size:13px}
+.riskgrid .ans>details.more>summary span{font-size:14px}
+.riskgrid .ans>details.more>.in{padding:8px 0 0;border-top:0;gap:8px}
+
+/* ---------- version 1.1: chapter 9 (vision and partnership) ---------- */
+.card>.mono{font-size:12px;color:var(--box)}
+
+/* the two partners: photo, text, a multiplication sign between them.
+   wide: photo | text | x | photo | text.   narrow: the two photos side by side with the sign between, the texts under them */
+.duo{display:grid;grid-template-columns:170px minmax(0,1fr) auto 170px minmax(0,1fr);grid-template-areas:"pa ta x pb tb";background:var(--paper);border:1px solid var(--line)}
+.duo>img{display:block;width:100%;height:auto;aspect-ratio:1/1;object-fit:cover;align-self:start}
+.duo>.pa{grid-area:pa}
+.duo>.pb{grid-area:pb}
+.duo>.who{padding:14px 18px 16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.duo>.who.a{grid-area:ta}
+.duo>.who.b{grid-area:tb}
+.duo>.who b{font-family:var(--display);font-weight:400;font-size:19px;line-height:1.25}
+.duo>.x{grid-area:x;display:grid;place-items:center;padding:0 12px;font-family:var(--display);font-size:40px;line-height:1;color:var(--box);background:var(--bg);border-inline:1px solid var(--line)}
+@media (max-width:900px){
+  .duo{grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);grid-template-areas:"pa x pb" "ta ta ta" "tb tb tb"}
+  .duo>.x{padding:0 10px;font-size:32px;border-inline:0}
+  .duo>.who{border-top:1px solid var(--line)}
+}
+
 </style>
 </head>
 <body>
@@ -417,7 +486,7 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
 
   <div class="lading" aria-label="פרטי המסמך">
     <div><span class="mono">מסמך</span><b>תוכנית עסקית ראשונה</b></div>
-    <div><span class="mono">גרסה</span><b>1.0 · 24.11.2026</b><span class="note">מסמך חי, מתעדכן ככל שנלמד</span></div>
+    <div><span class="mono">גרסה</span><b>1.1 · 24.11.2026</b><span class="note">מסמך חי, מתעדכן ככל שנלמד</span></div>
     <div><span class="mono">נכתב עבור</span><b>אבי</b></div>
     <div class="legend"><span class="mono">סימון</span><span class="lg"><span class="chip data">נתון</span> יש מקור</span><span class="lg"><span class="chip said">מהשיחה שלנו</span> דברים שאמרת</span><span class="lg"><span class="chip guess">הערכה</span> שיקול דעת שלי</span><span class="lg"><span class="chip ask">לברר</span> שאלה אליך</span></div>
   </div>
@@ -433,20 +502,21 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
       <li><a href="#case"><span>6</span>אינטר ג׳ינס</a></li>
       <li><a href="#rivals"><span>7</span>מתחרים</a></li>
       <li><a href="#model"><span>8</span>העסק</a></li>
-      <li><a href="#risks"><span>9</span>סיכונים</a></li>
-      <li><a href="#questions"><span>10</span>שאלות אליך</a></li>
-      <li><a href="#next"><span>11</span>הצעד הבא</a></li>
+      <li><a href="#vision"><span>9</span>חזון ושותפות</a></li>
+      <li><a href="#risks"><span>10</span>סיכונים</a></li>
+      <li><a href="#questions"><span>11</span>שאלות אליך</a></li>
+      <li><a href="#next"><span>12</span>הצעד הבא</a></li>
     </ol>
   </nav>
 
   <section class="hero" id="open">
     <span class="mono">השורה התחתונה</span>
     <h1>ענקיות השילוח כבר העבירו חלק מהניירת לסוכני AI. אצל היבואן הישראלי זה כמעט לא התחיל.</h1>
-    <p class="lead">זו תוכנית ראשונה לעסק ששנינו יכולים לבנות: שירות שמקים ומפעיל סוכני AI אצל יבואנים ומפיצים. היא גם נייר העבודה שביקשת: מה שהבנתי על הענף, מסודר לפי מסע הסחורה, ולצידו השאלות שרק אתה יודע לענות עליהן.</p>
+    <p class="lead">זו תוכנית ראשונה לעסק ששנינו יכולים לבנות: שירות שמקים ומפעיל סוכני AI אצל יבואנים ומפיצים. זה עסק של אינטגרציה, לא של טכנולוגיה: הכלים כבר קיימים, ואנחנו מחברים אותם לעסק ומפעילים אותם כשירות שמביא תוצאה מדידה. זה גם נייר העבודה שביקשת: מה שהבנתי על הענף, ולצידו השאלות שרק אתה יודע לענות עליהן.</p>
     <ul class="short">
       <li><b>הטכנולוגיה הבשילה</b>מאז 2025 ה-AI כבר לא רק עונה על שאלות. הוא קורא מסמכים, מפעיל מערכות ומסיים לבד משימות של שעות.</li>
       <li><b>הענף מתאים במיוחד</b>אצל יבואן רוב עבודת המשרד היא מסמכים, מעקב ותיאום בין ספק, משלח, עמיל מכס ולקוח. הרווח דק, ולכן כל שעה וכל טעות שנחסכות מורגשות.</li>
-      <li><b>השילוב בינינו</b>אתה מביא את הענף, הניסיון והאנשים. אני מביא את הטכנולוגיה. הלקוח קונה תוצאה שאפשר לספור, ומשלם עליה כל חודש.</li>
+      <li><b>השילוב בינינו</b>אתה מביא את הענף, הניסיון והאנשים. אני מביא את ההיכרות עם הכלים ואת היכולת להטמיע אותם. מתחילים בחודש הקרוב, בעסק אחד. הכיוון גדול בהרבה, ועליו <a href="#vision">פרק 9</a>.</li>
     </ul>
   </section>
 
@@ -460,7 +530,7 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
       <h3>מה אני מבקש ממך</h3>
       <ol>
         <li><b>לתקן אותי.</b> פרק 3 מתאר את מסע הסחורה כפי שהבנתי אותו מבחוץ, מקריאה ומהשיחה שלנו. בכל מקום שהמציאות שונה, אני רוצה לדעת.</li>
-        <li><b>לענות על השאלות.</b> בכל פרק יש שאלות שמסומנות <span class="chip ask">לברר</span>. כולן מרוכזות בפרק 10, לפי נושאים, מהקטנות ועד הגדולות, כדי שתוכל לענות עליהן בסדר שנוח לך.</li>
+        <li><b>לענות על השאלות.</b> בכל פרק יש שאלות שמסומנות <span class="chip ask">לברר</span>. כולן מרוכזות <a href="#questions">בפרק 11</a>, ואפשר לענות עליהן ישר בדף: בכתב, או בשיחה עם מראיין קטן שבניתי לשם כך.</li>
         <li><b>לבחור איתי משלוח אמיתי אחד</b> ולשחזר אותו יחד, מההזמנה ועד המחסן. כך נדע איפה באמת הולכים הזמן והכסף.</li>
       </ol>
     </div>
@@ -546,9 +616,19 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
     <h3>העסקים מתקדמים בשנים</h3>
     <div class="reason">
       <div>
+        <p><span class="chip data">נתון</span> במסחר בישראל השימוש ב-AI כמעט הוכפל בתשעה חודשים, מ-17% ל-31%, ועדיין שני עסקים מכל שלושה לא משתמשים בו בכלל (<a class="src" href="https://www.idi.org.il/media/31034/c2-prof-yaron-felus.pdf" target="_blank" rel="noopener" title="הלשכה המרכזית לסטטיסטיקה, אימוץ בינה מלאכותית במגזר העסקי: מצגת בכנס אלי הורביץ לכלכלה וחברה 2026 של המכון הישראלי לדמוקרטיה">הלמ״ס, מרץ 2026</a>). האנשים אימצו את הצ׳אט, והעבודה עצמה כמעט לא השתנתה.</p>
+        <details class="more"><summary>המספרים: ארה״ב, ישראל, וסוכנים בפועל <span>שלושה סקרים, וקטע מדוח של OpenAI</span></summary>
+<div class="in">
         <p><span class="chip data">נתון</span> בארה״ב 61.8% מבני 18 עד 64 כבר השתמשו ב-AI גנרטיבי, אבל הוא היה בשימוש רק ב-6.3% משעות העבודה (מאי 2026, <a class="src" href="https://www.genaiadoptiontracker.com/" target="_blank" rel="noopener" title="Bick, Blandin, Deming &amp; McKittrick, GenAI Adoption Tracker, נתוני מאי 2026">GenAI Adoption Tracker, מאי 2026</a>). האנשים אימצו את הצ׳אט. העבודה עצמה כמעט לא השתנתה.</p>
         <p><span class="chip data">נתון</span> בישראל, 39% מהעסקים עם 10 משרות שכיר ומעלה דיווחו במרץ 2026 שהם משתמשים ב-AI, לעומת 28% ביוני 2025 (<a class="src" href="https://www.idi.org.il/media/31034/c2-prof-yaron-felus.pdf" target="_blank" rel="noopener" title="הלשכה המרכזית לסטטיסטיקה, אימוץ בינה מלאכותית במגזר העסקי: מצגת בכנס אלי הורביץ לכלכלה וחברה 2026 של המכון הישראלי לדמוקרטיה">הלמ״ס, מרץ 2026</a>). במסחר השיעור כמעט הוכפל בתשעה חודשים, מ-17% ל-31%, ועדיין שני עסקים מכל שלושה לא משתמשים בכלל. וגם ״שימוש״ הוא מושג רחב: לפי אותה מצגת, 18% מעסקי המסחר משלמים על כלי AI, ו-13% משתמשים בכלים חינמיים.</p>
         <p><span class="chip data">נתון</span> וסוכנים שעושים עבודה? בסקר של McKinsey מ-2025, הטמעה של סוכנים הייתה בשיעור חד-ספרתי כמעט בכל תחום בעסק (<a class="src" href="https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_4_economy.pdf" target="_blank" rel="noopener" title="Stanford HAI, AI Index Report 2026, פרק 4: כלכלה (נתוני סקר McKinsey 2025)">Stanford AI Index 2026, פרק הכלכלה</a>). בחברות ענק 40% כבר מרחיבים שימוש בסוכנים. בחברות קטנות מהן השיעור עומד במקום, על 22% (<a class="src" href="https://www.mckinsey.com/~/media/mckinsey/business%20functions/quantumblack/our%20insights/the%20state%20of%20ai/the-state-of-ai-in-2026-on-the-road-to-roi.pdf" target="_blank" rel="noopener" title="McKinsey, The state of AI in 2026, אוגוסט 2026">McKinsey, אוגוסט 2026</a>).</p>
+        <figure class="clip">
+          <blockquote lang="en">“The primary constraints for organizations are no longer model performance or tooling, but rather <mark>organizational readiness</mark>.”</blockquote>
+          <p class="tr">המגבלה העיקרית של ארגונים כבר איננה ביצועי המודלים או הכלים, אלא המוכנות של הארגון עצמו.</p>
+          <figcaption><span class="mono">OPENAI, דוח מצב ה-AI בארגונים · דצמבר 2025 · פרסום של ספקית AI</span><a class="src" href="https://cdn.openai.com/pdf/7ef17d82-96bf-4dd1-9df2-228f7f377a29/the-state-of-enterprise-ai_2025-report.pdf" target="_blank" rel="noopener" title="OpenAI, The state of enterprise AI: 2025 Report, דצמבר 2025">למקור</a></figcaption>
+        </figure>
+        </div>
+</details>
       </div>
       <div class="proof">
         <figure class="clip">
@@ -559,32 +639,33 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
       </div>
     </div>
 
-    <figure class="clip">
-      <blockquote lang="en">“The primary constraints for organizations are no longer model performance or tooling, but rather <mark>organizational readiness</mark>.”</blockquote>
-      <p class="tr">המגבלה העיקרית של ארגונים כבר איננה ביצועי המודלים או הכלים, אלא המוכנות של הארגון עצמו.</p>
-      <figcaption><span class="mono">OPENAI, דוח מצב ה-AI בארגונים · דצמבר 2025 · פרסום של ספקית AI</span><a class="src" href="https://cdn.openai.com/pdf/7ef17d82-96bf-4dd1-9df2-228f7f377a29/the-state-of-enterprise-ai_2025-report.pdf" target="_blank" rel="noopener" title="OpenAI, The state of enterprise AI: 2025 Report, דצמבר 2025">למקור</a></figcaption>
-    </figure>
-
     <h3>למה עסקים עוד לא שם</h3>
+    <p>ארבע סיבות: מכירים רק את הצ׳אט, אין מי שיחבר אותו לעסק, כלי בלי ליווי לא מביא תוצאה, והערך מגיע רק כשמשנים את דרך העבודה.</p>
+    <details class="more"><summary>ארבע הסיבות, עם המספרים <span>סקרים מישראל ומאירופה, ניסוי בקניה, ולקח מהחשמל</span></summary>
+<div class="in">
     <div class="two">
       <div class="card"><h3>מכירים רק את הצ׳אט</h3><span><span class="chip data">נתון</span> 71% מהעסקים בישראל שלא תכננו להשתמש ב-AI אמרו שהוא פשוט לא רלוונטי לפעילות שלהם (<a class="src" href="https://www.idi.org.il/articles/60124" target="_blank" rel="noopener" title="המכון הישראלי לדמוקרטיה, אימוץ בפועל של בינה מלאכותית בעסקים בישראל (ניתוח סקר הלמ״ס מיוני 2025), 15.7.2025">המכון הישראלי לדמוקרטיה, 2025</a>). מי שמכיר רק צ׳אט שעונה על שאלות לא רואה מה הוא יעשה במחלקת היבוא.</span></div>
       <div class="card"><h3>אין מי שיחבר</h3><span><span class="chip data">נתון</span> באיחוד האירופי, כ-7 מכל 10 עסקים ששקלו AI ולא אימצו אותו הצביעו על חוסר מומחיות, החסם הנפוץ ביותר (<a class="src" href="https://ec.europa.eu/eurostat/databrowser/view/isoc_eb_ai/default/table" target="_blank" rel="noopener" title="Eurostat, מאגר isoc_eb_ai, חסמים לאימוץ AI, נתוני 2025">Eurostat, חסמים</a>). גם בישראל החסם הבולט הוא חוסר ידע (<a class="src" href="https://www.idi.org.il/articles/60124" target="_blank" rel="noopener" title="המכון הישראלי לדמוקרטיה, אימוץ בפועל של בינה מלאכותית בעסקים בישראל (ניתוח סקר הלמ״ס מיוני 2025), 15.7.2025">המכון הישראלי לדמוקרטיה, 2025</a>).</span></div>
       <div class="card"><h3>כלי בלי ליווי לא מביא תוצאה</h3><span><span class="chip data">נתון</span> בניסוי עם 640 בעלי עסקים קטנים בקניה, עוזר AI בוואטסאפ לא שיפר בממוצע הכנסות או רווחים, ואצל החלשים התוצאות ירדו בכ-10% (<a class="src" href="https://pubsonline.informs.org/doi/10.1287/mnsc.2024.06909" target="_blank" rel="noopener" title="Otis et al., The Uneven Impact of Generative AI on Entrepreneurial Performance: Evidence from a Field Experiment in Kenya, Management Science, 2026">ניסוי בקניה, 2026</a>). לפי דוח של MIT, 95% מהארגונים לא ראו תשואה מדידה, ופרויקטים עם שותף חיצוני הגיעו לשימוש בפועל בשיעור כפול מפיתוח פנימי: 67% מול 33% (<a class="src" href="https://webberwentzel.com/News/Documents/2025/MIT1757411281972.pdf" target="_blank" rel="noopener" title="MIT NANDA, The GenAI Divide: State of AI in Business 2025, יולי 2025">MIT, 2025</a>).</span></div>
       <div class="card"><h3>הערך מגיע כשמשנים את דרך העבודה</h3><span><span class="chip data">נתון</span> ב-1899 פחות מ-5% מכוח המכונות במפעלים בארה״ב היה חשמלי. ההשפעה על הפריון הגיעה רק בשנות ה-20, כארבעה עשורים אחרי תחנת הכוח הראשונה, כשתכננו את המפעלים מחדש סביב החשמל (<a class="src" href="https://gwern.net/doc/economics/automation/1990-david.pdf" target="_blank" rel="noopener" title="Paul A. David, The Dynamo and the Computer, American Economic Review 80(2), 1990">Paul David, 1990</a>). מי שרק מחליף מנוע במנוע לא מרוויח.</span></div>
     </div>
+    </div>
+</details>
 
     <h3>מי מרוויח ממהפכה כזאת</h3>
-    <div class="two">
       <div class="panel">
         <p>לא רק מי שהמציא את הטכנולוגיה. בגל המחשוב צמח לצד התוכנה שוק גדול ממנה: האנשים שהכניסו אותה לעסקים.</p>
         <p><span class="chip data">נתון</span> השותפים של SAP מכניסים עד היום 8.81 דולר על כל דולר שהחברה עצמה מכניסה (<a class="src" href="https://news.sap.com/2023/02/idc-intellectual-property-research-sap-partner-growth/" target="_blank" rel="noopener" title="IDC, מחקר שהזמינה SAP על הערך הכלכלי של שותפי היישום, 2023">IDC, 2023</a>).</p>
+        <details class="more"><summary>ועוד שתי ראיות <span>תחזית של Gartner, ומחקר על עלות ההתקנה של SAP</span></summary>
+<div class="in">
         <p><span class="chip data">נתון</span> ב-2026 העולם יוציא על שירותי IT כ-1.57 טריליון דולר, יותר מאשר על התוכנה עצמה, 1.47 טריליון (<a class="src" href="https://www.gartner.com/en/newsroom/press-releases/2026-07-27-gartner-forecasts-worldwide-it-spending-to-grow-14-point-2-percent-in-2026-totaling-6-point-37-trillion" target="_blank" rel="noopener" title="Gartner, תחזית הוצאות IT עולמית, יולי 2026">Gartner, יולי 2026</a>, תחזית).</p>
-      </div>
       <figure class="clip">
         <blockquote lang="en">“…<mark>less than 20 percent</mark> of the typical $20 million installation cost of a SAP R/3 system … is for hardware and software … by far the greater part of the investment is for hiring consultants to help develop requirements; evaluate, select, and customize the software; redesign organizational processes; and train the staff in the use of the new system.”</blockquote>
         <p class="tr">פחות מ-20% מעלות ההתקנה הטיפוסית של מערכת SAP, כ-20 מיליון דולר, הלכו לחומרה ולתוכנה. רוב ההשקעה הלכה ליועצים שהגדירו דרישות, התאימו את התוכנה, תכננו מחדש את התהליכים והדריכו את העובדים.</p>
         <figcaption><span class="mono">BROOKINGS PAPERS ON ECONOMIC ACTIVITY · 2002</span><a class="src" href="https://www.brookings.edu/wp-content/uploads/2002/01/2002a_bpea_brynjolfsson.pdf" target="_blank" rel="noopener" title="Brynjolfsson, Hitt &amp; Yang, Intangible Assets: Computers and Organizational Capital, Brookings Papers on Economic Activity, 2002">למקור</a></figcaption>
       </figure>
+        </div>
+</details>
     </div>
 
     <div class="panel">
@@ -606,8 +687,12 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
         <span class="n">סיבה 1</span>
         <h3>העבודה היא מידע שעובר מיד ליד</h3>
         <p>במשלוח יבוא אחד מעורבים ספק, מפעל, משלח, חברת ספנות, נמל, עמיל מכס, מכון התקנים, בנק, מבטח, מחסן ולקוח. כל אחד מהם מבקש מסמך, וכל אחד שולח מסמך. הסחורה זזה פעם אחת. המידע עליה זז מאות פעמים.</p>
+        <details class="more"><summary>הספירה המלאה <span>36 מסמכים, משלוח אבוקדו אחד, ולמה מודל שפה יודע לקרוא את זה</span></summary>
+<div class="in">
         <p><span class="chip data">נתון</span> לשכת המסחר הבינלאומית וארגון הסחר העולמי סופרים בעסקת סחר ממוצעת 36 מסמכים ו-240 עותקים (<a class="src" href="https://iccwbo.org/wp-content/uploads/sites/3/2022/06/icc-wto-dsi-toolkit-english.pdf" target="_blank" rel="noopener" title="ICC and WTO, Standards Toolkit for Cross-border Paperless Trade (2022)">ICC ו-WTO, 2022</a>). Maersk עקבה אחרי משלוח אחד של אבוקדו ממומבסה לרוטרדם ומצאה כ-30 גופים, כ-100 אנשים וכ-200 חילופי מידע (<a class="src" href="https://www.seatrade-maritime.com/ship-operations/maersk-avocados-and-the-global-trade-paperchase" target="_blank" rel="noopener" title="Seatrade Maritime, Maersk, avocados and the global trade paperchase">Maersk, דרך Seatrade Maritime</a>).</p>
         <p><span class="chip data">נתון</span> פחות מאחוז אחד ממסמכי הסחר בעולם דיגיטליים לגמרי. השאר הם קובצי PDF, סריקות ומיילים. זה בדיוק החומר שמודל שפה יודע לקרוא, ושתוכנה רגילה לא ידעה.</p>
+        </div>
+</details>
       </div>
       <div class="proof">
         <figure class="clip">
@@ -623,9 +708,13 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
         <span class="n">סיבה 2</span>
         <h3>הרווח דק, ולכן כל שקל שנחסך נשאר</h3>
         <p><span class="chip said">מהשיחה שלנו</span> כלל האצבע ששמעתי ממך: כדי להרוויח מיליון צריך למכור בערך עשרים מיליון.</p>
-        <p><span class="chip data">נתון</span> הנתונים על חברות ציבוריות בארה״ב מראים תמונה דומה. למפיצים ולסיטונאים נשארים 6.05% מההכנסות, ולחברות הלבשה 3.85%. לחברות תוכנה נשארים 25.49% (<a class="src" href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/margin.html" target="_blank" rel="noopener" title="Aswath Damodaran, NYU Stern, Margins by Sector (US), ינואר 2026">Damodaran, NYU Stern, 2026</a>).</p>
         <p><span class="chip guess">הערכה</span> המשמעות: חיסכון של 50,000 שקל בשנה בעבודת המשרד שווה לרווח על מיליון שקל של מכירות נוספות. ובשבילו לא צריך לקנות סחורה, לממן מלאי או למצוא לקוח.</p>
-        <p class="note">הנתונים הם של חברות ציבוריות גדולות בארה״ב. אצל יבואן ישראלי פרטי המספרים שונים, וזו אחת השאלות אליך בפרק 10.</p>
+        <details class="more"><summary>הנתונים מארה״ב <span>כמה נשאר למפיצים, לחברות הלבשה ולחברות תוכנה</span></summary>
+<div class="in">
+        <p><span class="chip data">נתון</span> הנתונים על חברות ציבוריות בארה״ב מראים תמונה דומה. למפיצים ולסיטונאים נשארים 6.05% מההכנסות, ולחברות הלבשה 3.85%. לחברות תוכנה נשארים 25.49% (<a class="src" href="https://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/margin.html" target="_blank" rel="noopener" title="Aswath Damodaran, NYU Stern, Margins by Sector (US), ינואר 2026">Damodaran, NYU Stern, 2026</a>).</p>
+        <p class="note">הנתונים הם של חברות ציבוריות גדולות בארה״ב. אצל יבואן ישראלי פרטי המספרים שונים, וזו אחת השאלות אליך בפרק 11.</p>
+        </div>
+</details>
       </div>
       <div class="proof">
         <div class="chart" role="group" aria-label="רווח נקי כאחוז מההכנסות, לפי ענף">
@@ -653,7 +742,11 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
           <li><b>יש לה כללים.</b> תנאי המכר, נוהלי המכס, ומה שנהוג בחברה: מה עושים כשספק מאחר, ומי מאשר חריגה.</li>
           <li><b>אפשר לבדוק אותה.</b> החשבון מול ההזמנה, רשימת האריזה מול החשבון, שטר המטען מול שניהם. טעות מתגלה כאי-התאמה בין שני מסמכים.</li>
         </ul>
+        <details class="more"><summary>זה כבר קורה אצל הגדולים <span>שלוש דוגמאות, עם מספרים</span></summary>
+<div class="in">
         <p><span class="chip data">נתון</span> וזה כבר קורה אצל הגדולים. C.H. Robinson, מהמשלחים הגדולים בעולם, דיווחה באוקטובר 2026 שסוכנים מטפלים אצלה ביותר מ-48 סוגי מסמכים לשחרור מהמכס בארה״ב, ושהזמן שהצוות משקיע בניירת הזאת ירד עד כה ב-23% (<a class="src" href="https://www.chrobinson.com/en-gb/about-us/newsroom/press-releases/2026/lean-ai-freight-forwarding-agents/" target="_blank" rel="noopener" title="C.H. Robinson debuts Lean AI for ocean shipping, air freight, and customs (press release, 26.10.2026)">C.H. Robinson, אוקטובר 2026</a>). אצל מפיץ תעשייתי גדול זמן הכנת מסמכי המשלוח ירד ב-60% (<a class="src" href="https://www.mckinsey.com/industries/industrials/our-insights/distribution-blog/how-generative-ai-is-disrupting-distribution" target="_blank" rel="noopener" title="McKinsey, How generative AI is disrupting distribution, 8.3.2024">McKinsey, מרץ 2024</a>). אצל AmerCareRoyal, מפיצה אמריקאית, הקלדת הזמנה ירדה מ-8 דקות לפחות מדקה (<a class="src" href="https://machalliance.org/case-studies/acr-amercareroyal-from-8-minutes-to-60-seconds-with-autonomous-b2b-order-processing" target="_blank" rel="noopener" title="ACR (AmerCareRoyal): from 8 minutes to 60 seconds with autonomous B2B order processing">MACH Alliance, מקרה ACR</a><sup class="unread" title="המספר נלקח מתקציר של מנוע חיפוש. העמוד עצמו לא נפתח.">°</sup>, תיאור מקרה של ספק הטכנולוגיה).</p>
+        </div>
+</details>
       </div>
       <div class="proof">
         <figure class="clip">
@@ -665,6 +758,9 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
     </div>
 
     <h3>ועוד ארבע סיבות</h3>
+    <p>המערכות כבר קיימות, והאנשים הם הדבק שביניהן. הענף כמעט לא התחיל. יש הרבה עסקים דומים. ואפשר לגדול בלי להגדיל את המשרד.</p>
+    <details class="more"><summary>ארבע הסיבות, עם המספרים <span>Priority, סקרים מארה״ב, נתוני הלמ״ס, וקטע על כוח האדם</span></summary>
+<div class="in">
     <div class="two">
       <div class="card"><h3>4. המערכות כבר קיימות, והאנשים הם הדבק</h3><span>ליבואן יש מערכת ניהול, בדרך כלל Priority (<a class="src" href="https://www.priority-software.com/blog/news/blackstone-to-acquire-majority-stake-in-priority-software/" target="_blank" rel="noopener" title="Priority Software, הודעה על רכישת השליטה בידי Blackstone, 2024">יותר מ-17,000 לקוחות</a>). למשלח יש פורטל. למכס יש את ״שער עולמי״. ביניהם עובדים אנשים שמעתיקים ממקום למקום, באקסל, במייל ובוואטסאפ. <span class="chip guess">הערכה</span> סוכן לא מחליף אף מערכת. הוא עושה את ההעתקה, הבדיקה והתזכורת שביניהן, ולכן אפשר להתחיל בלי פרויקט מחשוב.</span></div>
       <div class="card"><h3>5. הענף כמעט לא התחיל</h3><span><span class="chip data">נתון</span> בסקר של 426 מנהלי הפצה בארה״ב, 73% ציפו שתמחור בעזרת AI ישפר את הרווחיות ב-2% ומעלה, ורק 16% השיגו זאת. בלוגיסטיקה: 49% מול 12% (<a class="src" href="https://www.descartes.com/sites/default/files/media/documents/2026-05/MDM-NAW-Research-Paper-In-Pursuit-of-Value-Where-400-Distributors-are-Investing-in-AI-Today-April-2026.pdf" target="_blank" rel="noopener" title="MDM ו-NAW, In Pursuit of Value: Where 400 Distributors are Investing in AI Today, אפריל 2026">MDM ו-NAW, 2026</a>, סקר בחסות ספקים). <span class="chip data">נתון</span> BCG מצאה תמונה דומה אצל חברות לוגיסטיקה (<a class="src" href="https://www.bcg.com/publications/2026/why-ai-isnt-delivering-roi-logistics" target="_blank" rel="noopener" title="BCG, AI Hasn&#x27;t Fully Paid Off Yet in Logistics. But It Will. (24.8.2026)">BCG, אוגוסט 2026</a>). <span class="chip guess">הערכה</span> לא מצאתי אף מקרה מתועד של יבואן ישראלי שמפעיל סוכנים. אני קורא את זה כסימן שעוד אין מי שמציע, ואתה תדע לומר אם אני טועה.</span></div>
@@ -676,6 +772,8 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
       <blockquote>״בקצה אחד נמצא ענף המסחר שמעיד על <mark>היעדר השפעה על מצבת כוח האדם</mark>, בעוד שבהיי-טק כ-10% (במונחי מועסקים) דיווחו על השפעה מצמצמת בתעסוקה.״</blockquote>
       <figcaption><span class="mono">המכון הישראלי לדמוקרטיה, על סקר הלמ״ס · יולי 2025</span><a class="src" href="https://www.idi.org.il/articles/60124" target="_blank" rel="noopener" title="המכון הישראלי לדמוקרטיה, אימוץ בפועל של בינה מלאכותית בעסקים בישראל (ניתוח סקר הלמ״ס מיוני 2025), 15.7.2025">למקור</a></figcaption>
     </figure>
+    </div>
+</details>
 
     <details class="more">
       <summary>ומה מדבר נגד הבחירה הזאת <span>שלוש הסתייגויות, והפניה לתשובות</span></summary>
@@ -685,7 +783,7 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
           <li><b>הענף שמרן, והנתונים מפוזרים.</b> חלק מהמידע נמצא בראש של אנשים ותיקים, בקבוצות וואטסאפ ובטלפונים פרטיים. סוכן יכול לעבוד רק עם מה שנגיש לו.</li>
           <li><b>הגדולים מוסיפים AI בעצמם.</b> Priority הוסיפה סוכנים למערכת, והמשלחים הגדולים בונים סוכנים משלהם. צריך לדעת איפה אנחנו מוסיפים ואיפה נהיה מיותרים.</li>
         </ul>
-        <p class="note">פרק 9 עונה על כל אחת מההסתייגויות, ועל שמונה נוספות.</p>
+        <p class="note">פרק 10 עונה על כל אחת מההסתייגויות, ועל שמונה נוספות.</p>
       </div>
     </details>
   </section>
@@ -747,7 +845,11 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
               </ul>
             </div>
           </div>
+          <details class="more"><summary>מי כבר עושה את זה <span>סוכן הרכש של עליבאבא</span></summary>
+<div class="in">
           <p class="evid"><span><span class="chip data">נתון</span> הכיוון כבר קיים בעולם: Accio, סוכן הרכש של עליבאבא, דיווח במרץ 2026 על יותר מ-10 מיליון משתמשים בחודש. גם שם הקונה מאשר כל עסקה בעצמו (<a class="src" href="https://www.digitalcommerce360.com/2026/07/24/alibaba-accio-work-agentic-ai-b2b-sourcing/" target="_blank" rel="noopener" title="Alibaba Accio: agentic AI for B2B sourcing (Digital Commerce 360, 24.7.2026)">Digital Commerce 360, יולי 2026</a><sup class="unread" title="המספר נלקח מתקציר של מנוע חיפוש. העמוד עצמו לא נפתח.">°</sup>).</span></p>
+          </div>
+</details>
           <div class="beat"><b>הזמנה 4417 בתחנה הזאת · דוגמה להמחשה</b><span>הדגם נבחר בתחילת השנה, אחרי סבב הירידים: מגף צ׳לסי, דגם 2206, בשחור ובחום, לחורף הבא.</span></div>
           <div class="askline"><b>שאלה אליך</b><span>איך באמת מחליטים מה להזמין וכמה? כמה מההחלטה היא מספרים וכמה תחושת בטן, ומה היית רוצה שיהיה לך ביד כשאתה עומד מול ספק?</span></div>
         </div>
@@ -785,7 +887,11 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
               </ul>
             </div>
           </div>
+          <details class="more"><summary>כמה גדול שוק הרישיונות <span>מספר אחד, עם מקור</span></summary>
+<div class="in">
           <p class="evid"><span><span class="chip data">נתון</span> מוצרים ברישיון הם שוק של 389.8 מיליארד דולר בשנה, וההלבשה היא הקטגוריה הגדולה בו (<a class="src" href="https://licensinginternational.org/news/licensing-internationals-2026-global-study-shows-licensing-industrys-continued-growth-reaching-389-8-billion-in-sales/" target="_blank" rel="noopener" title="Licensing International&#x27;s 2026 Global Study: licensed goods reach $389.8 billion in sales">Licensing International, 2026</a><sup class="unread" title="המספר נלקח מתקציר של מנוע חיפוש. העמוד עצמו לא נפתח.">°</sup>).</span></p>
+          </div>
+</details>
           <div class="beat"><b>הזמנה 4417 בתחנה הזאת · דוגמה להמחשה</b><span>המגף מיוצר בסין תחת מותג שהיבואן מחזיק ברישיון. המותג אישר את הדגם לפני הייצור, ועל כל זוג שיימכר ישולם לו תמלוג.</span></div>
           <div class="askline"><b>שאלה אליך</b><span>מה מותג דורש מהיבואן באופן שוטף: דוחות, מינימום, אישורים? כמה עבודה זו בפועל, ומה קורה כשמפספסים?</span></div>
         </div>
@@ -896,7 +1002,11 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
               </ul>
             </div>
           </div>
+          <details class="more"><summary>המשלחים עצמם כבר שם <span>C.H. Robinson ו-Kuehne+Nagel</span></summary>
+<div class="in">
           <p class="evid"><span><span class="chip data">נתון</span> המשלחים עצמם כבר שם. אצל C.H. Robinson, הצעת מחיר להובלה ימית שלקחה יומיים עד שלושה יוצאת היום בשתיים עד שלוש דקות (<a class="src" href="https://www.chrobinson.com/en-gb/about-us/newsroom/press-releases/2026/lean-ai-freight-forwarding-agents/" target="_blank" rel="noopener" title="C.H. Robinson debuts Lean AI for ocean shipping, air freight, and customs (press release, 26.10.2026)">C.H. Robinson, אוקטובר 2026</a>). Kuehne+Nagel, מהמשלחים הגדולים בעולם, הודיעה במרץ 2026 על ביטול של יותר מ-2,000 משרות, והנהלתה ייחסה את רובן להתייעלות טכנולוגית ולא לחולשה בביקוש (<a class="src" href="https://www.freightwaves.com/news/kuehnenagel-to-layoff-2000-workers-amid-weak-demand-ai-push" target="_blank" rel="noopener" title="FreightWaves, Kuehne+Nagel to lay off 2,000 workers amid weak demand, AI push (3.3.2026)">FreightWaves, 3.3.2026</a>). <span class="chip guess">הערכה</span> יבואן שיושב מול משלח שעובד כך, ועדיין עוקב באקסל, נמצא בעמדת נחיתות.</span></p>
+          </div>
+</details>
           <div class="beat"><b>הזמנה 4417 בתחנה הזאת · דוגמה להמחשה</b><span>הסוכן שואל את המפעל מה כבר ארוז, ומגלה שהשחורים מוכנים. עד 07:30 מחכות לבעלים שלוש אפשרויות: לחכות, להטיס את מה שהקמפיין צריך בכ-8 דולר לזוג, או לפצל את המשלוח בכ-450 דולר, כך שהשחורים יפליגו באונייה שכבר הוזמנה. ההמלצה: לפצל. האדם מחליט.</span></div>
           <div class="askline"><b>שאלה אליך</b><span>כמה מהמשלוחים מתעכבים בפועל, ובכמה? מי מחליט בין ים לאוויר, ולפי מה?</span></div>
         </div>
@@ -934,11 +1044,15 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
               </ul>
             </div>
           </div>
+          <details class="more"><summary>כמה כסף זה, במספרים מארה״ב <span>דמי השהיה בחמש שנים</span></summary>
+<div class="in">
           <figure class="clip">
             <img width="1200" height="816" src="img/fmc-demurrage.jpg" loading="lazy" alt="עמוד דמי ההשהיה באתר רשות הספנות הפדרלית של ארצות הברית: תשע חברות הספנות גבו כ-15.4 מיליארד דולר בדמי השהיה בין אפריל 2020 למרץ 2025">
             <p class="tr">״במונחים כספיים, תשע חברות הספנות גבו כ-15.4 מיליארד דולר בדמי השהיה בין 1 באפריל 2020 ל-31 במרץ 2025.״ זה נתון אמריקאי. לישראל לא מצאתי נתון דומה.</p>
             <figcaption><span class="mono">FMC · רשות הספנות הפדרלית של ארה״ב</span><a class="src" href="https://www.fmc.gov/detention-and-demurrage/" target="_blank" rel="noopener" title="US Federal Maritime Commission, Detention and Demurrage">למקור</a></figcaption>
           </figure>
+          </div>
+</details>
           <div class="beat"><b>הזמנה 4417 בתחנה הזאת · דוגמה להמחשה</b><span>כשהשחורים בים, הסוכן בודק שהחשבון, מפרט האריזות ושטר המטען מתאימים למשלוח המפוצל, ושולח לעמיל המכס תיק מלא כמה ימים לפני ההגעה.</span></div>
           <div class="askline"><b>שאלה אליך</b><span>איך מחליטים היום מה לשחרר ממחסן הערובה ומתי? מי עושה את החשבון, ובאיזה כלי?</span></div>
         </div>
@@ -975,7 +1089,11 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
               </ul>
             </div>
           </div>
+          <details class="more"><summary>באופנה זה כבר נמדד <span>Zalando ו-G-Star</span></summary>
+<div class="in">
           <p class="evid"><span><span class="chip data">נתון</span> באופנה זה כבר נמדד. Zalando דיווחה שתוכן המוצר שנוצר ב-AI עלה מכמעט אפס ל-90% בתוך שנה, ושהכנת קמפיין ירדה משישה שבועות לכמה ימים (<a class="src" href="https://fashionunited.com/news/business/faster-than-ever-before-why-zalando-is-betting-on-ai/2026031771198" target="_blank" rel="noopener" title="Faster than ever before: why Zalando is betting on AI (FashionUnited, 17.3.2026)">FashionUnited, מרץ 2026</a>). ב-G-Star פתיחת מוצר לאתר ירדה משבועות לימים (<a class="src" href="https://www.griddynamics.com/blog/g-star-ai-catalog-enrichment-case-study" target="_blank" rel="noopener" title="G-Star: AI catalog enrichment case study (Grid Dynamics)">Grid Dynamics, מקרה G-Star</a>). שני הנתונים הם דיווח של החברה או של הספק שלה.</span></p>
+          </div>
+</details>
           <div class="beat"><b>הזמנה 4417 בתחנה הזאת · דוגמה להמחשה</b><span>המכולה הראשונה מגיעה למחסן. עלות הנחיתה של זוג מחושבת מחדש: הפיצול הוסיף כ-19 סנט לזוג. המחירון נשאר כפי שהיה, והמרווח נשאר בתוך היעד.</span></div>
           <div class="askline"><b>שאלה אליך</b><span>כמה ימים עוברים בממוצע מהגעת המכולה למחסן ועד שהסחורה על המדף ובאתר? מה מעכב?</span></div>
         </div>
@@ -1012,7 +1130,11 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
               </ul>
             </div>
           </div>
+          <details class="more"><summary>כמה זמן זה חוסך <span>שתי חברות, במספרים שלהן</span></summary>
+<div class="in">
           <p class="evid"><span><span class="chip data">נתון</span> אצל AmerCareRoyal ירד הטיפול בהזמנה מ-8 דקות לפחות מדקה (<a class="src" href="https://machalliance.org/case-studies/acr-amercareroyal-from-8-minutes-to-60-seconds-with-autonomous-b2b-order-processing" target="_blank" rel="noopener" title="ACR (AmerCareRoyal): from 8 minutes to 60 seconds with autonomous B2B order processing">MACH Alliance, מקרה ACR</a><sup class="unread" title="המספר נלקח מתקציר של מנוע חיפוש. העמוד עצמו לא נפתח.">°</sup>). אצל C.H. Robinson הזמנה שמגיעה במייל נפתחת במערכת בכ-90 שניות, 5,500 הזמנות ביום (<a class="src" href="https://www.chrobinson.com/en-gb/about-us/newsroom/news/2025/ch-robinson-scales-fleet-of-ai-agents-past-30/" target="_blank" rel="noopener" title="C.H. Robinson Scales Fleet of AI Agents Past 30">C.H. Robinson, 2025</a>). אלה נתונים של החברות עצמן.</span></p>
+          </div>
+</details>
           <div class="beat"><b>הזמנה 4417 בתחנה הזאת · דוגמה להמחשה</b><span>שלושה לקוחות שהובטחו להם 1,150 זוגות מקבלים עדכון עוד באותו בוקר: מה מגיע בזמן, ומה שבוע אחר כך. הלקוח שפותח קמפיין חורף ב-17.12 מקבל את השחורים לפני הקמפיין.</span></div>
           <div class="askline"><b>שאלה אליך</b><span>באיזה ערוץ מגיעות היום ההזמנות הסיטונאיות, וכמה אנשים מקלידים אותן? איפה קורות הטעויות?</span></div>
         </div>
@@ -1051,7 +1173,11 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
               </ul>
             </div>
           </div>
+          <details class="more"><summary>הלקח של Klarna <span>ומה אנחנו לוקחים ממנו</span></summary>
+<div class="in">
           <p class="evid"><span><span class="chip data">נתון</span> Klarna דיווחה ב-2024 שעוזר AI מטפל בשני שלישים משיחות השירות שלה. שנה אחר כך אמר המנכ״ל שהדגש על חיסכון פגע באיכות, והחברה חזרה לגייס נציגים (<a class="src" href="https://www.entrepreneur.com/business-news/klarna-ceo-reverses-course-by-hiring-more-humans-not-ai/491396" target="_blank" rel="noopener" title="Klarna Is Hiring Customer Service Agents After AI Couldn&#x27;t Cut It on Calls, According to the Company&#x27;s CEO">Entrepreneur, מאי 2025</a><sup class="unread" title="המספר נלקח מתקציר של מנוע חיפוש. העמוד עצמו לא נפתח.">°</sup>). <span class="chip guess">הערכה</span> המסקנה שלנו: סוכן לשאלות החוזרות, ואדם לכל מה שדורש שיקול דעת או יחס.</span></p>
+          </div>
+</details>
           <div class="beat"><b>הזמנה 4417 בתחנה הזאת · דוגמה להמחשה</b><span>בסוף החודש מגיע חשבון ההובלה. הסוכן משווה אותו להצעת המחיר, מוצא שהפיצול חויב פעמיים, ומעביר את ההערה למשלח לפני התשלום.</span></div>
           <div class="askline"><b>שאלה אליך</b><span>כמה אנשים עוסקים היום בהתאמות, בחשבוניות ובגבייה, ומה מזה הכי מתסכל אותם?</span></div>
         </div>
@@ -1082,6 +1208,9 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
     </div>
 
     <h3>איך זה הופך לכסף אצל בעל העסק</h3>
+    <p>כסף ישיר הוא שעות עבודה שמתפנות, כסף שלא משלמים, וכסף שנכנס מוקדם יותר. כסף עקיף הוא שירות, מוניטין והחלטות טובות יותר.</p>
+    <details class="more"><summary>ששת הסוגים, עם דוגמה לכל אחד <span>שלושה של כסף ישיר, ושלושה של כסף עקיף</span></summary>
+<div class="in">
     <div class="two">
       <div class="panel">
         <h4>כסף ישיר</h4>
@@ -1100,6 +1229,8 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
         </ul>
       </div>
     </div>
+    </div>
+</details>
 
     <div class="sortbar" role="group" aria-label="סדר ההצגה של השירותים">
       <span class="mono">לסדר לפי</span>
@@ -1296,7 +1427,7 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
             </div>
             <p class="money"><b>ישיר:</b> פחות מזומן שקשור במסים ששולמו מוקדם, ופחות דמי אחסנה. <b>עקיף:</b> פחות חוסרים במדף, ותמונת תזרים ברורה לשבועות הבאים.</p>
             <p class="evid"><span><span class="chip guess">הערכה</span> לא מצאתי מוצר או מקרה מתועד שעושה את זה. הרעיון עלה מהתיאור שלך, ולכן הוודאות בינונית והשאלות רבות. אם זה כאב אמיתי אצל יבואנים, זה יכול להיות הדבר שמבדיל אותנו.</span></p>
-            <p class="note"><b>מה זה דורש:</b> קודם כול להבין ממך איך זה נעשה היום, ומי מחליט. השאלות נמצאות בפרק 10.</p>
+            <p class="note"><b>מה זה דורש:</b> קודם כול להבין ממך איך זה נעשה היום, ומי מחליט. השאלות נמצאות בפרק 11.</p>
           </div>
         </details>
       </article>
@@ -1372,6 +1503,14 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
     </div>
     <p><b>שים לב מה כאן טכנולוגיה ומה לא.</b> את המודל שוכרים, ואותו מודל זמין לכל מתחרה. הכלים הם עבודת חיבור. הנוהל, הזיכרון והגבולות הם ידע של הענף ושל העסק. שם נמצא הערך, ולכן המיזם הזה צריך את שנינו.</p>
 
+    <div class="panel">
+      <h3>זה נשמע מסובך, וזה לא</h3>
+      <p><span class="chip guess">הערכה</span> להקים סוכן פשוט לא דורש תואר במחשבים ולא צוות פיתוח. כותבים לו הוראות בעברית, כמו שמסבירים לעובד חדש, מחברים אותו לכלים שכבר קיימים, ובודקים אותו על מקרים אמיתיים. דוגמה נמצאת בדף הזה: המראיין <a href="#questions">שבפרק 11</a> נבנה ביום אחד, וכל ההוראות שלו פתוחות שם לקריאה.</p>
+      <p>מה שכן דורש עבודה הוא להכיר את הכלים, לדעת מה חדש בכל חודש, ולדעת מה באמת עובד. בזה אני עוסק כבר כמעט שנה. ומה שאי אפשר ללמוד משום כלי הוא הענף עצמו. זה החלק שלך.</p>
+    </div>
+
+    <details class="more"><summary>תרשים: מה נכנס, מה הסוכן עושה, ומה יוצא <span>המסמכים והמערכות שבהם הוא נוגע</span></summary>
+<div class="in">
     <figure class="fig">
       <div class="flowdia">
         <div class="fd-col">
@@ -1417,6 +1556,8 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
       </div>
       <figcaption class="note">הקו בין ״עושה לבד״ ל״מכין, ואדם מאשר״ נקבע עם בעל העסק, והוא זז רק כשהתוצאות מצדיקות את זה.</figcaption>
     </figure>
+    </div>
+</details>
 
     <h3>למה צוות, ולא סוכן אחד</h3>
     <p>סוכן אחד שעושה הכול טועה יותר, וקשה לדעת איפה. לכן מחלקים את העבודה כמו במשרד: לכל סוכן תפקיד צר, נוהל משלו והרשאות משלו, ואחד בודק את השני. מי שמכין תשלום הוא לא מי שמאשר אותו.</p>
@@ -1426,6 +1567,8 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
       <div><span class="m">עוקב</span><b>הרודף</b><span>שואל ספק, מזכיר למשלח, מבקש מסמך חסר, וחוזר לשאול אחרי יומיים בלי שמישהו יזכיר לו.</span></div>
       <div><span class="m">מסכם</span><b>מנהל המשמרת</b><span>מחליט מה מחכה לאדם ומה לא, מכין את דף הבוקר, ובודק שכל מה שאושר באמת בוצע.</span></div>
     </div>
+    <details class="more"><summary>כך בנויה גם משלחת ענק <span>C.H. Robinson: יותר מ-30 סוכנים, והמספרים שהיא מפרסמת</span></summary>
+<div class="in">
     <div class="two">
       <div class="panel">
         <h3>כך בנויה גם משלחת ענק</h3>
@@ -1438,6 +1581,8 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
         <figcaption><span class="mono">C.H. ROBINSON · 12.6.2025 · פרסום של החברה</span><a class="src" href="https://www.chrobinson.com/en-gb/about-us/newsroom/news/2025/ch-robinson-scales-fleet-of-ai-agents-past-30/" target="_blank" rel="noopener" title="C.H. Robinson Scales Fleet of AI Agents Past 30">למקור</a></figcaption>
       </figure>
     </div>
+    </div>
+</details>
 
     <h3>לילה אחד, צעד אחרי צעד</h3>
     <p>זה הלילה מהסרט, פתוח לקריאה איטית. בכל צעד: מה הסוכן רואה, מה הוא עושה, ואיזה חלק שלו עובד. המספרים הם המחשה.</p>
@@ -1535,6 +1680,9 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
     </div>
 
     <h3>הוא יטעה. השאלה היא מי תופס את הטעות</h3>
+    <p>גם עובדים טובים טועים, וסוכנים טועים יותר כשמשאירים אותם לבד. לכן בונים כל סוכן כך שטעות שלו תיתפס לפני שהיא עולה כסף: בהתחלה הוא רק קורא, כל כסף וכל התחייבות עוברים אישור של אדם, וסוכן שני בודק את הראשון.</p>
+    <details class="more"><summary>כמה הם טועים, ושישה מנגנוני בטיחות <span>מ-60% דיוק ל-98% אצל Uber Freight, ומה עושים כדי להגיע לשם</span></summary>
+<div class="in">
     <div class="two">
       <div class="panel">
         <p>גם עובדים טובים טועים, וסוכנים טועים יותר מהם כשמשאירים אותם לבד. <span class="chip data">נתון</span> במבחנים מובנים הם עדיין נכשלים בערך בניסיון אחד מכל שלושה (<a class="src" href="https://hai.stanford.edu/assets/files/ai_index_report_2026_chapter_2_technical.pdf" target="_blank" rel="noopener" title="Stanford HAI, AI Index Report 2026, פרק 2">Stanford AI Index 2026</a>).</p>
@@ -1555,6 +1703,8 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
       <div class="card"><h3>כשהוא לא בטוח, הוא שואל</h3><span>״לא יודע״ היא תשובה מותרת. מסמך לא קריא, סכום חריג או ספק חדש עוברים לאדם, עם כל מה שהסוכן כבר מצא.</span></div>
       <div class="card"><h3>ההרשאות גדלות עם התוצאות</h3><span>מה שנמדד כמדויק לאורך שבועות עובר לביצוע עצמאי. מה שלא, נשאר באישור.</span></div>
     </div>
+    </div>
+</details>
 
     <h3>איך מכניסים סוכן לעסק</h3>
     <ol class="timeline">
@@ -1565,6 +1715,8 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
     </ol>
     <p class="note"><span class="chip guess">הערכה</span> הסדר הזה הוא שיטת העבודה שאני מציע. כמה זמן נמשך כל שלב נדע רק אחרי הלקוח הראשון.</p>
 
+    <details class="more"><summary>מה העסק צריך לתת, ומה סוכן הוא לא <span>ארבעה דברים מכל צד</span></summary>
+<div class="in">
     <div class="two">
       <div class="panel">
         <h3>מה העסק צריך לתת</h3>
@@ -1585,7 +1737,9 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
         </ul>
       </div>
     </div>
-    <p><b>וכמה עולה להריץ אותו?</b> <span class="chip guess">הערכה</span> המודל עצמו זול: קריאה ובדיקה של מסמך עולות אגורות. העלות האמיתית היא העבודה של מי שמגדיר, מחבר ומפקח. לכן זה עסק של שירות, ולא של תוכנה.</p>
+    </div>
+</details>
+    <p><b>וכמה עולה להריץ אותו?</b> <span class="chip guess">הערכה</span> המודל עצמו זול: קריאה ובדיקה של מסמך עולות אגורות. העלות האמיתית היא העבודה של מי שמגדיר, מחבר ומפקח. לכן זה עסק של שירות ושל אינטגרציה, ולא של פיתוח תוכנה.</p>
 
     <div class="askline"><b>שאלה אליך</b><span>״מה כבר ארוז״ הוא כלל אחד. אילו עוד כללים כאלה יש לך בראש, שסוחר ותיק יודע ואף מערכת לא יודעת? חמישה כאלה יהיו הנוהל הראשון שלנו.</span></div>
   </section>
@@ -1603,6 +1757,13 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
     </div>
 
     <h3>מה גלוי מבחוץ</h3>
+    <p><span class="chip data">נתון</span> קבוצת אופנה פרטית שמפעילה בישראל כמה מותגים בינלאומיים, כל פעילות בחברה נפרדת (<a class="src" href="https://stevemadden.co.il/policies/privacy-policy" target="_blank" rel="noopener" title="מדיניות הפרטיות של קבוצת אינטר ג׳ינס, ינואר 2026 (באתר Steve Madden ישראל)">מדיניות הפרטיות, ינואר 2026</a><sup class="unread" title="הנתון מהמחקר הקודם שלנו, מ-23.11.2026. העמוד לא נפתח שוב בגרסה הזאת.">°</sup>). באפריל 2023 היו לה 84 חנויות (<a class="src" href="https://www.calcalist.co.il/shopping/article/s1ecdkpzn" target="_blank" rel="noopener" title="כלכליסט, קבלת הזיכיון האיטלקי ופריסת החנויות של הקבוצה (20.4.2023)">כלכליסט, 20.4.2023</a><sup class="unread" title="הנתון מהמחקר הקודם שלנו, מ-23.11.2026. העמוד לא נפתח שוב בגרסה הזאת.">°</sup>), ובספטמבר 2026 השלימה אלקטרה מוצרי צריכה רכישה של 50% מאינטר פאשן, הפעילות של שלושת המותגים האיטלקיים (<a class="src" href="https://www.ice.co.il/finance/news/article/1128174" target="_blank" rel="noopener" title="ICE, רשת האופנה הישראלית נמכרת לאלקטרה: עשרות סניפים חדשים בדרך (1.9.2026)">ICE, 1.9.2026</a>).</p>
+    <figure class="clip solo">
+      <img width="1200" height="806" src="img/ice-electra.jpg" alt="קטע מאתר ICE מ-1.9.2026. הכותרת: רשת האופנה הישראלית נמכרת לאלקטרה: עשרות סניפים חדשים בדרך. כותרת המשנה: אלקטרה מוצרי צריכה השלימה את רכישת 50% מאינטר פאשן תמורת 10 מיליון שקל. החברה צפויה לסיים את 2026 עם מחזור של יותר מ-40 מיליון שקל. התוכנית: עשרות חנויות חדשות עד סוף 2029." loading="lazy">
+      <figcaption><span class="mono">ICE · 1.9.2026</span><a class="src" href="https://www.ice.co.il/finance/news/article/1128174" target="_blank" rel="noopener" title="ICE, רשת האופנה הישראלית נמכרת לאלקטרה: עשרות סניפים חדשים בדרך (1.9.2026)">למקור</a></figcaption>
+    </figure>
+    <details class="more"><summary>הטבלה המלאה: עשרה נושאים <span>מה פורסם על כל אחד, מה כדאי לאמת, וקטע מריאיון</span></summary>
+<div class="in">
     <div class="tablebox">
       <table>
         <thead><tr><th>הנושא</th><th>מה פורסם</th><th>מה כדאי לאמת</th></tr></thead>
@@ -1621,34 +1782,40 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
       </table>
     </div>
 
-    <div class="two">
-      <figure class="clip">
-        <img width="1200" height="806" src="img/ice-electra.jpg" alt="קטע מאתר ICE מ-1.9.2026. הכותרת: רשת האופנה הישראלית נמכרת לאלקטרה: עשרות סניפים חדשים בדרך. כותרת המשנה: אלקטרה מוצרי צריכה השלימה את רכישת 50% מאינטר פאשן תמורת 10 מיליון שקל. החברה צפויה לסיים את 2026 עם מחזור של יותר מ-40 מיליון שקל. התוכנית: עשרות חנויות חדשות עד סוף 2029." loading="lazy">
-        <figcaption><span class="mono">ICE · 1.9.2026</span><a class="src" href="https://www.ice.co.il/finance/news/article/1128174" target="_blank" rel="noopener" title="ICE, רשת האופנה הישראלית נמכרת לאלקטרה: עשרות סניפים חדשים בדרך (1.9.2026)">למקור</a></figcaption>
-      </figure>
-      <figure class="clip">
+    <figure class="clip solo">
         <blockquote lang="he">״…אנחנו <mark>מטיסים את כל הסחורה לישראל, ללא מחסן מרכזי מקומי</mark>, וזה מייקר מעט.״</blockquote>
         <blockquote lang="he">״…יש תנועה גבוהה מאוד בחנות, ואנחנו מקבלים <mark>סחורה חדשה מדי שבוע</mark> בהטסה.״</blockquote>
         <blockquote lang="he">״…ואנחנו מחויבים לאישורים מהמותג הבינלאומי, שמקפיד להופיע רק במיקומים מרכזיים עם תנועה גבוהה.״</blockquote>
         <figcaption><span class="mono">מנהלת קבוצת אינטר פאשן, בריאיון ל-ICE · 25.4.2025</span><a class="src" href="https://www.ice.co.il/consumerism/news/article/1061566" target="_blank" rel="noopener" title="ICE, ריאיון עם מנהלת קבוצת אינטר פאשן על המותגים האיטלקיים בישראל (25.4.2025)">למקור</a></figcaption>
-      </figure>
+    </figure>
     </div>
+</details>
 
     <h3>מה אפשר להסיק מזה, בזהירות</h3>
+    <p><span class="chip data">נתון</span> לפי ריאיון מאפריל 2025, באינטר פאשן הסחורה מגיעה כל שבוע בהטסה (<a class="src" href="https://www.ice.co.il/consumerism/news/article/1061566" target="_blank" rel="noopener" title="ICE, ריאיון עם מנהלת קבוצת אינטר פאשן על המותגים האיטלקיים בישראל (25.4.2025)">ICE, 25.4.2025</a>). <span class="chip guess">הערכה</span> המשמעות היא הרבה תיקי יבוא קטנים. מעבר לזה, לכל מותג שיטת עבודה משלו, והתוכנית לפתוח עשרות חנויות מעלה את השאלה אם המטה יגדל באותו קצב.</p>
+    <details class="more"><summary>שלוש ההנחות, ועל מה הן נשענות <span>על רשתות דומות, ולא על אינטר ג׳ינס עצמה</span></summary>
+<div class="in">
     <div class="three">
       <div class="card"><h3>הרבה תיקי יבוא קטנים</h3><span><span class="chip guess">הערכה</span> משלוח אווירי בכל שבוע פירושו עשרות תיקי יבוא בחודש. כל אחד מהם קטן, וכל אחד דורש את אותה ניירת כמו מכולה: חשבון ספק, מפרט אריזות, שטר מטען ורשימון. ככל שהמשלוחים קטנים ותכופים יותר, הניירת תופסת חלק גדול יותר מהעבודה.</span></div>
       <div class="card"><h3>כמה מותגים, כמה שיטות</h3><span><span class="chip guess">הערכה</span> זיכיון איטלקי, מיזם משותף אמריקאי, מותגי ג׳ינס וחנויות רב-מותגיות. לכל מותג לוח הזמנות, דוחות וכללי מבצעים משלו. מי שמרכז את זה במטה מחזיק כמה שיטות עבודה במקביל.</span></div>
       <div class="card"><h3>לגדול בלי להגדיל את המטה</h3><span><span class="chip guess">הערכה</span> התוכנית שפורסמה היא עשרות חנויות חדשות עד סוף 2029. כל חנות מוסיפה הזמנות, משלוחים, חשבוניות ודוחות. השאלה היא אם המטה גדל באותו קצב, או שהעבודה החוזרת עוברת לסוכנים.</span></div>
     </div>
     <p class="note"><span class="chip guess">הערכה</span> אין לי מודעת דרושים או תיאור תפקיד של אינטר ג׳ינס עצמה. אני נשען על רשתות דומות: במודעות של קסטרו ושל פקטורי 54, שהופיעו בפרק 3, העבודה הזאת מתוארת כהקלדת הזמנות, מעקב אחרי מסמכים ו״עבודה מרובה עם Excel״ (<a class="src" href="https://www.drushim.co.il/job/39010100/0718aa31/" target="_blank" rel="noopener" title="קסטרו, קניינ/ית אופנה (מודעת דרושים באתר דרושים, נקראה ב-23.11.2026)">מודעת דרושים, קסטרו</a>, <a class="src" href="https://www.drushim.co.il/job/38754037/cc92dbf2/" target="_blank" rel="noopener" title="פקטורי 54, בק אופיס קניינות (מודעת דרושים באתר דרושים, נקראה ב-23.11.2026)">מודעת דרושים, פקטורי 54</a>). את ההנחה שגם כאן זה כך צריך לבדוק.</p>
+    </div>
+</details>
 
     <h3>איפה הייתי מתחיל</h3>
+    <p>בשלושה מקומות: דסק יבוא, הדרך מהנמל למדף ולאתר, והדוחות למותגים וההתאמות. לא הייתי נוגע בתמחור, במבצעים ובחלוקת המלאי לסניפים.</p>
+    <details class="more"><summary>שלושת המקומות, ומה לא הייתי מציע <span>מה כל אחד כולל, ולמה לא תמחור</span></summary>
+<div class="in">
     <div class="three">
       <div class="card"><h3>דסק יבוא</h3><span>תחנות 3 עד 6 במסע. סוכנים שקוראים כל מסמך שמגיע מהמותג ומהמשלח, משייכים אותו למשלוח, משווים להזמנה ומכינים לעמיל המכס תיק מלא. מתאים במיוחד למשלוחים שבועיים.</span></div>
       <div class="card"><h3>מהנמל למדף ולאתר</h3><span>תחנה 7. קליטת הסחורה, עלות הנחיתה, פתיחת פריטים במערכת ודפי מוצר לאתר, כך שסחורה שנחתה עולה למדף ולאתר מהר יותר.</span></div>
       <div class="card"><h3>דוחות למותגים והתאמות</h3><span>תחנות 2 ו-9. הדוחות שכל מותג דורש, וההתאמה בין הזמנה, קליטה וחשבונית. עבודה חוזרת, עם כללים ברורים, שקל למדוד בה שעות וטעויות.</span></div>
     </div>
     <p class="note">מה לא הייתי מציע: לגעת בתמחור, במבצעים ובחלוקת המלאי לסניפים. שם כבר פועלים מוצרים ותיקים שנבנו בדיוק לזה, כמו Onebeat הישראלית (<a class="src" href="https://www.calcalistech.com/ctechnews/article/sksuxkdlex" target="_blank" rel="noopener" title="CTech (כלכליסט), Onebeat: החלטות מלאי יומיות לרשתות קמעונאות (7.5.2025)">CTech, 7.5.2025</a><sup class="unread" title="הנתון מהמחקר הקודם שלנו, מ-23.11.2026. העמוד לא נפתח שוב בגרסה הזאת.">°</sup>), ושם גם הטעות היקרה ביותר.</p>
+    </div>
+</details>
 
     <h3>כמה קיבולת זה יכול לפנות</h3>
     <p><span class="chip guess">הערכה</span> המחשבון מראה סדר גודל. ארבעת המספרים בו הם הנחות שלי, ואף אחד מהם לא נמדד באינטר ג׳ינס. אפשר להזיז כל אחד מהם ולראות מה משתנה.</p>
@@ -1679,7 +1846,9 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
     </details>
 
     <h3>מה רק הבעלים יודעים</h3>
-    <p>שש שאלות שבלעדיהן אי אפשר להציע שום דבר רציני. הרשימה המלאה, עם הסבר למה כל שאלה חשובה, נמצאת <a href="#questions">בפרק 10</a>.</p>
+    <p>שש שאלות שבלעדיהן אי אפשר להציע שום דבר רציני. הרשימה המלאה, עם הסבר למה כל שאלה חשובה, נמצאת <a href="#questions">בפרק 11</a>.</p>
+    <details class="more"><summary>שש השאלות <span>מטה, מערכות, הזמנות, יבוא ומכס, מי מחליט, ומה מפריע לבעלים</span></summary>
+<div class="in">
     <ol class="qlist">
       <li><div>כמה אנשים יושבים במטה, ובאילו תפקידים?<span>בלי זה אין בסיס לשום חישוב.</span></div></li>
       <li><div>באיזו מערכת ניהול ובאיזו מערכת קופות עובדים, והאם היא אחת לכל המותגים?<span>זה קובע כמה קל לחבר סוכן, ולכמה פעילויות בבת אחת.</span></div></li>
@@ -1688,6 +1857,8 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
       <li><div>בכמה מהפעילויות ההחלטה על כלי עבודה חדש נמצאת בידי הבעלים בארץ, ובכמה צריך אישור של שותף או של מותג?<span><span class="chip guess">הערכה</span> ההנחה שלי היא שב-REPLAY, ב-NYOU ובאתר רזילי ההחלטה מקומית.</span></div></li>
       <li><div>מה הכי מפריע לבעלים עצמם היום?<span>אם התשובה שונה ממה שכתבתי כאן, מתחילים ממנה.</span></div></li>
     </ol>
+    </div>
+</details>
 
     <div class="panel">
       <h3>צעד ראשון צר, אם הבעלים ירצו</h3>
@@ -1711,7 +1882,7 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
     </div>
 
     <h3>מי כבר שם</h3>
-    <p>ארבע עשרה חברות, בשש קבוצות. בכל כרטיס: מה היא מוכרת, קטע מהמקור, ומה זה אומר לנו.</p>
+    <p>ארבע עשרה חברות, בשש קבוצות. בכל כרטיס כתוב מה זה אומר לנו. מה החברה מוכרת והקטע מהמקור נפתחים בלחיצה.</p>
     <div class="sortbar compfilter" role="group" aria-label="סינון לפי סוג החברה">
       <button type="button" class="pill" data-g="all" aria-pressed="true">הכול</button>
       <button type="button" class="pill" data-g="near" aria-pressed="false">הכי קרוב אלינו</button>
@@ -1725,95 +1896,151 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
     <div class="comp-grid">
       <article class="comp" data-g="near">
         <header><h3>SPIRITT</h3><span class="where">ישראל · פלטפורמה לבניית סוכנים</span><span class="tag">כלי בשירות עצמי</span></header>
+        <p class="us"><b>מה זה אומר לנו.</b> הכי קרוב לרעיון שלנו שמצאתי בעברית. ההבדל: היא מוכרת כלי שהלקוח בונה בו בעצמו, ואנחנו מוכרים תוצאה שמישהו אחראי עליה. היא יכולה להיות מתחרה, ויכולה להיות הכלי שנבנה עליו.</p>
+        <details class="more"><summary>מה היא מוכרת <span>והקטע מהמקור</span></summary>
+<div class="in">
         <q lang="he">״הסוכן עושה את המעקב, העדכון והתזכורת. אדם מחליט בכל מקום שיש בו כסף, ספק חדש או חריגה מהנוהל.״</q>
         <p><span class="chip data">נתון</span> פלטפורמה ישראלית שבה הלקוח מתאר בעברית מה צריך לקרות, והסוכן מתחבר למערכות. פרסמה מדריכים שפונים במפורש ל״חברת לוגיסטיקה, יבואן או מפיץ בישראל״, עם סוכן שעובד על Priority, מייל ווואטסאפ (<a class="src" href="https://spiritt.ai/he/ai-logistics-israel" target="_blank" rel="noopener" title="SPIRITT, AI ללוגיסטיקה בישראל: סוכן AI לשרשרת אספקה ומחסנים (2026)">SPIRITT, מדריך ללוגיסטיקה</a>, <a class="src" href="https://spiritt.ai/he/ai-procurement-israel" target="_blank" rel="noopener" title="SPIRITT, AI לרכש בישראל: סוכן AI למחלקת רכש (2026)">SPIRITT, מדריך לרכש</a>). המדריכים הם שיווק של החברה. דוגמת היבואן שבהם מסומנת כהמחשה, ולא מצאתי בהם לקוחות בשמם.</p>
-        <p class="us"><b>מה זה אומר לנו.</b> הכי קרוב לרעיון שלנו שמצאתי בעברית. ההבדל: היא מוכרת כלי שהלקוח בונה בו בעצמו, ואנחנו מוכרים תוצאה שמישהו אחראי עליה. היא יכולה להיות מתחרה, ויכולה להיות הכלי שנבנה עליו.</p>
+        </div>
+</details>
       </article>
 
       <article class="comp" data-g="near">
         <header><h3>Logistify AI</h3><span class="where">ארה״ב · שירות מנוהל</span><span class="tag">שירות</span></header>
-        <p><span class="chip data">נתון</span> חברה קטנה שמציגה את עצמה כ״שירותי AI מנוהלים לעבודת שרשרת אספקה״ (<a class="src" href="https://logistify.ai/" target="_blank" rel="noopener" title="Logistify AI: Managed AI Services for Supply Chain Work (אתר החברה)">Logistify AI</a><sup class="unread" title="המספר נלקח מתקציר של מנוע חיפוש. העמוד עצמו לא נפתח.">°</sup>). לא פתחתי את האתר עצמו, רק את התקציר שלו.</p>
         <p class="us"><b>מה זה אומר לנו.</b> אותו מודל כמו שלנו: שירות ולא תוכנה. קטנה ורחוקה, ולא ראיתי שהיא פונה ליבואנים. מעניינת בעיקר כסימן שהרעיון עולה גם אצל אחרים.</p>
+        <details class="more"><summary>מה היא מוכרת <span>הפרטים והמקור</span></summary>
+<div class="in">
+        <p><span class="chip data">נתון</span> חברה קטנה שמציגה את עצמה כ״שירותי AI מנוהלים לעבודת שרשרת אספקה״ (<a class="src" href="https://logistify.ai/" target="_blank" rel="noopener" title="Logistify AI: Managed AI Services for Supply Chain Work (אתר החברה)">Logistify AI</a><sup class="unread" title="המספר נלקח מתקציר של מנוע חיפוש. העמוד עצמו לא נפתח.">°</sup>). לא פתחתי את האתר עצמו, רק את התקציר שלו.</p>
+        </div>
+</details>
       </article>
 
       <article class="comp" data-g="imp">
         <header><h3>Nauta</h3><span class="where">ניו יורק · תוכנה ליבואנים</span><span class="tag">מוצר</span></header>
+        <p class="us"><b>מה זה אומר לנו.</b> ההוכחה הקרובה ביותר שיבואנים משלמים על זה. היא פונה ליבואנים גדולים בהרבה מהלקוח שלנו, באנגלית, ומוכרת תוכנה ולא הפעלה.</p>
+        <details class="more"><summary>מה היא מוכרת <span>והקטע מהמקור</span></summary>
+<div class="in">
         <q lang="en">“Importers, despite handling trillions of dollars in goods annually, still depend heavily on emails, spreadsheets, and disconnected legacy systems to manage shipments.”</q>
         <p><span class="chip data">נתון</span> גייסה 7 מיליון דולר באוגוסט 2025. הלקוחות: יבואנים של מותגים כמו New Balance, L'Oréal ו-Ashley Furniture. החברה מדווחת על ירידה של עד 80% בדמי ההשהיה ועל קיצור של עד 75% בזמן הטיפול במכולה (<a class="src" href="https://www.freightwaves.com/news/ai-logistics-platform" target="_blank" rel="noopener" title="FreightWaves, AI startup Nauta secures $7M to streamline global logistics for importers (26.8.2025)">FreightWaves, 26.8.2025</a>). אצלה הסוכן מציע פעולה, מבצע אחרי אישור של אדם, ומקבל יותר עצמאות ככל שהאמון גדל (<a class="src" href="https://www.freightwaves.com/news/nauta-brings-ai-native-inventory-intelligence-to-the-heart-of-importer-operations" target="_blank" rel="noopener" title="FreightWaves, Nauta brings AI-native inventory intelligence to the heart of importer operations (16.12.2025)">FreightWaves, 16.12.2025</a>).</p>
-        <p class="us"><b>מה זה אומר לנו.</b> ההוכחה הקרובה ביותר שיבואנים משלמים על זה. היא פונה ליבואנים גדולים בהרבה מהלקוח שלנו, באנגלית, ומוכרת תוכנה ולא הפעלה.</p>
+        </div>
+</details>
       </article>
 
       <article class="comp" data-g="imp">
         <header><h3>Didero</h3><span class="where">ארה״ב · רכש ליצרנים ולמפיצים</span><span class="tag">מוצר</span></header>
+        <p class="us"><b>מה זה אומר לנו.</b> אותו רעיון כמו סוכן הספקים שבפרק 4, אצל יצרנים ומפיצים אמריקאים. לא בעברית ולא על Priority.</p>
+        <details class="more"><summary>מה היא מוכרת <span>והקטע מהמקור</span></summary>
+<div class="in">
         <q lang="en">“Global trade runs on natural language communication … It’s emails, WeChat, phone calls, purchase orders, and packing lists.”</q>
         <p><span class="chip data">נתון</span> גייסה 30 מיליון דולר בפברואר 2026. שכבת סוכנים שיושבת מעל מערכת הניהול הקיימת, קוראת את התכתובת עם הספקים ומעדכנת את המערכת בעצמה (<a class="src" href="https://techcrunch.com/2026/02/12/didero-lands-30m-to-put-manufacturing-procurement-on-agentic-autopilot/" target="_blank" rel="noopener" title="TechCrunch, Didero lands $30M to put manufacturing procurement on &#x27;agentic&#x27; autopilot (12.2.2026)">TechCrunch, 12.2.2026</a>).</p>
-        <p class="us"><b>מה זה אומר לנו.</b> אותו רעיון כמו סוכן הספקים שבפרק 4, אצל יצרנים ומפיצים אמריקאים. לא בעברית ולא על Priority.</p>
+        </div>
+</details>
       </article>
 
       <article class="comp" data-g="imp">
         <header><h3>Evolinq</h3><span class="where">ישראל · ״קניינים דיגיטליים״</span><span class="tag">מוצר</span></header>
-        <p><span class="chip data">נתון</span> חברה ישראלית שמוכרת סוכני רכש ליצרנים. תיאור המקרה שפרסמה בעברית הוא אצל יצרנית אלקטרוניקה ישראלית, שהיא גם משקיעה בחברה (<a class="src" href="https://www.evolinq.io/he/blog/rh-electronics-case-study-ai-procurement-agents" target="_blank" rel="noopener" title="Evolinq, תיאור מקרה: סוכני רכש אצל יצרנית אלקטרוניקה ישראלית">Evolinq, תיאור מקרה</a><sup class="unread" title="המספר נלקח מתקציר של מנוע חיפוש. העמוד עצמו לא נפתח.">°</sup>).</p>
         <p class="us"><b>מה זה אומר לנו.</b> הקרובה ביותר אלינו בצד הרכש, והיא כבר מדברת עברית. היום היא פונה לתעשייה. אם תפנה ליבואנים ולמפיצים, היא מתחרה ישירה.</p>
+        <details class="more"><summary>מה היא מוכרת <span>הפרטים והמקור</span></summary>
+<div class="in">
+        <p><span class="chip data">נתון</span> חברה ישראלית שמוכרת סוכני רכש ליצרנים. תיאור המקרה שפרסמה בעברית הוא אצל יצרנית אלקטרוניקה ישראלית, שהיא גם משקיעה בחברה (<a class="src" href="https://www.evolinq.io/he/blog/rh-electronics-case-study-ai-procurement-agents" target="_blank" rel="noopener" title="Evolinq, תיאור מקרה: סוכני רכש אצל יצרנית אלקטרוניקה ישראלית">Evolinq, תיאור מקרה</a><sup class="unread" title="המספר נלקח מתקציר של מנוע חיפוש. העמוד עצמו לא נפתח.">°</sup>).</p>
+        </div>
+</details>
       </article>
 
       <article class="comp" data-g="fwd">
         <header><h3>Flexport</h3><span class="where">ארה״ב · משלח בינלאומי</span><span class="tag">משלח</span></header>
+        <p class="us"><b>מה זה אומר לנו.</b> המשלח עצמו נעשה ספק ה-AI של היבואן. זה איום, וגם הזדמנות: סוכן שלנו יוכל לדבר ישירות עם המערכות של משלח כזה, בלי אדם באמצע.</p>
+        <details class="more"><summary>מה היא עושה <span>והקטע מהמקור</span></summary>
+<div class="in">
         <q lang="en">“Every exception still routes to a person, and licensed brokers can validate tariff codes before filing.”</q>
         <p><span class="chip data">נתון</span> לדבריה, יותר מ-13,000 חברות עובדות איתה, והסוכנים שלה מבצעים 21 מיליון משימות בשנה. בספטמבר 2026 פתחה את המערכות שלה לסוכני AI של הלקוחות: הצעת מחיר, הזמנת הובלה ומעקב (<a class="src" href="https://www.freightwaves.com/news/flexport-mcp-server-ai-agents-freight-booking" target="_blank" rel="noopener" title="FreightWaves, Flexport launches MCP Server for AI agents to book freight (29.9.2026)">FreightWaves, 29.9.2026</a>).</p>
-        <p class="us"><b>מה זה אומר לנו.</b> המשלח עצמו נעשה ספק ה-AI של היבואן. זה איום, וגם הזדמנות: סוכן שלנו יוכל לדבר ישירות עם המערכות של משלח כזה, בלי אדם באמצע.</p>
+        </div>
+</details>
       </article>
 
       <article class="comp" data-g="fwd">
         <header><h3>HappyRobot</h3><span class="where">ארה״ב · ״עובדי AI״ למשלחים ולמובילים</span><span class="tag">מוצר + מהנדס צמוד</span></header>
+        <p class="us"><b>מה זה אומר לנו.</b> היא מוכרת למשלחים, לא ליבואנים. מה שחשוב לנו הוא השיטה: גם חברת תוכנה עם עשרות מיליונים מגלה שבלי אדם שיושב אצל הלקוח זה לא עובד.</p>
+        <details class="more"><summary>מה היא מוכרת <span>והקטע מהמקור</span></summary>
+<div class="in">
         <q lang="en">“Enterprises don’t just want a vendor, they want an AI partner.”</q>
         <p><span class="chip data">נתון</span> גייסה 44 מיליון דולר בספטמבר 2025. הסוכנים שלה מתקשרים, שולחים מיילים, קוראים מסמכים ומעדכנים מערכות. לכל לקוח מוצמד מהנדס של החברה (<a class="src" href="https://www.freightwaves.com/news/happyrobot-raises-44m-to-revolutionize-supply-chains" target="_blank" rel="noopener" title="FreightWaves, HappyRobot raises $44M to revolutionize supply chains (3.9.2025)">FreightWaves, 3.9.2025</a>).</p>
-        <p class="us"><b>מה זה אומר לנו.</b> היא מוכרת למשלחים, לא ליבואנים. מה שחשוב לנו הוא השיטה: גם חברת תוכנה עם עשרות מיליונים מגלה שבלי אדם שיושב אצל הלקוח זה לא עובד.</p>
+        </div>
+</details>
       </article>
 
       <article class="comp" data-g="fwd">
         <header><h3>AiDock</h3><span class="where">ישראל · עמילות מכס</span><span class="tag">מוצר</span></header>
-        <p><span class="chip data">נתון</span> חברה ישראלית מ-2018 שבונה עוזרי AI לעמילות מכס. לפי תוכן שיווקי שלה, הסיווג שלה מדויק ב-95% מהמקרים, מול 83% אצל מסווג אנושי ממוצע (<a class="src" href="https://calcalist360.webflow.io/articles/aidock" target="_blank" rel="noopener" title="AiDock: עוזרי AI לעמילות מכס (כלכליסט 360, תוכן שיווקי)">כלכליסט 360, תוכן שיווקי</a>).</p>
         <p class="us"><b>מה זה אומר לנו.</b> היא מוכרת לעמיל המכס, לא ליבואן. בשבילנו זה סימן שהצד השני של השולחן כבר מתחיל לעבוד כך.</p>
+        <details class="more"><summary>מה היא מוכרת <span>הפרטים והמקור</span></summary>
+<div class="in">
+        <p><span class="chip data">נתון</span> חברה ישראלית מ-2018 שבונה עוזרי AI לעמילות מכס. לפי תוכן שיווקי שלה, הסיווג שלה מדויק ב-95% מהמקרים, מול 83% אצל מסווג אנושי ממוצע (<a class="src" href="https://calcalist360.webflow.io/articles/aidock" target="_blank" rel="noopener" title="AiDock: עוזרי AI לעמילות מכס (כלכליסט 360, תוכן שיווקי)">כלכליסט 360, תוכן שיווקי</a>).</p>
+        </div>
+</details>
       </article>
 
       <article class="comp" data-g="ord">
         <header><h3>Choco OrderAgent</h3><span class="where">מוצר מדף · סיטונאי מזון</span><span class="tag">מוצר</span></header>
+        <p class="us"><b>מה זה אומר לנו.</b> סוכן ההזמנות שלנו, כמוצר מדף לענף המזון. הוא מוכיח שקליטת הזמנות מוואטסאפ היא בעיה שכבר נפתרה. לא בעברית, ולא מחובר ל-Priority.</p>
+        <details class="more"><summary>מה היא מוכרת <span>והקטע מהמקור</span></summary>
+<div class="in">
         <q lang="en">“Instantly digitize orders from voicemail, WhatsApp, email, text, photos and more.”</q>
         <p><span class="chip data">נתון</span> עמוד המוצר מבטיח דיוק של עד 97%, ביטול של הבדיקה הידנית בחצי מההזמנות, והטמעה בתוך שבועיים (<a class="src" href="https://choco.com/us/orderagent" target="_blank" rel="noopener" title="Choco, OrderAgent (product page)">Choco OrderAgent</a>). אלה מספרים של החברה, ובאותו עמוד מופיע במקום אחר גם ״עד 99%״.</p>
-        <p class="us"><b>מה זה אומר לנו.</b> סוכן ההזמנות שלנו, כמוצר מדף לענף המזון. הוא מוכיח שקליטת הזמנות מוואטסאפ היא בעיה שכבר נפתרה. לא בעברית, ולא מחובר ל-Priority.</p>
+        </div>
+</details>
       </article>
 
       <article class="comp" data-g="ord">
         <header><h3>Canals</h3><span class="where">ארה״ב · מפיצים</span><span class="tag">מוצר</span></header>
-        <p><span class="chip data">נתון</span> גייסה 35 מיליון דולר במאי 2026 לכלי עבודה מבוססי AI למפיצים (<a class="src" href="https://mdm.com/news/breaking-news-in-wholesale-distribution/canals-raises-35m-series-a-to-expand-ai-workflow-tools-for-distributors" target="_blank" rel="noopener" title="Modern Distribution Management, Canals raises $35M Series A to expand AI workflow tools for distributors (מאי 2026)">MDM, מאי 2026</a><sup class="unread" title="המספר נלקח מתקציר של מנוע חיפוש. העמוד עצמו לא נפתח.">°</sup>).</p>
         <p class="us"><b>מה זה אומר לנו.</b> עוד כסף גדול על אותה בעיה בדיוק: הזמנות והצעות מחיר אצל מפיצים.</p>
+        <details class="more"><summary>מה היא מוכרת <span>הפרטים והמקור</span></summary>
+<div class="in">
+        <p><span class="chip data">נתון</span> גייסה 35 מיליון דולר במאי 2026 לכלי עבודה מבוססי AI למפיצים (<a class="src" href="https://mdm.com/news/breaking-news-in-wholesale-distribution/canals-raises-35m-series-a-to-expand-ai-workflow-tools-for-distributors" target="_blank" rel="noopener" title="Modern Distribution Management, Canals raises $35M Series A to expand AI workflow tools for distributors (מאי 2026)">MDM, מאי 2026</a><sup class="unread" title="המספר נלקח מתקציר של מנוע חיפוש. העמוד עצמו לא נפתח.">°</sup>).</p>
+        </div>
+</details>
       </article>
 
       <article class="comp" data-g="erp">
         <header><h3>Priority aiERP</h3><span class="where">ישראל · מערכת הניהול של היבואן</span><span class="tag">בתוך המערכת</span></header>
+        <p class="us"><b>מה זה אומר לנו.</b> המתחרה שהכי חשוב להבין. הוא חזק בתוך המערכת. בהודעה שלו לא מצאתי קריאת הזמנות מוואטסאפ, מעקב אחרי ספק בחו״ל, או עבודה מול המשלח ועמיל המכס. שם עובר היום הגבול בינינו.</p>
+        <details class="more"><summary>מה היא מוכרת <span>והקטע מהמקור</span></summary>
+<div class="in">
         <q lang="he">״סוכני ה-AI מטפלים בעבודה השוטפת, ואתם נהנים מאוטומציה חכמה, תובנות מעמיקות וזמן להתמקד במה שחשוב באמת.״</q>
         <p><span class="chip data">נתון</span> בגרסה ממאי 2026 הסוכנים רושמים פקודות יומן וקבלות, מסייעים בעיבוד חשבוניות, מקימים ספקים ומוצרים, מפיקים הזמנות רכש ובודקים מלאי (<a class="src" href="https://www.priority-software.com/blog/news/priority-software-unveils-prioritys-ai-first-erp-powered/" target="_blank" rel="noopener" title="Priority Software Unveils Priority&#x27;s AI First ERP Powered by an Embedded aiERP Companion and Specialized AI Agents (20.5.2026)">Priority, 20.5.2026</a>). בעמוד המוצר כתוב שזה ללקוחות ענן בלבד, בתשלום לפי חבילות, ושחלק מהיכולות עדיין בתוכנית הפיתוח (<a class="src" href="https://www.priority-software.com/il/erp/aierp/" target="_blank" rel="noopener" title="Priority, aiERP: בינה מלאכותית בלב המערכת (עמוד המוצר בעברית)">Priority, עמוד aiERP</a>).</p>
-        <p class="us"><b>מה זה אומר לנו.</b> המתחרה שהכי חשוב להבין. הוא חזק בתוך המערכת. בהודעה שלו לא מצאתי קריאת הזמנות מוואטסאפ, מעקב אחרי ספק בחו״ל, או עבודה מול המשלח ועמיל המכס. שם עובר היום הגבול בינינו.</p>
+        </div>
+</details>
       </article>
 
       <article class="comp" data-g="erp">
         <header><h3>Microsoft Sales Order Agent</h3><span class="where">עולמי · Business Central</span><span class="tag">בתוך המערכת</span></header>
-        <p><span class="chip data">נתון</span> סוכן מובנה במערכת הניהול של Microsoft לעסקים קטנים ובינוניים. הוא קולט הזמנות שמגיעות במייל ופותח אותן במערכת (<a class="src" href="https://learn.microsoft.com/en-us/dynamics365/business-central/sales-order-agent" target="_blank" rel="noopener" title="Microsoft Dynamics 365 Business Central, Sales Order Agent (תיעוד המוצר)">Microsoft, תיעוד</a><sup class="unread" title="המספר נלקח מתקציר של מנוע חיפוש. העמוד עצמו לא נפתח.">°</sup>).</p>
         <p class="us"><b>מה זה אומר לנו.</b> יצרניות מערכות הניהול מוסיפות סוכנים לליבה. מה שנשאר בחוץ הוא מה שקורה בין המערכות ובין החברות: ספק, משלח, עמיל מכס, לקוח.</p>
+        <details class="more"><summary>מה היא מוכרת <span>הפרטים והמקור</span></summary>
+<div class="in">
+        <p><span class="chip data">נתון</span> סוכן מובנה במערכת הניהול של Microsoft לעסקים קטנים ובינוניים. הוא קולט הזמנות שמגיעות במייל ופותח אותן במערכת (<a class="src" href="https://learn.microsoft.com/en-us/dynamics365/business-central/sales-order-agent" target="_blank" rel="noopener" title="Microsoft Dynamics 365 Business Central, Sales Order Agent (תיעוד המוצר)">Microsoft, תיעוד</a><sup class="unread" title="המספר נלקח מתקציר של מנוע חיפוש. העמוד עצמו לא נפתח.">°</sup>).</p>
+        </div>
+</details>
       </article>
 
       <article class="comp" data-g="svc">
         <header><h3>חברת השירותים של Anthropic</h3><span class="where">ארה״ב · שירותי AI לעסקים בינוניים</span><span class="tag">שירות</span></header>
+        <p class="us"><b>מה זה אומר לנו.</b> יצרנית המודל אומרת בעצמה שהמודל לבדו לא מספיק, ושצריך מי שמכיר את העסק מבפנים. זה המודל העסקי שלנו, בקנה מידה אחר לגמרי ובארה״ב.</p>
+        <details class="more"><summary>מה היא עושה <span>והקטע מהמקור</span></summary>
+<div class="in">
         <q lang="en">“Putting Claude to work in an organization’s core operations takes hands-on engineering and deep familiarity with how each business runs.”</q>
         <p><span class="chip data">נתון</span> במאי 2026 הקימה Anthropic, יחד עם <span class="ltr">Blackstone, Hellman &amp; Friedman</span> ו-Goldman Sachs, חברת שירותים שתכניס את המודל שלה לעסקים בינוניים (<a class="src" href="https://www.anthropic.com/news/enterprise-ai-services-company" target="_blank" rel="noopener" title="Anthropic, Building a new enterprise AI services company with Blackstone, Hellman &amp; Friedman, and Goldman Sachs (4.5.2026)">Anthropic, 4.5.2026</a>). זו הודעה של יצרנית המודל עצמה.</p>
-        <p class="us"><b>מה זה אומר לנו.</b> יצרנית המודל אומרת בעצמה שהמודל לבדו לא מספיק, ושצריך מי שמכיר את העסק מבפנים. זה המודל העסקי שלנו, בקנה מידה אחר לגמרי ובארה״ב.</p>
+        </div>
+</details>
       </article>
 
       <article class="comp" data-g="svc">
         <header><h3>Thrive Holdings</h3><span class="where">ארה״ב · קונה עסקים ומכניסה בהם AI</span><span class="tag">שירות + בעלות</span></header>
+        <p class="us"><b>מה זה אומר לנו.</b> ההימור הגדול ביותר שמצאתי על כך שהערך נמצא ביישום ולא בתוכנה. היא לא פועלת בענף שלנו, ולא בישראל.</p>
+        <details class="more"><summary>מה היא עושה <span>והקטע מהמקור</span></summary>
+<div class="in">
         <q lang="en">“That hands-on model of AI implementation has become a business in its own right…”</q>
         <p><span class="chip data">נתון</span> גייסה 2 מיליארד דולר באוגוסט 2026, לפי שווי של 12 מיליארד. היא קונה עסקים מסורתיים, כמו משרדי רואי חשבון, ומכניסה AI לעבודה שלהם. כבר יותר מ-70 עסקים (<a class="src" href="https://techcrunch.com/2026/08/12/openai-backed-thrive-holdings-raises-2b-to-bring-ai-to-the-enterprise/" target="_blank" rel="noopener" title="TechCrunch, OpenAI-backed Thrive Holdings raises $2B to bring AI to the enterprise (12.8.2026)">TechCrunch, 12.8.2026</a>).</p>
-        <p class="us"><b>מה זה אומר לנו.</b> ההימור הגדול ביותר שמצאתי על כך שהערך נמצא ביישום ולא בתוכנה. היא לא פועלת בענף שלנו, ולא בישראל.</p>
+        </div>
+</details>
       </article>
     </div>
 
@@ -1824,10 +2051,10 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
         <span class="n">1</span>
         <h3>הכסף מוכיח שיש על מה לשלם</h3>
         <p>שוק ריק הוא בדרך כלל שוק שאין בו לקוחות. כאן יש משקיעים שבדקו, ושמו כסף על כך שעסקים ישלמו כדי שסוכן יטפל בניירת של רכש, יבוא ושילוח.</p>
-        <p><span class="chip data">נתון</span> שבעה סבבים שקראתי בעמוד המקור מסתכמים ב-148 מיליון דולר בתוך שבעה חודשים. <span class="chip guess">הערכה</span> בספירה רחבה יותר, מכותרות בלבד, הגעתי ל-18 סבבים ולכ-584 מיליון דולר ב-2025 וב-2026. את המספר הרחב לא בדקתי עמוד אחרי עמוד.</p>
         <details class="more">
-          <summary>שבעת הסבבים <span>מי, כמה, ולמה</span></summary>
+          <summary>שבעת הסבבים <span>מי, כמה ולמה, והספירה הרחבה יותר</span></summary>
           <div class="in">
+            <p><span class="chip data">נתון</span> שבעה סבבים שקראתי בעמוד המקור מסתכמים ב-148 מיליון דולר בתוך שבעה חודשים. <span class="chip guess">הערכה</span> בספירה רחבה יותר, מכותרות בלבד, הגעתי ל-18 סבבים ולכ-584 מיליון דולר ב-2025 וב-2026. את המספר הרחב לא בדקתי עמוד אחרי עמוד.</p>
             <div class="tablebox">
               <table>
                 <thead><tr><th>החברה</th><th>הסבב</th><th>מה היא עושה</th></tr></thead>
@@ -1860,8 +2087,12 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
         <span class="n">2</span>
         <h3>הכסף הגדול הולך לשירות, לא לתוכנה</h3>
         <p><span class="chip data">נתון</span> יצרנית המודל הקימה חברת שירותים משלה (<a class="src" href="https://www.anthropic.com/news/enterprise-ai-services-company" target="_blank" rel="noopener" title="Anthropic, Building a new enterprise AI services company with Blackstone, Hellman &amp; Friedman, and Goldman Sachs (4.5.2026)">Anthropic, 4.5.2026</a>). Thrive גייסה 2 מיליארד דולר כדי לקנות עסקים ולהפעיל בהם AI (<a class="src" href="https://techcrunch.com/2026/08/12/openai-backed-thrive-holdings-raises-2b-to-bring-ai-to-the-enterprise/" target="_blank" rel="noopener" title="TechCrunch, OpenAI-backed Thrive Holdings raises $2B to bring AI to the enterprise (12.8.2026)">TechCrunch, 12.8.2026</a>). קרן ההון סיכון General Catalyst הקצתה 1.5 מיליארד דולר לאסטרטגיה דומה (<a class="src" href="https://techcrunch.com/2025/09/28/the-ai-services-transformation-may-be-harder-than-vcs-think/" target="_blank" rel="noopener" title="TechCrunch, The AI services transformation may be harder than VCs think (28.9.2025)">TechCrunch, 28.9.2025</a>).</p>
+        <details class="more"><summary>ההסבר: 16 טריליון דולר מול טריליון אחד <span>והתחזית של Gartner לשנת 2026</span></summary>
+<div class="in">
         <p><span class="chip data">נתון</span> ההסבר של השותף שמוביל את זה בקרן: שוק השירותים בעולם מגלגל 16 טריליון דולר בשנה, ושוק התוכנה טריליון אחד (<a class="src" href="https://techcrunch.com/2025/09/28/the-ai-services-transformation-may-be-harder-than-vcs-think/" target="_blank" rel="noopener" title="TechCrunch, The AI services transformation may be harder than VCs think (28.9.2025)">TechCrunch, 28.9.2025</a>). <span class="chip guess">הערכה</span> מי שמוכר תוכנה מתחרה על תקציב התוכנה של העסק. מי שמוכר עבודה שנעשתה מתחרה על תקציב השכר, והוא גדול בהרבה.</p>
         <p><span class="chip data">נתון</span> לפי תחזית של Gartner, ב-2026 העולם יוציא על שירותי AI כ-577 מיליארד דולר, יותר מאשר על תוכנת AI, כ-462 מיליארד (<a class="src" href="https://www.gartner.com/en/newsroom/press-releases/2026-09-16-gartner-forecasts-worldwide-ai-spending-to-grow-49-point-5-percent-in-2026" target="_blank" rel="noopener" title="Gartner, תחזית הוצאות AI עולמית, ספטמבר 2026">Gartner, ספטמבר 2026</a><sup class="unread" title="המספר נלקח מתקציר של מנוע חיפוש. העמוד עצמו לא נפתח.">°</sup>). את עמוד התחזית עצמו לא הצלחתי לפתוח.</p>
+        </div>
+</details>
       </div>
       <div class="proof">
         <figure class="clip">
@@ -1875,19 +2106,23 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
       <div>
         <span class="n">3</span>
         <h3>מי שמצליח נראה כמונו: איש הענף ואיש הטכנולוגיה יחד</h3>
+        <p><span class="chip guess">הערכה</span> אצלנו אתה יודע לאן הזמן נעלם בין ההזמנה למחסן, ואני בונה סביב זה. זה אותו מבנה, ולכן אני חושב שהשותפות הזאת היא הנכס ולא רק נוחות.</p>
+        <details class="more"><summary>שלוש חברות שבנויות כך <span>Nauta, HappyRobot ו-General Catalyst, ומה ש-Anthropic מתארת</span></summary>
+<div class="in">
         <p><span class="chip data">נתון</span> Nauta מציגה את עצמה כחברה שנבנתה בידי אנשי תפעול (<a class="src" href="https://www.freightwaves.com/news/ai-logistics-platform" target="_blank" rel="noopener" title="FreightWaves, AI startup Nauta secures $7M to streamline global logistics for importers (26.8.2025)">FreightWaves, 26.8.2025</a>). HappyRobot מצמידה מהנדס לכל לקוח (<a class="src" href="https://www.freightwaves.com/news/happyrobot-raises-44m-to-revolutionize-supply-chains" target="_blank" rel="noopener" title="FreightWaves, HappyRobot raises $44M to revolutionize supply chains (3.9.2025)">FreightWaves, 3.9.2025</a>). General Catalyst בונה חברות מזוגות של מומחי AI ומומחי ענף (<a class="src" href="https://techcrunch.com/2025/09/28/the-ai-services-transformation-may-be-harder-than-vcs-think/" target="_blank" rel="noopener" title="TechCrunch, The AI services transformation may be harder than VCs think (28.9.2025)">TechCrunch, 28.9.2025</a>).</p>
         <p><span class="chip data">נתון</span> ו-Anthropic מתארת כך את העבודה אצל לקוח בתחום הבריאות: אנשי המקצוע יודעים לאן הזמן נעלם במשמרת, והמהנדסים בונים סביב הידע הזה (<a class="src" href="https://www.anthropic.com/news/enterprise-ai-services-company" target="_blank" rel="noopener" title="Anthropic, Building a new enterprise AI services company with Blackstone, Hellman &amp; Friedman, and Goldman Sachs (4.5.2026)">Anthropic, 4.5.2026</a>).</p>
-        <p><span class="chip guess">הערכה</span> אצלנו אתה יודע לאן הזמן נעלם בין ההזמנה למחסן, ואני בונה סביב זה. זה אותו מבנה, ולכן אני חושב שהשותפות הזאת היא הנכס ולא רק נוחות.</p>
+        <figure class="clip">
+          <img width="900" height="909" src="img/thrive-tc.jpg" loading="lazy" alt="כותרת מאתר TechCrunch מ-12 באוגוסט 2026: Thrive Holdings, בגיבוי OpenAI, מגייסת 2 מיליארד דולר כדי להכניס AI לארגונים.">
+          <figcaption><span class="mono">TECHCRUNCH · 12.8.2026</span><a class="src" href="https://techcrunch.com/2026/08/12/openai-backed-thrive-holdings-raises-2b-to-bring-ai-to-the-enterprise/" target="_blank" rel="noopener" title="TechCrunch, OpenAI-backed Thrive Holdings raises $2B to bring AI to the enterprise (12.8.2026)">למקור</a></figcaption>
+        </figure>
+        </div>
+</details>
       </div>
       <div class="proof">
         <figure class="clip">
           <blockquote lang="en">“The clinicians know <mark>where time disappears in a shift</mark> and what good patient care actually requires. The company's engineers build around that knowledge…”</blockquote>
           <p class="tr">אנשי הצוות הרפואי יודעים לאן הזמן נעלם במשמרת, ומה טיפול טוב באמת דורש. המהנדסים של החברה בונים סביב הידע הזה.</p>
           <figcaption><span class="mono">ANTHROPIC · 4.5.2026</span><a class="src" href="https://www.anthropic.com/news/enterprise-ai-services-company" target="_blank" rel="noopener" title="Anthropic, Building a new enterprise AI services company with Blackstone, Hellman &amp; Friedman, and Goldman Sachs (4.5.2026)">למקור</a></figcaption>
-        </figure>
-        <figure class="clip">
-          <img width="900" height="909" src="img/thrive-tc.jpg" loading="lazy" alt="כותרת מאתר TechCrunch מ-12 באוגוסט 2026: Thrive Holdings, בגיבוי OpenAI, מגייסת 2 מיליארד דולר כדי להכניס AI לארגונים.">
-          <figcaption><span class="mono">TECHCRUNCH · 12.8.2026</span><a class="src" href="https://techcrunch.com/2026/08/12/openai-backed-thrive-holdings-raises-2b-to-bring-ai-to-the-enterprise/" target="_blank" rel="noopener" title="TechCrunch, OpenAI-backed Thrive Holdings raises $2B to bring AI to the enterprise (12.8.2026)">למקור</a></figcaption>
         </figure>
       </div>
     </div>
@@ -1901,30 +2136,46 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
       </figure>
       <div class="panel">
         <p>אותה כתבה נושאת את הכותרת ״המהפך בשירותים עשוי להיות קשה יותר ממה שהמשקיעים חושבים״, ויש בה שתי אזהרות שכדאי לקחת ברצינות.</p>
+        <details class="more"><summary>שתי האזהרות <span>תוצרים מלוטשים וריקים, ופחות אנשים שתופסים טעויות</span></summary>
+<div class="in">
         <p><span class="chip data">נתון</span> בסקר של 1,150 עובדים, 40% אמרו שהם נאלצים לעבוד יותר בגלל תוצרי AI שנראים מלוטשים וריקים מתוכן. כל מקרה כזה עולה להם כמעט שעתיים (<a class="src" href="https://techcrunch.com/2025/09/28/the-ai-services-transformation-may-be-harder-than-vcs-think/" target="_blank" rel="noopener" title="TechCrunch, The AI services transformation may be harder than VCs think (28.9.2025)">TechCrunch, 28.9.2025</a>).</p>
         <p><span class="chip data">נתון</span> ואם מצמצמים אנשים כי ה-AI אמור להחליף אותם, נשארים פחות אנשים שיתפסו את הטעויות שלו (<a class="src" href="https://techcrunch.com/2025/09/28/the-ai-services-transformation-may-be-harder-than-vcs-think/" target="_blank" rel="noopener" title="TechCrunch, The AI services transformation may be harder than VCs think (28.9.2025)">TechCrunch, 28.9.2025</a>).</p>
-        <p><span class="chip guess">הערכה</span> מה אני לוקח מזה: לא מוסרים ללקוח תוצר שאיש לא בדק, מודדים כל תהליך לפני ואחרי, ומשאירים במקומם את האנשים שמכירים את החריגים. פרק 9 מפרט.</p>
+        </div>
+</details>
+        <p><span class="chip guess">הערכה</span> מה אני לוקח מזה: לא מוסרים ללקוח תוצר שאיש לא בדק, מודדים כל תהליך לפני ואחרי, ומשאירים במקומם את האנשים שמכירים את החריגים. פרק 10 מפרט.</p>
       </div>
     </div>
 
     <div class="panel">
       <h3>מה חיפשתי ולא מצאתי</h3>
       <p><span class="chip guess">הערכה</span> לא מצאתי חברה, בישראל או בחו״ל, שמציעה ליבואן בינוני את מה שאנחנו מתכננים: להקים אצלו סוכנים על המערכות הקיימות שלו, להפעיל אותם בשבילו, ולהיות אחראית לתוצאה. מצאתי את החלקים: כלים בשירות עצמי, סוכנים בתוך Priority, מוצרים ליבואנים גדולים בארה״ב, וחברות שירות ענקיות שלא נוגעות בענף.</p>
+      <details class="more"><summary>מה החיפוש הזה לא יכול היה למצוא <span>שלוש מגבלות</span></summary>
+<div class="in">
       <p>שלוש מגבלות של החיפוש. הוא נמשך יום אחד. הוא נעשה ברשת, ובוטיק קטן שעובד מפה לאוזן לא יופיע בו. ומשלח או עמיל מכס שמציע את זה ללקוחותיו בשקט לא מפרסם על כך כתבה.</p>
+      </div>
+</details>
       <div class="askline"><b>שאלה אליך</b><span><span class="chip ask">לברר</span> שמעת על משלח, עמיל מכס, בית תוכנה או יועץ שמציע ליבואנים בארץ משהו כזה? ומי, לדעתך, היה הראשון שיבואן פונה אליו אם היה רוצה את זה היום?</span></div>
     </div>
 
     <h3>שלושה איומים שאני לוקח ברצינות</h3>
+    <p><span class="chip guess">הערכה</span> שלושה תרחישים: Priority מרחיבה את הסוכנים שלה, חברת מוצר ישראלית פונה ליבואנים, והמשלח או עמיל המכס מציע את הדסק בעצמו.</p>
+    <details class="more"><summary>שלושת האיומים בפירוט <span>מה כבר קרה, ומה זה אומר לנו</span></summary>
+<div class="in">
     <div class="three">
       <div class="card"><h3>Priority מרחיבה את הסוכנים שלה</h3><span><span class="chip data">נתון</span> בהודעה ממאי 2026 היא כבר מתארת את הגרסאות הבאות: סוכנים שמזהים חריגות, חוזים גבייה ומפעילים תהליכים (<a class="src" href="https://www.priority-software.com/blog/news/priority-software-unveils-prioritys-ai-first-erp-powered/" target="_blank" rel="noopener" title="Priority Software Unveils Priority&#x27;s AI First ERP Powered by an Embedded aiERP Companion and Specialized AI Agents (20.5.2026)">Priority, 20.5.2026</a>). <span class="chip guess">הערכה</span> מה שקורה בתוך המערכת יהיה שלה. מה שקורה בין היבואן לעולם, פחות.</span></div>
       <div class="card"><h3>חברת מוצר ישראלית פונה ליבואנים</h3><span><span class="chip guess">הערכה</span> SPIRITT כבר כותבת אליהם, ו-Evolinq כבר מוכרת סוכני רכש בעברית. אם אחת מהן תוסיף צוות הטמעה שמכיר יבוא, היא תהיה מולנו עם יותר כסף ויותר מהנדסים.</span></div>
       <div class="card"><h3>המשלח או עמיל המכס מציע את הדסק בעצמו</h3><span><span class="chip data">נתון</span> Flexport כבר עושה את זה בארה״ב (<a class="src" href="https://www.freightwaves.com/news/flexport-mcp-server-ai-agents-freight-booking" target="_blank" rel="noopener" title="FreightWaves, Flexport launches MCP Server for AI agents to book freight (29.9.2026)">FreightWaves, 29.9.2026</a>). <span class="chip guess">הערכה</span> למשלח ישראלי יש את הלקוחות ואת הנתונים. אין לו סיבה לטפל בהזמנות של הלקוחות של היבואן, ואין לו עניין שהיבואן ישווה אותו למשלחים אחרים.</span></div>
     </div>
-    <p class="note">התשובה לכל אחד מהשלושה נמצאת בפרק 9.</p>
+    </div>
+</details>
+    <p class="note">התשובה לכל אחד מהשלושה נמצאת בפרק 10.</p>
 
     <div class="two">
       <div class="panel">
         <h3>במה אנחנו שונים <span class="chip guess">הערכה</span></h3>
+        <p>איש ענף ואיש טכנולוגיה יושבים באותו חדר, ואנחנו אחראים לתוצאה ולא מוכרים רישיון לתוכנה. אנחנו עובדים בעברית, על Priority, בוואטסאפ ומול המכס הישראלי, לאורך כל השרשרת. וכשהכלים של אחרים טובים, נשתמש בהם.</p>
+        <details class="more"><summary>חמשת ההבדלים <span>עם הסבר לכל אחד</span></summary>
+<div class="in">
         <ul class="checks">
           <li><b>איש ענף ואיש טכנולוגיה באותו חדר.</b> רוב המתחרים הם חברות תוכנה שמחפשות מי שיסביר להן את הענף.</li>
           <li><b>אחריות לתוצאה, לא רישיון לתוכנה.</b> הלקוח לא צריך ללמוד כלי. הוא מקבל עבודה שנעשתה, ומישהו לפנות אליו כשמשהו משתבש.</li>
@@ -1932,15 +2183,22 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
           <li><b>כל השרשרת.</b> מוצר פותר תחנה אחת. יבואן צריך שההזמנה, הספק, המשלח והמכס ידברו זה עם זה.</li>
           <li><b>בונים על הכלים.</b> אם הסוכנים של Priority או של SPIRITT טובים, נשתמש בהם. הלקוח קונה מאיתנו את התוצאה, והכלי יכול להתחלף.</li>
         </ul>
+        </div>
+</details>
       </div>
       <div class="panel">
         <h3>מה צריך כדי לנצח <span class="chip guess">הערכה</span></h3>
+        <p>צריך שלושה לקוחות ראשונים עם תוצאה מדודה, ושיטה שחוזרת על עצמה. צריך את הדלתות שלך. וצריך להישאר צרים בשנה הראשונה.</p>
+        <details class="more"><summary>ארבעת התנאים <span>עם הסבר לכל אחד</span></summary>
+<div class="in">
         <ul class="checks">
           <li><b>שלושה לקוחות ראשונים עם תוצאה מדודה.</b> מספר אחד אמיתי של יבואן ישראלי שווה יותר מכל המקורות שבמסמך הזה.</li>
           <li><b>שיטה שחוזרת על עצמה.</b> כל תהליך שבנינו פעם אחת צריך להיבנות מהר יותר אצל הלקוח הבא.</li>
           <li><b>הדלתות שלך.</b> יבואן ותיק לא קונה מאתר אינטרנט. הוא קונה ממי שהוא סומך עליו.</li>
           <li><b>להישאר צרים בשנה הראשונה.</b> ענף אחד ושירות אחד, עד שהוא עובד.</li>
         </ul>
+        </div>
+</details>
       </div>
     </div>
 
@@ -1960,7 +2218,7 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
     <div class="chap-head">
       <span class="n">פרק 8 · העסק</span>
       <h2>מה אנחנו מוכרים, למי, ואיך זה מרוויח</h2>
-      <p class="gist">אנחנו לא מוכרים תוכנה, וגם לא שעות ייעוץ. אנחנו מוכרים <b>עבודה שנעשית</b>: דסק יבוא והזמנות שסוכנים מפעילים, ושאנחנו אחראים לו. הלקוח משלם סכום חודשי קבוע, ובונוס על תוצאה שאפשר לספור. המבנה כבר ברור לי. המחירים עוד פתוחים, ואני רוצה לקבוע אותם איתך.</p>
+      <p class="gist"><b>אנחנו עסק של אינטגרציה, לא של טכנולוגיה.</b> הכלים והמודלים כבר קיימים, וכל אחד יכול לשכור אותם. מה שאנחנו יודעים הוא לבחור אותם, לחבר אותם לעסק ולהפעיל אותם. לכן אנחנו לא מוכרים תוכנה, וגם לא שעות ייעוץ. אנחנו מוכרים <b>עבודה שנעשית</b>: דסק יבוא והזמנות שסוכנים מפעילים, ושאנחנו אחראים לו. הלקוח משלם סכום חודשי קבוע, ובונוס על תוצאה שאפשר לספור. המחירים עוד פתוחים, ואני רוצה לקבוע אותם איתך.</p>
     </div>
 
     <figure class="clip">
@@ -1978,7 +2236,7 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
       <div><div class="ln"><b>הפעלה</b><span>כל חודש</span></div><p>הדסק עובד כל יום. אנחנו משגיחים, מתקנים כשמשהו בעסק משתנה, ומדווחים פעם בחודש מול המספר ההתחלתי.</p><span>סכום חודשי קבוע. זו ההכנסה העיקרית של העסק.</span></div>
       <div><div class="ln"><b>תוצאה</b><span>כשיש</span></div><p>כסף שאפשר לספור בלי ויכוח: דמי השהיה שלא שולמו, חיוב שגוי שנתפס, חוב שנגבה מוקדם.</p><span>בונוס: חלק מוסכם מראש מהסכום שנספר. לא אחוז מהרווח של העסק.</span></div>
     </div>
-    <p class="note"><span class="chip guess">הערכה</span> זה המבנה שבחרתי אחרי שבדקתי כמה חלופות. שיטת העבודה עצמה מתוארת בסוף פרק 5. <span class="chip ask">לברר</span> המחירים, נוסחת הבונוס ותקופת ההתחייבות המינימלית פתוחים, והם בפרק 10.</p>
+    <p class="note"><span class="chip guess">הערכה</span> זה המבנה שבחרתי אחרי שבדקתי כמה חלופות. שיטת העבודה עצמה מתוארת בסוף פרק 5. <span class="chip ask">לברר</span> המחירים, נוסחת הבונוס ותקופת ההתחייבות המינימלית פתוחים, והם בפרק 11.</p>
 
     <details class="more">
       <summary>מה גובים היום בשוק הישראלי <span>מחירון פומבי של חברה אחת, כנקודת ייחוס</span></summary>
@@ -1990,6 +2248,9 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
     </details>
 
     <h3>למי מוכרים קודם</h3>
+    <p><b>ליבואנים ולמפיצים שמוכרים לעסקים אחרים.</b> לא לרשתות קמעונאות, ולא לחברות ענק. יש אצלם גם רכש ויבוא וגם הזמנות מלקוחות, הבעלים מחליט בעצמו, והכאב נמדד בכסף.</p>
+    <details class="more"><summary>למה דווקא הם, וכמה כאלה יש <span>חמש סיבות, וגודל השוק בישראל</span></summary>
+<div class="in">
     <div class="reason">
       <div>
         <p><b>יבואנים ומפיצים שמוכרים לעסקים אחרים.</b> לא רשתות קמעונאות, ולא חברות ענק.</p>
@@ -2007,12 +2268,16 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
           <div><span class="num">3,577</span><span>עסקי סיטונאות בישראל עם 10 עד 200 שכירים. <span class="chip data">נתון</span> <a class="src" href="https://www.cbs.gov.il/he/publications/doclib/2024/business_demo2023/t4_2023.pdf" target="_blank" rel="noopener" title="הלמ״ס, דמוגרפיה של עסקים 2023, לוח 4: עסקים פעילים לפי ענף וגודל">הלמ״ס, 2023</a>, 2023. הלמ״ס לא סופרת יבואנים בנפרד.</span></div>
           <div><span class="num">3</span><span>לקוחות בשנה הראשונה. <span class="chip guess">הערכה</span> זה היעד שאני מציע. פחות מעשירית האחוז מהשוק.</span></div>
         </div>
-        <p class="note"><span class="chip guess">הערכה</span> השוק לא יגביל אותנו. מה שיגביל הוא כמה לקוחות שני אנשים יכולים לשרת היטב.</p>
+        <p class="note"><span class="chip guess">הערכה</span> השוק לא יגביל אותנו. מה שיגביל הוא כמה לקוחות שני אנשים יכולים לשרת היטב, ולכן פרק 9.</p>
       </div>
     </div>
+    </div>
+</details>
 
     <h3>החבילה הראשונה: דסק יבוא והזמנות</h3>
     <p>שני צדדים של אותו שולחן. מה שנכנס מהלקוחות, ומה שנכנס מהספקים ומהמשלח. הם נמכרים יחד כי הם חולקים את אותם חיבורים ואת אותם נתונים: הזמנת לקוח שנקלטה נכון היא מה שקובע מה צריך להגיע, ומתי.</p>
+    <details class="more"><summary>מה בגל הראשון, ומה בשני <span>שלושה שירותים שמראים תוצאה מהר, ושלושה שנבנים עליהם</span></summary>
+<div class="in">
     <div class="two">
       <div class="panel">
         <span class="mono">גל ראשון</span>
@@ -2035,8 +2300,13 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
         <p class="note"><span class="chip guess">הערכה</span> הסדר בין שני הצדדים של הגל הראשון ייקבע באבחון: מתחילים בצד שיש בו יותר עבודה ידנית.</p>
       </div>
     </div>
+    </div>
+</details>
 
     <h3>למה זה עסק טוב, ולא רק פרויקט</h3>
+    <p><span class="chip guess">הערכה</span> ההכנסה חוזרת כל חודש. כל לקוח מקצר את ההקמה אצל הבא. והמודלים שאנחנו שוכרים משתפרים ומוזלים כל שנה, כך שהשירות משתפר והעלות שלנו יורדת.</p>
+    <details class="more"><summary>שש הסיבות, עם המקורות <span>הכנסה חוזרת, נוהל שעובר מלקוח ללקוח, ומה קרה בגל הקודם של SAP</span></summary>
+<div class="in">
     <div class="three">
       <div class="card"><h3>ההכנסה חוזרת</h3><span><span class="chip guess">הערכה</span> פרויקט נגמר. דסק עובד כל חודש. לקוח שהדסק שלו עובד לא מחפש ספק חדש, כי העבודה כבר לא נעשית בלעדיו.</span></div>
       <div class="card"><h3>כל לקוח מוזיל את הבא</h3><span><span class="chip guess">הערכה</span> נוהל שנכתב לקליטת הזמנות אצל יבואן אחד מתאים ברובו ליבואן הבא. ההקמה מתקצרת מלקוח ללקוח, והמחיר לא חייב לרדת איתה.</span></div>
@@ -2045,27 +2315,107 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
       <div class="card"><h3>השירות מתרחב בתוך הלקוח</h3><span><span class="chip guess">הערכה</span> מתחילים בתהליך אחד. כשהוא עובד, הבעלים שואל בעצמו מה הלאה. עשר ההזדמנויות שבפרק 4 הן גם מפת הצמיחה אצל כל לקוח.</span></div>
       <div class="card"><h3>כך זה היה גם בגל הקודם</h3><span><span class="chip data">נתון</span> השותפים שמיישמים את SAP מכניסים 8.81 דולר על כל דולר שהחברה עצמה מכניסה (<a class="src" href="https://news.sap.com/2023/02/idc-intellectual-property-research-sap-partner-growth/" target="_blank" rel="noopener" title="IDC, מחקר שהזמינה SAP על הערך הכלכלי של שותפי היישום, 2023">IDC, 2023</a>). ופרויקטים של AI עם שותף חיצוני הגיעו לשימוש בפועל בשיעור כפול מפיתוח פנימי (<a class="src" href="https://webberwentzel.com/News/Documents/2025/MIT1757411281972.pdf" target="_blank" rel="noopener" title="MIT NANDA, The GenAI Divide: State of AI in Business 2025, יולי 2025">MIT, 2025</a>).</span></div>
     </div>
-    <p class="note">ויש גם צד שני: עסק של שירות גדל לאט יותר מעסק של תוכנה, והוא תלוי באנשים. על זה בפרק 9.</p>
-
-    <h3>מה כל אחד מאיתנו מביא</h3>
-    <div class="team">
-      <div><span class="m">אתה</span><b>הענף</b><span>איך יבואן באמת עובד, איפה הכסף הולך לאיבוד, ומה בעל עסק יסכים לשמוע. בלי זה אני בונה לפי ניחושים.</span></div>
-      <div><span class="m">אתה</span><b>הדלתות</b><span>יבואן ותיק פותח דלת למי שהוא מכיר. לקוח ראשון, שני ושלישי יגיעו מאמון, לא מפרסום.</span></div>
-      <div><span class="m">אני</span><b>הטכנולוגיה</b><span>לבחור מודלים וכלים, לחבר אותם למערכות של הלקוח, לבנות את הסוכנים ולהפעיל אותם.</span></div>
-      <div><span class="m">אני</span><b>השיטה</b><span>אבחון, מדידה לפני ואחרי, נהלים כתובים ודוחות. לרובם כבר יש לי טיוטות.</span></div>
+    <p class="note">ויש גם צד שני: עסק של שירות גדל לאט יותר מעסק של תוכנה, והוא תלוי באנשים. על זה בפרק 10.</p>
     </div>
-    <p><span class="chip guess">הערכה</span> ומה חסר לשנינו: מי שיעמוד מול הלקוח ביום-יום כשיהיו יותר משלושה לקוחות, ועורך דין ורואה חשבון שמכירים חוזי שירות כאלה. את הראשון נצטרך לגייס כשנגיע לשם. את השניים כדאי למצוא עכשיו.</p>
+</details>
 
     <div class="panel">
       <h3>השורה התחתונה</h3>
-      <p><span class="chip guess">הערכה</span> המבחן שאני מציע לעצמנו: בתוך שלושה חודשים מתחילת העבודה, הלקוח הראשון רואה מספר אחד שהשתפר, והמספר הזה שווה לו יותר ממה שהוא משלם לנו. אם עמדנו בזה, יש לנו עסק ויש לנו סיפור ללקוח השני. אם לא, נדע את זה מוקדם, ובמחיר של כמה חודשי עבודה.</p>
+      <p><span class="chip guess">הערכה</span> המבחן שאני מציע לעצמנו: בתוך חודש מהיום עובד סוכן ראשון על הזמנות אמיתיות אצל עסק אחד, ויש מספר ראשון שנמדד: מה הסוכן תפס שאנשים פספסו, וכמה מוקדם יותר. אם המספר הזה שווה לבעל העסק יותר ממה שהוא ישלם לנו, יש לנו עסק ויש לנו סיפור ללקוח השני. אם לא, נדע את זה מוקדם, ובמחיר של חודש עבודה. התוכנית לחודש הזה, שבוע אחרי שבוע, נמצאת <a href="#next">בפרק 12</a>.</p>
       <p class="note">הדוגמה במספרים, ליבואן עם מחזור של 30 מיליון שקל, נמצאת בסוף פרק 4. היא בנויה על הנחות, ואתה זה שיכול לומר אם הן סבירות.</p>
     </div>
   </section>
 
+  <section id="vision">
+    <div class="chap-head">
+      <span class="n">פרק 9 · החזון והשותפות</span>
+      <h2>מתחילים בלקוח אחד. הכיוון גדול בהרבה</h2>
+      <p class="gist">בעולם שבו בנית עסקים, עסק גדול היה עסק עם הרבה עובדים. במחסן, במשאית ובחנות זה עדיין נכון. <b>בעבודת המשרד זה מפסיק להיות נכון</b>, ועל השינוי הזה אני מציע לבנות. שני אנשים עם סוכנים יכולים היום לתת שירות שפעם דרש מחלקה שלמה. מתחילים בקטן, וכל מדרגה בדרך שווה גם בפני עצמה.</p>
+    </div>
+
+    <h3>עסק גדול כבר לא חייב משרד גדול</h3>
+    <div class="versus">
+      <div class="now">
+        <h4>הכלל שכולנו גדלנו עליו</h4>
+        <h3>יותר מכירות, יותר אנשים</h3>
+        <ul>
+          <li>כל מכולה נוספת היא עוד מיילים, עוד מסמכים ועוד טלפונים.</li>
+          <li>כדי לגדול מגייסים: עוד רכזת, עוד מנהל חשבונות, עוד מתאם.</li>
+          <li>עסק שמוכר במאה מיליון הוא עסק עם משרד מלא.</li>
+        </ul>
+      </div>
+      <div class="new">
+        <h4>הכלל שמחליף אותו</h4>
+        <h3>יותר מכירות, אותו משרד</h3>
+        <ul>
+          <li>את הנפח עושים סוכנים: קוראים, משווים, מקלידים, עוקבים ומזכירים.</li>
+          <li>האנשים מחליטים, מאשרים ומטפלים במה שחריג.</li>
+          <li>העבודה כבר לא גדלה יחד עם מספר הלקוחות, ולכן צוות קטן יכול לשרת הרבה מהם.</li>
+        </ul>
+      </div>
+    </div>
+    <p><span class="chip guess">הערכה</span> זה נכון לעבודה שכולה מסמכים, מערכות ותיאום. סחורה עדיין צריך להזיז, לאחסן ולמכור, ומי שמכיר את החריגים שווה היום יותר, לא פחות. המשמעות ללקוחות שלנו: לגדול בלי שהמשרד יגדל איתם. המשמעות לנו: שני אנשים יכולים לשרת הרבה יותר משלושה לקוחות.</p>
+
+    <div class="three">
+      <div class="card"><span class="mono">מנכ״ל OpenAI · 2024</span><h3>התערבות בין מנכ״לים</h3><span><span class="chip data">נתון</span> סם אלטמן סיפר שבקבוצת הצ׳אט שלו עם מנכ״לים של חברות טכנולוגיה מתערבים באיזו שנה תקום החברה הראשונה ששווה מיליארד דולר ויש בה אדם אחד. לדבריו, בלי AI זה לא היה עולה על הדעת, ועכשיו זה יקרה (<a class="src" href="https://fortune.com/2024/02/04/sam-altman-one-person-unicorn-silicon-valley-founder-myth/" target="_blank" rel="noopener" title="Fortune: Could AI create a one-person unicorn? Sam Altman thinks so (4.2.2024)">Fortune</a><sup class="unread" title="הדברים נלקחו מתקצירים של מנוע חיפוש. העמוד עצמו לא נפתח.">°</sup>).</span></div>
+      <div class="card"><span class="mono">מנכ״ל Anthropic · 2025</span><h3>התשובה שלו: 2026</h3><span><span class="chip data">נתון</span> דריו אמודיי נשאל על במה מתי תקום חברה של מיליארד דולר עם עובד אנושי אחד, וזו הייתה התשובה (<a class="src" href="https://yourstory.com/ai-story/ai-billion-dollar-company-one-person-anthropic-dario-amodei" target="_blank" rel="noopener" title="YourStory: With AI, single person can operate billion dollar company: Anthropic CEO (5.2025)">YourStory</a><sup class="unread" title="הדברים נלקחו מתקצירים של מנוע חיפוש. העמוד עצמו לא נפתח.">°</sup>). נכון לאביב 2026 עוד לא דווח על חברה כזאת שאושרה בפומבי (<a class="src" href="https://www.techtimes.com/articles/317073/20260524/ai-agents-solo-founders-genspark-manus-devin-raise-billions-before-proving-it-works.htm" target="_blank" rel="noopener" title="TechTimes: AI Agents, Solo Founders: Genspark, Manus, Devin Raise Billions Before Proving It Works (24.5.2026)">TechTimes</a><sup class="unread" title="הדברים נלקחו מתקצירים של מנוע חיפוש. העמוד עצמו לא נפתח.">°</sup>).</span></div>
+      <div class="card"><span class="mono">ישראל · 2025</span><h3>80 מיליון דולר אחרי חצי שנה</h3><span><span class="chip data">נתון</span> מפתח ישראלי הקים לבדו, בלי משקיעים, חברה שבונה אפליקציות לפי תיאור במילים. אחרי שישה חודשים הוא מכר אותה ל-Wix ב-80 מיליון דולר במזומן. ביום המכירה היו בה שמונה עובדים (<a class="src" href="https://techcrunch.com/2025/06/18/6-month-old-solo-owned-vibe-coder-base44-sells-to-wix-for-80m-cash/" target="_blank" rel="noopener" title="TechCrunch: 6-month-old, solo-owned vibe coder Base44 sells to Wix for $80M cash (18.6.2025)">TechCrunch</a>).</span></div>
+    </div>
+    <p class="note"><span class="chip guess">הערכה</span> מה אני לוקח מזה: לא שנהיה חברה של מיליארד עם שני אנשים. הקשר בין גודל העסק למספר העובדים, שהיה פעם חוק טבע, כבר לא מחייב. מי שמבין את זה מוקדם בונה את העסק שלו אחרת.</p>
+
+    <h3>לאן זה יכול להגיע: ארבע מדרגות</h3>
+    <figure class="clip">
+      <blockquote lang="en">“The next $1T company will be <mark>a software company masquerading as a services firm</mark>.”</blockquote>
+      <p class="tr">חברת הטריליון הבאה תהיה חברת תוכנה שמתחפשת לחברת שירותים.</p>
+      <figcaption><span class="mono">Julien Bek, שותף ב-Sequoia Capital · Services: The New Software · 5.3.2026</span><a class="src" href="https://sequoiacap.com/article/services-the-new-software" target="_blank" rel="noopener" title="Sequoia Capital, Julien Bek: Services: The New Software (5.3.2026)">למקור</a><sup class="unread" title="הדברים נלקחו מתקצירים של מנוע חיפוש. העמוד עצמו לא נפתח.">°</sup></figcaption>
+    </figure>
+    <p><span class="chip data">נתון</span> הטענה שלו: עסקים מוציאים על עבודה ועל שירותים הרבה יותר ממה שהם מוציאים על תוכנה. מי שימכור את העבודה עצמה, ולא כלי שעוזר לעובד, ייגע בתקציב הגדול (<a class="src" href="https://sequoiacap.com/article/services-the-new-software" target="_blank" rel="noopener" title="Sequoia Capital, Julien Bek: Services: The New Software (5.3.2026)">Sequoia</a><sup class="unread" title="הדברים נלקחו מתקצירים של מנוע חיפוש. העמוד עצמו לא נפתח.">°</sup>). <span class="chip guess">הערכה</span> זה העסק שתיארתי בפרק 8. היום נעשה חלק גדול מהעבודה בעצמנו, חצי ביד. ככל שנלמד את השוק, יותר ממנה יעבור לסוכנים, ואותם שני אנשים יוכלו לשרת הרבה יותר לקוחות.</p>
+    <div class="layers">
+      <div class="lh"><h4>המדרגה</h4><h4>מה עושים בה</h4><h4>מה היא נותנת לבאה</h4></div>
+      <div><div class="ln"><b>1. לקוח אחד</b><span>מתחילים החודש</span></div><p>יושבים אצל יבואן אחד, לומדים הזמנה אחת מקצה לקצה ומקימים סוכן ראשון. הרבה מהעבודה עדיין ידנית, והיא שלנו.</p><span>ידע אמיתי על הענף, ומספר ראשון שאפשר להראות.</span></div>
+      <div><div class="ln"><b>2. שיטה שחוזרת</b><span>לקוחות ראשונים</span></div><p>אותה חבילה אצל עוד יבואנים. כל הקמה קצרה מקודמתה, כי הנוהל, הבדיקות והחיבורים כבר כתובים.</p><span>הכנסה חודשית, ניסיון, ולקוחות שמוכנים להמליץ.</span></div>
+      <div><div class="ln"><b>3. סוכנים שמקימים סוכנים</b><span>כשהשיטה יציבה</span></div><p>את האבחון, את כתיבת הנוהל, את החיבור ואת הבדיקות עושים בעיקר סוכנים שבנינו לעצמנו. אנחנו מפקחים ומאשרים.</p><span>שני אנשים משרתים עשרות ומאות לקוחות, לא שלושה.</span></div>
+      <div><div class="ln"><b>4. שירות לאלפי עסקים</b><span>החזון</span></div><p>עסק בכל מקום בעולם נרשם, מחבר את המסמכים ואת המערכות שלו, ומקבל דסק שעובד. לא רק בישראל, ולא רק ביבוא.</p><span>חברה מהסוג ש-Sequoia מתארת: אלפי לקוחות, ומעט מאוד עובדים.</span></div>
+    </div>
+    <p><span class="chip guess">הערכה</span> אני אומר את זה בגלוי: החזון שלי גדול מאוד. חברה שנותנת שירות כזה לאלפי עסקים נמדדת בהכנסות של מאות מיליוני דולרים ויותר, עם צוות קטן. <b>זה חזון ולא תחזית</b>, ואיש לא יכול להבטיח את המדרגה הרביעית. מה שכן ברור לי: אי אפשר לדלג. בלי הידע מהמדרגה הראשונה אין שיטה. בלי הניסיון והמוניטין מהשנייה אף עסק לא יפקיד אצלנו את הניירת שלו. לכן מתחילים בקטן, וכל מדרגה היא עסק טוב גם אם נעצור בה.</p>
+
+    <h3>מכפיל כוח: למה דווקא שנינו</h3>
+    <div class="duo">
+      <img width="720" height="720" class="pa" src="img/team-avi.jpg" alt="תמונה של אבי" loading="lazy">
+      <div class="who a">
+        <span class="mono">אתה</span>
+        <b>הענף, האמון והשיפוט</b>
+        <ul class="checks">
+          <li>יודע איך יבואן באמת עובד, מההזמנה ועד המדף, ואיפה הכסף הולך לאיבוד.</li>
+          <li>פותח דלתות. לקוח ראשון, שני ושלישי יגיעו מאמון, לא מפרסום.</li>
+          <li>יודע מה בעל עסק יסכים לשמוע, ומה באמת שווה לו כסף.</li>
+        </ul>
+      </div>
+      <div class="x" aria-hidden="true">×</div>
+      <img width="720" height="720" class="pb" src="img/team-me.jpg" alt="תמונה שלי" loading="lazy">
+      <div class="who b">
+        <span class="mono">אני</span>
+        <b>הכלים, השיטה וההתמדה</b>
+        <ul class="checks">
+          <li>כמעט שנה אני בונה ומפעיל סוכנים, ועוקב כל שבוע אחרי מה שחדש.</li>
+          <li>יודע לבחור כלים, לחבר אותם למערכות של הלקוח ולהפעיל אותם.</li>
+          <li>אבחון, מדידה לפני ואחרי, נהלים כתובים ודוחות. לרובם כבר יש לי טיוטות.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="panel">
+      <h3>למה זה כפל, ולא חיבור</h3>
+      <p><span class="chip guess">הערכה</span> כל אחד מאיתנו לבדו שווה מעט בעסק הזה. אני לבדי בונה סוכנים שעובדים יפה על דוגמאות, בלי לדעת איפה באמת כואב ובלי לקוח אחד שסומך עליי. אתה לבדך רואה את הבזבוז כבר שנים, בלי דרך זולה לתקן אותו.</p>
+      <p>ביחד, מה שאתה יודע הופך לנוהל שסוכן עובד לפיו, והדלת שאתה פותח הופכת ללקוח. זה מה שנקרא מכפיל כוח: יכולת אחת לא מתווספת לשנייה, היא מכפילה אותה. ובלי אחת מהן התוצאה היא אפס.</p>
+    </div>
+    <p><span class="chip guess">הערכה</span> ומה חסר לשנינו: מי שיעמוד מול הלקוח ביום-יום כשיהיו יותר משלושה לקוחות, ועורך דין ורואה חשבון שמכירים חוזי שירות כאלה. את הראשון נצטרך לגייס כשנגיע לשם. את השניים כדאי למצוא עכשיו.</p>
+
+    <div class="askline"><b>שאלה אליך</b><span>מה מהתמונה הזאת נשמע לך נכון, ומה נשמע לך מוגזם? ואיך אתה רואה את החלוקה בינינו? השאלות המלאות נמצאות בפרק 11, בנושא ״העסק בינינו״.</span></div>
+  </section>
+
   <section id="risks">
     <div class="chap-head">
-      <span class="n">פרק 9 · סיכונים</span>
+      <span class="n">פרק 10 · סיכונים</span>
       <h2>אחד עשר דברים שיכולים להשתבש, ומה עושים עם כל אחד</h2>
       <p class="gist">תוכנית בלי פרק כזה היא מצגת מכירות. אספתי כאן את מה שהכי מדאיג אותי, ואת מה שאני מניח שידאיג אותך. לכל סיכון יש תשובה. חלק מהתשובות מבוססות על מקור, וחלקן הן רק הדרך שבה אני מציע לעבוד. <b>אם חסר כאן סיכון שאתה רואה, זה הדבר הראשון שאני רוצה לשמוע.</b></p>
     </div>
@@ -2079,7 +2429,11 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
         <div class="ans">
           <h4>התשובה</h4>
           <p>הסוכן מכין, ואדם מאשר כל דבר שיש בו כסף או התחייבות. כך עובדים גם הגדולים: אצל Flexport כל חריג עובר לאדם (<a class="src" href="https://www.freightwaves.com/news/flexport-mcp-server-ai-agents-freight-booking" target="_blank" rel="noopener" title="FreightWaves, Flexport launches MCP Server for AI agents to book freight (29.9.2026)">FreightWaves, 29.9.2026</a>), ואצל Nauta הסוכן מבצע רק אחרי אישור (<a class="src" href="https://www.freightwaves.com/news/nauta-brings-ai-native-inventory-intelligence-to-the-heart-of-importer-operations" target="_blank" rel="noopener" title="FreightWaves, Nauta brings AI-native inventory intelligence to the heart of importer operations (16.12.2025)">FreightWaves, 16.12.2025</a>). לפני ההפעלה הסוכן רץ ״בצל״, לצד הצוות, עד שהוא עומד ברף שסוכם. מתחילים במשימות שטעות בהן זולה: תזכורות, שיוך מסמכים, השוואות.</p>
+          <details class="more"><summary>כמה טועים אנשים <span>מה נמצא ברשימוני יבוא באוסטרליה</span></summary>
+<div class="in">
           <p><span class="chip data">נתון</span> וגם אנשים טועים. רשות הגבולות של אוסטרליה מצאה טעות ב-32% מרשימוני היבוא שבדקה בשנה אחת (<a class="src" href="https://cargowise.com/news/tariff-classification-errors-nearly-quadrupled-in-fy-2024-25-what-abf-data-reveals-and-how-borderwise-can-help/" target="_blank" rel="noopener" title="CargoWise, Tariff classification errors nearly quadrupled in FY 2024–25: what ABF data reveals (16.6.2026)">CargoWise, לפי רשות הגבולות של אוסטרליה</a>). <span class="chip guess">הערכה</span> ההשוואה הנכונה היא מול מה שקורה היום, ולכן מודדים את שיעור הטעויות לפני ואחרי.</p>
+          </div>
+</details>
         </div>
       </div>
 
@@ -2091,7 +2445,11 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
         <div class="ans">
           <h4>התשובה</h4>
           <p><span class="chip guess">הערכה</span> הסוכנים של Priority חיים בתוך המערכת. העבודה של דסק היבוא נעשית בין החברות: מייל מהמפעל, פורטל של משלח, הודעת וואטסאפ מלקוח. וכשהסוכנים שלה ישתפרו, נשתמש בהם. הלקוח קונה מאיתנו תוצאה, והכלי יכול להתחלף.</p>
+          <details class="more"><summary>ומה עם המשלח <span>למה יבואן צריך מישהו בצד שלו</span></summary>
+<div class="in">
           <p><span class="chip guess">הערכה</span> המשלח משרת קודם כול את עצמו. יבואן צריך מישהו בצד שלו, שמשווה בין משלחים ובודק את החשבונות שלהם. <span class="chip data">נתון</span> וגם כשהכלים כבר קיימים, רק 13% ממנהלי הלוגיסטיקה מדווחים על תוצאה כספית מדידה (<a class="src" href="https://www.bcg.com/publications/2026/why-ai-isnt-delivering-roi-logistics" target="_blank" rel="noopener" title="BCG, AI Hasn&#x27;t Fully Paid Off Yet in Logistics. But It Will. (24.8.2026)">BCG, אוגוסט 2026</a>). מישהו צריך להפעיל.</p>
+          </div>
+</details>
         </div>
       </div>
 
@@ -2103,7 +2461,11 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
         <div class="ans">
           <h4>התשובה</h4>
           <p><span class="chip guess">הערכה</span> זו הסיבה שזה שירות ולא מוצר. סוכן קורא את המסמכים כמו שהם: סריקה, אקסל, הודעה. אין צורך בפרויקט של ניקוי נתונים לפני שמתחילים. את הידע שבראש כותבים לנוהל יחד עם מי שמחזיקה בו, תהליך אחרי תהליך.</p>
+          <details class="more"><summary>מה קורה כשהוותיקים פורשים <span>ולמה נוהל כתוב הוא נכס</span></summary>
+<div class="in">
           <p><span class="chip data">נתון</span> ״אנשים מנוסים עוזבים את הענף או פורשים מוקדם״, אומר מייסד של חברה שמוכרת לעמילי מכס (<a class="src" href="https://techcrunch.com/2026/02/19/this-former-big-tech-engineers-are-using-ai-to-navigate-trumps-trade-chaos/" target="_blank" rel="noopener" title="TechCrunch, These former Big Tech engineers are using AI to navigate Trump&#x27;s trade chaos (19.2.2026)">TechCrunch, 19.2.2026</a>). <span class="chip guess">הערכה</span> נוהל כתוב הוא נכס של הבעלים גם בלי הסוכן: הוא התשובה לשאלה מה קורה כשהעובדת הוותיקה פורשת.</p>
+          </div>
+</details>
         </div>
       </div>
 
@@ -2137,7 +2499,11 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
         <div class="ans">
           <h4>התשובה</h4>
           <p><span class="chip data">נתון</span> אותו מנכ״ל אמר לעובדים שהטכנולוגיה תעזור לחברה לגדול, ותפנה אותם לקשר עם הלקוחות ולעבודת הציות (<a class="src" href="https://techcrunch.com/2026/02/19/this-former-big-tech-engineers-are-using-ai-to-navigate-trumps-trade-chaos/" target="_blank" rel="noopener" title="TechCrunch, These former Big Tech engineers are using AI to navigate Trump&#x27;s trade chaos (19.2.2026)">TechCrunch, 19.2.2026</a>). אצל מפיצים בארה״ב, 76.3% לא שינו את מספר העובדים בעקבות ה-AI (<a class="src" href="https://www.mdm.com/?p=437022" target="_blank" rel="noopener" title="Research: Distribution AI&#x27;s First Workforce Impact Is Capacity, Not Cuts (Modern Distribution Management, on the NAW 2026 AI Adoption Index)">NAW ו-MDM, 2026</a>).</p>
+          <details class="more"><summary>מה עושים אצלנו, ומה לא מבטיחים <span>כולל דוגמה הפוכה</span></summary>
+<div class="in">
           <p><span class="chip guess">הערכה</span> אצלנו העובדת הוותיקה כותבת איתנו את הנוהל, ונעשית מי שמפקחת על הסוכן. מתחילים במה שהיא הכי שונאת לעשות: לרדוף אחרי מסמכים. ולא מבטיחים מה שלא נכון: <span class="chip data">נתון</span> משלח ענק כמו Kuehne+Nagel כן ביטל יותר מ-2,000 משרות (<a class="src" href="https://www.freightwaves.com/news/kuehnenagel-to-layoff-2000-workers-amid-weak-demand-ai-push" target="_blank" rel="noopener" title="FreightWaves, Kuehne+Nagel to lay off 2,000 workers amid weak demand, AI push (3.3.2026)">FreightWaves, 3.3.2026</a>). <span class="chip guess">הערכה</span> אצל יבואן עם עשרה אנשי משרד, התוצאה המציאותית היא לגדול בלי לגייס.</p>
+          </div>
+</details>
         </div>
       </div>
 
@@ -2149,7 +2515,11 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
         <div class="ans">
           <h4>התשובה</h4>
           <p><span class="chip guess">הערכה</span> הסוכן מכין את התיק, ועמיל המכס מגיש וחותם, כמו היום. <span class="chip data">נתון</span> כך עושה גם Flexport: קוד המכס שהמערכת מציעה נשלח לעמיל מורשה לאישור לפני ההגשה (<a class="src" href="https://www.freightwaves.com/news/flexport-mcp-server-ai-agents-freight-booking" target="_blank" rel="noopener" title="FreightWaves, Flexport launches MCP Server for AI agents to book freight (29.9.2026)">FreightWaves, 29.9.2026</a>).</p>
+          <details class="more"><summary>מה סוגרים בחוזה <span>ושתי בדיקות משפטיות שעוד לא נעשו</span></summary>
+<div class="in">
           <p><span class="chip guess">הערכה</span> את השאר סוגרים בחוזה: אנחנו פועלים לפי הוראות הלקוח, האחריות שלנו מוגבלת בסכום, ויש ביטוח אחריות מקצועית. המידע נשאר במערכות של הלקוח. יש לי טיוטות של הסכם שירות ושל נספח פרטיות, והן מחכות לעורך דין. <span class="chip ask">לברר</span> שתי בדיקות משפטיות שעוד לא נעשו: חוק הגנת הפרטיות אחרי תיקון 13, וגבולות האחריות מול עמיל המכס.</p>
+          </div>
+</details>
         </div>
       </div>
 
@@ -2161,7 +2531,11 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
         <div class="ans">
           <h4>התשובה</h4>
           <p><span class="chip guess">הערכה</span> הנוהל והידע של הלקוח כתובים בשפה רגילה ונשמרים מחוץ למודל, כך שהחלפת מודל היא עניין של ימים. כל סוכן נבדק מול שני ספקים לפחות. <span class="chip data">נתון</span> עד עכשיו המחירים נעו בכיוון אחד: ירידה של בערך פי 13 בשנה (<a class="src" href="https://epoch.ai/publications/the-plunging-price-of-thought" target="_blank" rel="noopener" title="Epoch AI, The plunging price of thought, ספטמבר 2026">Epoch AI, 2026</a>).</p>
+          <details class="more"><summary>המידע של הלקוח, ומה קורה כשהסוכן נופל <span>תנאי השימוש, והגיבוי האנושי</span></summary>
+<div class="in">
           <p><span class="chip guess">הערכה</span> עובדים רק בתנאי שימוש עסקיים שבהם המידע של הלקוח לא משמש לאימון מודלים, וכותבים את זה בחוזה. ואם הסוכן נפל ליום, העבודה חוזרת לאנשים שעשו אותה קודם. לכן לא מפרקים את הידע שלהם.</p>
+          </div>
+</details>
         </div>
       </div>
 
@@ -2173,7 +2547,11 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
         <div class="ans">
           <h4>התשובה</h4>
           <p><span class="chip guess">הערכה</span> נישה אחת וחבילה אחת, כדי שכל הקמה תהיה קצרה מהקודמת. יעד של שלושה לקוחות בשנה הראשונה, לא שלושים. הסכום החודשי הקבוע מממן את האדם הבא לפני שצריך אותו.</p>
+          <details class="more"><summary>גם חברות מוצר עובדות כך <span>הדוגמה של HappyRobot</span></summary>
+<div class="in">
           <p><span class="chip data">נתון</span> גם חברת מוצר כמו HappyRobot מצמידה מהנדס לכל לקוח (<a class="src" href="https://www.freightwaves.com/news/happyrobot-raises-44m-to-revolutionize-supply-chains" target="_blank" rel="noopener" title="FreightWaves, HappyRobot raises $44M to revolutionize supply chains (3.9.2025)">FreightWaves, 3.9.2025</a>). <span class="chip guess">הערכה</span> זה טבע השוק הזה בשלב הזה, לא חולשה שלנו. ואם זה יעבוד, ההחלטה אם להישאר בוטיק או לגדול תהיה בעיה טובה.</p>
+          </div>
+</details>
         </div>
       </div>
 
@@ -2184,7 +2562,7 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
         </div>
         <div class="ans">
           <h4>התשובה</h4>
-          <p><span class="chip guess">הערכה</span> הנתונים והנוהל של כל לקוח נשמרים בנפרד ושייכים לו. מה שעובר מלקוח ללקוח הוא השיטה, לא המידע. חותמים על סודיות מהיום הראשון. <span class="chip ask">לברר</span> ואפשר להציע בלעדיות בקטגוריה, בתמורה למחיר גבוה יותר. אתה מכיר את הרגישויות האלה טוב ממני, והשאלה מופיעה בפרק 10.</p>
+          <p><span class="chip guess">הערכה</span> הנתונים והנוהל של כל לקוח נשמרים בנפרד ושייכים לו. מה שעובר מלקוח ללקוח הוא השיטה, לא המידע. חותמים על סודיות מהיום הראשון. <span class="chip ask">לברר</span> ואפשר להציע בלעדיות בקטגוריה, בתמורה למחיר גבוה יותר. אתה מכיר את הרגישויות האלה טוב ממני, והשאלה מופיעה בפרק 11.</p>
         </div>
       </div>
 
@@ -2196,28 +2574,43 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
         <div class="ans">
           <h4>התשובה</h4>
           <p><span class="chip guess">הערכה</span> עסק בלחץ צריך יעילות יותר, לא פחות. ומי שעוקב אחרי כל משלוח בזמן אמת מגיב מהר יותר כשמסלול נסגר או כשהמחיר קופץ.</p>
+          <details class="more"><summary>לאן אפשר לגדול מכאן <span>ענפים קרובים ושווקים אחרים</span></summary>
+<div class="in">
           <p><span class="chip guess">הערכה</span> הנישה היא נקודת כניסה, לא תקרה. אותה שיטה מתאימה למשלחים, לעמילי מכס ולמפיצים מקומיים. והיא לא מוגבלת לישראל: <span class="chip data">נתון</span> ל-Priority לבדה יש לקוחות ב-70 מדינות (<a class="src" href="https://www.priority-software.com/blog/news/priority-software-unveils-prioritys-ai-first-erp-powered/" target="_blank" rel="noopener" title="Priority Software Unveils Priority&#x27;s AI First ERP Powered by an Embedded aiERP Companion and Specialized AI Agents (20.5.2026)">Priority, 20.5.2026</a>). <span class="chip guess">הערכה</span> קודם מוכיחים כאן, אצל אנשים שמכירים אותך.</p>
+          </div>
+</details>
         </div>
       </div>
     </div>
 
     <div class="panel">
       <h3>והסיכון שלא נמצא ברשימה <span class="chip guess">הערכה</span></h3>
-      <p>שנמשיך לחקור, לכתוב מסמכים ולדבר, ולא נשב אצל לקוח אחד. את כל מה שכתוב במסמך הזה למדתי מקריאה. מה שבאמת חסר לי הוא שבוע אחד בתוך מחלקת יבוא אמיתית. לכן הצעד הבא, בפרק 11, קטן בכוונה.</p>
+      <p>שנמשיך לחקור, לכתוב מסמכים ולדבר, ולא נשב אצל לקוח אחד. את כל מה שכתוב במסמך הזה למדתי מקריאה. מה שבאמת חסר לי הוא שבוע אחד בתוך מחלקת יבוא אמיתית. לכן הצעד הבא, בפרק 12, קטן בכוונה.</p>
     </div>
   </section>
 
   <section id="questions">
     <div class="chap-head">
-      <span class="n">פרק 10 · נייר העבודה</span>
+      <span class="n">פרק 11 · נייר העבודה</span>
       <h2>השאלות אליך: מה שלא כתוב בשום מקום</h2>
       <p class="gist">כל מה שכתבתי עד כאן נשען על קריאה ועל שיחה אחת איתך. כדי לחדד את הכיוון אני צריך את מה שיודע רק מי שעשה את זה שנים. ריכזתי כאן את כל השאלות, לפי נושאים, וליד כל אחת כתבתי למה אני שואל. <b>אין צורך לענות על כולן.</b> תשובה של משפט אחד היום שווה לי יותר מתשובה מושלמת בעוד חודש.</p>
     </div>
 
+    <div class="ido">
+      <img width="200" height="200" src="img/ido.png" alt="עידו, המראיין">
+      <div class="txt">
+        <b>לא חייבים לכתוב. אפשר פשוט לדבר עם עידו</b>
+        <p>עידו הוא מראיין: סוכן AI שמכיר את המסמך הזה ואת השאלות שבו. הוא שואל בקול או בכתב, מקשיב, בודק דברים ברשת תוך כדי שיחה, וזוכר מהשיחה הקודמת. כל מה שתספר לו נרשם כאן, ליד השאלה המתאימה.</p>
+        <div class="row"><a class="btn solid" id="ido-link" href="talk/">לשוחח עם עידו</a><span class="note">נפתח בקישור האישי שקיבלת. עשר דקות מספיקות לשיחה ראשונה.</span></div>
+      </div>
+    </div>
+
     <div class="beat">
       <b>איך לענות</b>
-      <span>בכתב, בהקלטה קולית או בשיחה, מה שנוח לך. גם ״לא יודע״ וגם ״תשאל את פלוני״ הן תשובות טובות. תשע שאלות מסומנות <span class="tag first">קודם</span>. אם יש לך רבע שעה, התחל בהן. כל תשובה תיכנס לגרסה הבאה של המסמך.</span>
+      <span>בשיחה עם עידו, בכתב בתיבה שמתחת לכל שאלה, או בהקלטה קולית אליי, מה שנוח לך. מה שכותבים בתיבות נשמר מעצמו. גם ״לא יודע״ וגם ״תשאל את פלוני״ הן תשובות טובות. תשע שאלות מסומנות <span class="tag first">קודם</span>. אם יש לך רבע שעה, התחל בהן. כל תשובה תיכנס לגרסה הבאה של המסמך.</span>
     </div>
+
+    <div id="desk" data-endpoint="https://cjtzqurhgoblgtzungka.supabase.co/functions/v1/desk" hidden></div>
 
     <div class="copyrow">
       <button type="button" class="btn solid" id="copy-questions">להעתיק את כל השאלות</button>
@@ -2228,112 +2621,112 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
     <div class="qgroup">
       <h3>א. הכלכלה של יבואן <span>כדי לדעת על מה שווה לעבוד קודם</span></h3>
       <ol class="qlist cont">
-        <li><div>מהן ההוצאות שבעל עסק יודע שהוא משלם, ולא יודע כמה? דמי השהיה, טעויות בהזמנה, ריבית על מלאי, קנסות. <span class="tag first">קודם</span><span>שם נמצא הכסף שאפשר לספור, ועליו נשען הבונוס שלנו.</span></div></li>
-        <li><div>ממה מורכב הפער בין הרווח הגולמי לרווח הנקי אצל יבואן טיפוסי?<span>כדי לדעת איזה סעיף שווה לתקוף ראשון.</span></div></li>
-        <li><div>כמה כסף ״נתקע״ בממוצע במלאי ובמחסן הערובה, ולכמה זמן?<span>תזרים הוא אחת מעשר ההזדמנויות, ואין לי עליו מספר אמיתי.</span></div></li>
-        <li><div>מה שווה לבעלים שבוע אחד פחות בין ההזמנה למדף?<span>זה המספר שהופך זמן לכסף.</span></div></li>
-        <li><div>באיזה גודל עסק הכאב הכי חד: גדול מספיק כדי לשלם, וקטן מספיק כדי שהבעלים יחליט לבד?<span>זו ההגדרה של הלקוח הראשון.</span></div></li>
-        <li><div>אילו מספרים יבואן רואה כל חודש על העסק שלו?<span>המדד שלנו צריך להיות מספר שהוא כבר מכיר וסומך עליו.</span></div></li>
+        <li data-q="q01" data-n="1" class="first"><div>מהן ההוצאות שבעל עסק יודע שהוא משלם, ולא יודע כמה? דמי השהיה, טעויות בהזמנה, ריבית על מלאי, קנסות. <span class="tag first">קודם</span><span>שם נמצא הכסף שאפשר לספור, ועליו נשען הבונוס שלנו.</span></div></li>
+        <li data-q="q02" data-n="2"><div>ממה מורכב הפער בין הרווח הגולמי לרווח הנקי אצל יבואן טיפוסי?<span>כדי לדעת איזה סעיף שווה לתקוף ראשון.</span></div></li>
+        <li data-q="q03" data-n="3"><div>כמה כסף ״נתקע״ בממוצע במלאי ובמחסן הערובה, ולכמה זמן?<span>תזרים הוא אחת מעשר ההזדמנויות, ואין לי עליו מספר אמיתי.</span></div></li>
+        <li data-q="q04" data-n="4"><div>מה שווה לבעלים שבוע אחד פחות בין ההזמנה למדף?<span>זה המספר שהופך זמן לכסף.</span></div></li>
+        <li data-q="q05" data-n="5"><div>באיזה גודל עסק הכאב הכי חד: גדול מספיק כדי לשלם, וקטן מספיק כדי שהבעלים יחליט לבד?<span>זו ההגדרה של הלקוח הראשון.</span></div></li>
+        <li data-q="q06" data-n="6"><div>אילו מספרים יבואן רואה כל חודש על העסק שלו?<span>המדד שלנו צריך להיות מספר שהוא כבר מכיר וסומך עליו.</span></div></li>
       </ol>
     </div>
 
     <div class="qgroup">
       <h3>ב. האנשים במשרד <span>כדי להבין מי עושה את העבודה היום</span></h3>
       <ol class="qlist cont">
-        <li><div>מי יושב במשרד של יבואן בינוני? אילו תפקידים, וכמה אנשים בכל אחד? <span class="tag first">קודם</span><span>בלי זה אין בסיס לשום חישוב של קיבולת.</span></div></li>
-        <li><div>את מי מהם הכי קשה להחליף, ולמה?<span>שם נמצא הידע שצריך לכתוב לנוהל.</span></div></li>
-        <li><div>מה קורה כשרכזת היבוא בחופשה, או עוזבת?<span>זה מראה כמה העסק תלוי באדם אחד.</span></div></li>
-        <li><div>על מה בעל העסק עצמו מבזבז זמן שהוא לא אמור לבזבז?<span>הסוכן הראשון צריך לפנות גם אותו, לא רק את הצוות.</span></div></li>
-        <li><div>איך יגיבו העובדים הוותיקים, ומה היה גורם להם לשתף פעולה?<span>בלי שיתוף פעולה שלהם אין נוהל, ובלי נוהל אין סוכן.</span></div></li>
+        <li data-q="q07" data-n="7" class="first"><div>מי יושב במשרד של יבואן בינוני? אילו תפקידים, וכמה אנשים בכל אחד? <span class="tag first">קודם</span><span>בלי זה אין בסיס לשום חישוב של קיבולת.</span></div></li>
+        <li data-q="q08" data-n="8"><div>את מי מהם הכי קשה להחליף, ולמה?<span>שם נמצא הידע שצריך לכתוב לנוהל.</span></div></li>
+        <li data-q="q09" data-n="9"><div>מה קורה כשרכזת היבוא בחופשה, או עוזבת?<span>זה מראה כמה העסק תלוי באדם אחד.</span></div></li>
+        <li data-q="q10" data-n="10"><div>על מה בעל העסק עצמו מבזבז זמן שהוא לא אמור לבזבז?<span>הסוכן הראשון צריך לפנות גם אותו, לא רק את הצוות.</span></div></li>
+        <li data-q="q11" data-n="11"><div>איך יגיבו העובדים הוותיקים, ומה היה גורם להם לשתף פעולה?<span>בלי שיתוף פעולה שלהם אין נוהל, ובלי נוהל אין סוכן.</span></div></li>
       </ol>
     </div>
 
     <div class="qgroup">
       <h3>ג. חיי הזמנה אחת <span>השאלות מתשע התחנות שבפרק 3</span></h3>
       <ol class="qlist cont">
-        <li><div>איך באמת מחליטים מה להזמין וכמה? כמה מההחלטה היא מספרים וכמה תחושת בטן, ומה היית רוצה שיהיה לך ביד כשאתה עומד מול ספק?<span>תחנה 1, היריד והבחירה.</span></div></li>
-        <li><div>מה מותג דורש מהיבואן באופן שוטף: דוחות, מינימום, אישורים? כמה עבודה זו בפועל, ומה קורה כשמפספסים?<span>תחנה 2. דרישות חוזרות הן עבודה שסוכן יכול לקחת.</span></div></li>
-        <li><div>מי עוקב אחרי הזמנה פתוחה, וכל כמה זמן? באיזה שלב מגלים בדרך כלל עיכוב, ומה עוד אפשר לעשות אז? <span class="tag first">קודם</span><span>תחנה 3. זה הלב של דסק היבוא ושל הסרט.</span></div></li>
-        <li><div>אילו מסמכים נוטים להגיע מאוחר או שגויים? ומה זה עלה בפעם האחרונה שזה קרה לך?<span>תחנה 4. סיפור אחד אמיתי שווה יותר מכל סטטיסטיקה.</span></div></li>
-        <li><div>כמה מהמשלוחים מתעכבים בפועל, ובכמה? מי מחליט בין ים לאוויר, ולפי מה?<span>תחנה 5.</span></div></li>
-        <li><div>איך מחליטים היום מה לשחרר ממחסן הערובה ומתי? מי עושה את החשבון, ובאיזה כלי?<span>תחנה 6. ההערכה שלי היא שזה נעשה באקסל ובראש, ואני רוצה לדעת אם טעיתי.</span></div></li>
-        <li><div>כמה ימים עוברים מהגעת המכולה למחסן ועד שהסחורה על המדף ובאתר? מה מעכב?<span>תחנה 7.</span></div></li>
-        <li><div>באיזה ערוץ מגיעות ההזמנות הסיטונאיות, וכמה אנשים מקלידים אותן? איפה קורות הטעויות?<span>תחנה 8. זה הבסיס לסוכן ההזמנות.</span></div></li>
-        <li><div>כמה אנשים עוסקים בהתאמות, בחשבוניות ובגבייה, ומה מזה הכי מתסכל אותם?<span>תחנה 9.</span></div></li>
+        <li data-q="q12" data-n="12"><div>איך באמת מחליטים מה להזמין וכמה? כמה מההחלטה היא מספרים וכמה תחושת בטן, ומה היית רוצה שיהיה לך ביד כשאתה עומד מול ספק?<span>תחנה 1, היריד והבחירה.</span></div></li>
+        <li data-q="q13" data-n="13"><div>מה מותג דורש מהיבואן באופן שוטף: דוחות, מינימום, אישורים? כמה עבודה זו בפועל, ומה קורה כשמפספסים?<span>תחנה 2. דרישות חוזרות הן עבודה שסוכן יכול לקחת.</span></div></li>
+        <li data-q="q14" data-n="14" class="first"><div>מי עוקב אחרי הזמנה פתוחה, וכל כמה זמן? באיזה שלב מגלים בדרך כלל עיכוב, ומה עוד אפשר לעשות אז? <span class="tag first">קודם</span><span>תחנה 3. זה הלב של דסק היבוא ושל הסרט.</span></div></li>
+        <li data-q="q15" data-n="15"><div>אילו מסמכים נוטים להגיע מאוחר או שגויים? ומה זה עלה בפעם האחרונה שזה קרה לך?<span>תחנה 4. סיפור אחד אמיתי שווה יותר מכל סטטיסטיקה.</span></div></li>
+        <li data-q="q16" data-n="16"><div>כמה מהמשלוחים מתעכבים בפועל, ובכמה? מי מחליט בין ים לאוויר, ולפי מה?<span>תחנה 5.</span></div></li>
+        <li data-q="q17" data-n="17"><div>איך מחליטים היום מה לשחרר ממחסן הערובה ומתי? מי עושה את החשבון, ובאיזה כלי?<span>תחנה 6. ההערכה שלי היא שזה נעשה באקסל ובראש, ואני רוצה לדעת אם טעיתי.</span></div></li>
+        <li data-q="q18" data-n="18"><div>כמה ימים עוברים מהגעת המכולה למחסן ועד שהסחורה על המדף ובאתר? מה מעכב?<span>תחנה 7.</span></div></li>
+        <li data-q="q19" data-n="19"><div>באיזה ערוץ מגיעות ההזמנות הסיטונאיות, וכמה אנשים מקלידים אותן? איפה קורות הטעויות?<span>תחנה 8. זה הבסיס לסוכן ההזמנות.</span></div></li>
+        <li data-q="q20" data-n="20"><div>כמה אנשים עוסקים בהתאמות, בחשבוניות ובגבייה, ומה מזה הכי מתסכל אותם?<span>תחנה 9.</span></div></li>
       </ol>
     </div>
 
     <div class="qgroup">
       <h3>ד. ספקים, מותגים וזיכיונות <span>כדי להבין את הצד שמעבר לים</span></h3>
       <ol class="qlist cont">
-        <li><div>אילו כללים של סוחר ותיק יש לך בראש, שאף מערכת לא יודעת? למשל: ״ספק הודיע על עיכוב? קודם שואלים מה כבר ארוז״. <span class="tag first">קודם</span><span>חמישה כללים כאלה יהיו הנוהל הראשון שלנו.</span></div></li>
-        <li><div>מה כתוב בדרך כלל בהסכם זיכיון או הפצה על מינימום רכישה, דיווח ושיווק?<span>כל סעיף כזה מייצר עבודה חוזרת במשרד.</span></div></li>
-        <li><div>כמה ספקים פעילים יש ליבואן בינוני, ובאילו שפות וערוצים מתכתבים איתם?<span>זה קובע את היקף העבודה של הסוכן שמדבר עם הספקים.</span></div></li>
-        <li><div>במשא ומתן מול מפעל או מותג, איזה מידע היה משנה לך את התוצאה אילו היה לך אותו מראש?<span>הכנה ליריד ולמשא ומתן היא ההזדמנות שהכי קשה לי להעריך.</span></div></li>
-        <li><div>איך בודקים איכות לפני משלוח, ומי משלם כשמגיעה סחורה פגומה?<span>רוצה להבין אם יש כאן תהליך שכדאי לתעד ולעקוב אחריו.</span></div></li>
+        <li data-q="q21" data-n="21" class="first"><div>אילו כללים של סוחר ותיק יש לך בראש, שאף מערכת לא יודעת? למשל: ״ספק הודיע על עיכוב? קודם שואלים מה כבר ארוז״. <span class="tag first">קודם</span><span>חמישה כללים כאלה יהיו הנוהל הראשון שלנו.</span></div></li>
+        <li data-q="q22" data-n="22"><div>מה כתוב בדרך כלל בהסכם זיכיון או הפצה על מינימום רכישה, דיווח ושיווק?<span>כל סעיף כזה מייצר עבודה חוזרת במשרד.</span></div></li>
+        <li data-q="q23" data-n="23"><div>כמה ספקים פעילים יש ליבואן בינוני, ובאילו שפות וערוצים מתכתבים איתם?<span>זה קובע את היקף העבודה של הסוכן שמדבר עם הספקים.</span></div></li>
+        <li data-q="q24" data-n="24"><div>במשא ומתן מול מפעל או מותג, איזה מידע היה משנה לך את התוצאה אילו היה לך אותו מראש?<span>הכנה ליריד ולמשא ומתן היא ההזדמנות שהכי קשה לי להעריך.</span></div></li>
+        <li data-q="q25" data-n="25"><div>איך בודקים איכות לפני משלוח, ומי משלם כשמגיעה סחורה פגומה?<span>רוצה להבין אם יש כאן תהליך שכדאי לתעד ולעקוב אחריו.</span></div></li>
       </ol>
     </div>
 
     <div class="qgroup">
       <h3>ה. משלחים, עמילי מכס ומחסנים <span>שותפים, ואולי גם מתחרים</span></h3>
       <ol class="qlist cont">
-        <li><div>כמה דמי השהיה ואחסנה משלם יבואן בינוני בשנה, ומה הסיבה הנפוצה? <span class="tag first">קודם</span><span>זה המספר שהכי קל לספור, ולכן הכי קל למכור.</span></div></li>
-        <li><div>יבואנים בודקים את חשבונות ההובלה שורה אחרי שורה? כמה פעמים מצאת בהם טעות?<span>לא מצאתי נתון ישראלי על שיעור הטעויות.</span></div></li>
-        <li><div>איך יבואן בוחר משלח ועמיל מכס, וכל כמה זמן הוא מחליף אותם?<span>כדי להבין אם המשלח הוא ערוץ מכירה שלנו או מתחרה.</span></div></li>
-        <li><div>איך עמיל מכס יגיב לתיק מסמכים שסוכן הכין ובדק? יראה בזה עזרה או איום?<span>בלי ההסכמה שלו השירות הזה לא עובד.</span></div></li>
-        <li><div>שמעת על משלח, עמיל מכס, בית תוכנה או יועץ שמציע ליבואנים בארץ משהו כזה? ומי היה הראשון שיבואן פונה אליו אם היה רוצה את זה היום?<span>החיפוש שלי ברשת לא מצא. ייתכן שאתה מכיר מישהו שלא מפרסם.</span></div></li>
+        <li data-q="q26" data-n="26" class="first"><div>כמה דמי השהיה ואחסנה משלם יבואן בינוני בשנה, ומה הסיבה הנפוצה? <span class="tag first">קודם</span><span>זה המספר שהכי קל לספור, ולכן הכי קל למכור.</span></div></li>
+        <li data-q="q27" data-n="27"><div>יבואנים בודקים את חשבונות ההובלה שורה אחרי שורה? כמה פעמים מצאת בהם טעות?<span>לא מצאתי נתון ישראלי על שיעור הטעויות.</span></div></li>
+        <li data-q="q28" data-n="28"><div>איך יבואן בוחר משלח ועמיל מכס, וכל כמה זמן הוא מחליף אותם?<span>כדי להבין אם המשלח הוא ערוץ מכירה שלנו או מתחרה.</span></div></li>
+        <li data-q="q29" data-n="29"><div>איך עמיל מכס יגיב לתיק מסמכים שסוכן הכין ובדק? יראה בזה עזרה או איום?<span>בלי ההסכמה שלו השירות הזה לא עובד.</span></div></li>
+        <li data-q="q30" data-n="30"><div>שמעת על משלח, עמיל מכס, בית תוכנה או יועץ שמציע ליבואנים בארץ משהו כזה? ומי היה הראשון שיבואן פונה אליו אם היה רוצה את זה היום?<span>החיפוש שלי ברשת לא מצא. ייתכן שאתה מכיר מישהו שלא מפרסם.</span></div></li>
       </ol>
     </div>
 
     <div class="qgroup">
       <h3>ו. מערכות וכלים <span>כדי לדעת למה מתחברים</span></h3>
       <ol class="qlist cont">
-        <li><div>באיזו מערכת ניהול עובדים היבואנים שאתה מכיר, וכמה מהעבודה נעשית בפועל מחוץ לה, באקסל ובוואטסאפ?<span>הנחתי שרובם על Priority. אם זה לא נכון, סדר העבודה שלנו משתנה.</span></div></li>
-        <li><div>מי מתחזק להם את המערכת: עובד שלהם או מטמיע חיצוני?<span>זה האדם שנצטרך לעבוד מולו, ואולי גם מי שיפנה אלינו לקוחות.</span></div></li>
-        <li><div>מישהו מהם כבר ניסה AI או אוטומציה? מה קרה?<span>ניסיון רע אחד משנה את כל שיחת המכירה.</span></div></li>
-        <li><div>מה בעל עסק יסכים לחבר לסוכן כבר ביום הראשון, ומה לא: מייל, מערכת הניהול, וואטסאפ, חשבון הבנק?<span>זה קובע איפה מתחילים, ומה נשאר בקריאה בלבד.</span></div></li>
+        <li data-q="q31" data-n="31"><div>באיזו מערכת ניהול עובדים היבואנים שאתה מכיר, וכמה מהעבודה נעשית בפועל מחוץ לה, באקסל ובוואטסאפ?<span>הנחתי שרובם על Priority. אם זה לא נכון, סדר העבודה שלנו משתנה.</span></div></li>
+        <li data-q="q32" data-n="32"><div>מי מתחזק להם את המערכת: עובד שלהם או מטמיע חיצוני?<span>זה האדם שנצטרך לעבוד מולו, ואולי גם מי שיפנה אלינו לקוחות.</span></div></li>
+        <li data-q="q33" data-n="33"><div>מישהו מהם כבר ניסה AI או אוטומציה? מה קרה?<span>ניסיון רע אחד משנה את כל שיחת המכירה.</span></div></li>
+        <li data-q="q34" data-n="34"><div>מה בעל עסק יסכים לחבר לסוכן כבר ביום הראשון, ומה לא: מייל, מערכת הניהול, וואטסאפ, חשבון הבנק?<span>זה קובע איפה מתחילים, ומה נשאר בקריאה בלבד.</span></div></li>
       </ol>
     </div>
 
     <div class="qgroup">
       <h3>ז. הלקוח הראשון, ואיך מוכרים <span>כדי לא לבזבז פגישה ראשונה</span></h3>
       <ol class="qlist cont">
-        <li><div>איזו מעשר ההזדמנויות שבפרק 4 הכי כואבת אצל יבואנים שאתה מכיר? ומה חסר ברשימה? <span class="tag first">קודם</span><span>הדירוג שם הוא שלי. הדירוג שלך יחליף אותו.</span></div></li>
-        <li><div>מה היה גורם לך, כיבואן, לסיים פגישה כזאת אחרי דקה?<span>כדי שלא אגיד את זה.</span></div></li>
-        <li><div>איך בעל עסק ותיק מחליט על ספק שירות חדש? מה משכנע אותו: מספר, המלצה, תקופת ניסיון?<span>לפי זה נבנה את ההצעה הראשונה.</span></div></li>
-        <li><div>מי שלושת היבואנים או המפיצים שכדאי לשבת איתם קודם, כדי ללמוד ולא כדי למכור? <span class="tag first">קודם</span><span>שלוש שיחות כאלה יחליפו חצי מההנחות שבמסמך הזה.</span></div></li>
-        <li><div>כמה בעל עסק יהיה מוכן לשלם בחודש על דסק שעובד? ועל מה הוא לא ישלם בשום מחיר?<span>המחירים שלנו עוד לא נקבעו, ואת זה אני רוצה לקבוע איתך.</span></div></li>
-        <li><div>על איזה סכום הוגן לגזור בונוס, ולאיזו תקופת התחייבות מינימלית בעל עסק יסכים?<span>שני הסעיפים הפתוחים במודל שבפרק 8.</span></div></li>
-        <li><div>בלעדיות בקטגוריה חשובה ליבואן? וכמה הוא יהיה מוכן לשלם עליה?<span>זו התשובה שלי לסיכון 10, ואני לא בטוח שהיא נכונה.</span></div></li>
+        <li data-q="q35" data-n="35" class="first"><div>איזו מעשר ההזדמנויות שבפרק 4 הכי כואבת אצל יבואנים שאתה מכיר? ומה חסר ברשימה? <span class="tag first">קודם</span><span>הדירוג שם הוא שלי. הדירוג שלך יחליף אותו.</span></div></li>
+        <li data-q="q36" data-n="36"><div>מה היה גורם לך, כיבואן, לסיים פגישה כזאת אחרי דקה?<span>כדי שלא אגיד את זה.</span></div></li>
+        <li data-q="q37" data-n="37"><div>איך בעל עסק ותיק מחליט על ספק שירות חדש? מה משכנע אותו: מספר, המלצה, תקופת ניסיון?<span>לפי זה נבנה את ההצעה הראשונה.</span></div></li>
+        <li data-q="q38" data-n="38" class="first"><div>מי שלושת היבואנים או המפיצים שכדאי לשבת איתם קודם, כדי ללמוד ולא כדי למכור? <span class="tag first">קודם</span><span>שלוש שיחות כאלה יחליפו חצי מההנחות שבמסמך הזה.</span></div></li>
+        <li data-q="q39" data-n="39"><div>כמה בעל עסק יהיה מוכן לשלם בחודש על דסק שעובד? ועל מה הוא לא ישלם בשום מחיר?<span>המחירים שלנו עוד לא נקבעו, ואת זה אני רוצה לקבוע איתך.</span></div></li>
+        <li data-q="q40" data-n="40"><div>על איזה סכום הוגן לגזור בונוס, ולאיזו תקופת התחייבות מינימלית בעל עסק יסכים?<span>שני הסעיפים הפתוחים במודל שבפרק 8.</span></div></li>
+        <li data-q="q41" data-n="41"><div>בלעדיות בקטגוריה חשובה ליבואן? וכמה הוא יהיה מוכן לשלם עליה?<span>זו התשובה שלי לסיכון 10, ואני לא בטוח שהיא נכונה.</span></div></li>
       </ol>
     </div>
 
     <div class="qgroup">
       <h3>ח. אינטר ג׳ינס <span>המידע שחסר כדי להציע משהו רציני</span></h3>
       <ol class="qlist cont">
-        <li><div>כמה אנשים יושבים במטה, ובאילו תפקידים? <span class="tag first">קודם</span><span>במחשבון שבפרק 6 הנחתי 20 אנשים. זה המספר הראשון שכדאי להחליף במספר אמיתי.</span></div></li>
-        <li><div>מה מהנתונים שפורסמו עדיין נכון: המחזור, מספר החנויות, רשימת המותגים?<span>חלק מהפרסומים הם מ-2019 ומ-2020.</span></div></li>
-        <li><div>באיזו מערכת ניהול ובאיזו מערכת קופות עובדים, והאם היא אחת לכל המותגים?<span>זה קובע כמה קל לחבר סוכן, ולכמה פעילויות בבת אחת.</span></div></li>
-        <li><div>איך מזמינים מכל מותג: בפורטל של המותג, בקובץ או במייל?<span>איפה שמזמינים בפורטל של המותג יש פחות מה לשפר.</span></div></li>
-        <li><div>מי מטפל ביבוא ובמכס: צוות פנימי, משלח או עמיל מכס חיצוני? וכמה משלוחים יש בחודש?<span>מספר המשלוחים הוא המדד הטוב ביותר לכמות הניירת.</span></div></li>
-        <li><div>הסחורה של אינטר פאשן עדיין מגיעה כל שבוע בהטסה? ואיך מגיעה הסחורה של REPLAY ושל NYOU?<span>משלוחים קטנים ותכופים פירושם הרבה תיקי יבוא.</span></div></li>
-        <li><div>השותפה החדשה באינטר פאשן מביאה מערכות ונהלים משלה?<span>אם כן, חלק מההחלטות כבר לא מתקבלות במקום אחד.</span></div></li>
-        <li><div>בכמה מהפעילויות ההחלטה על כלי עבודה חדש נמצאת בידי הבעלים בארץ, ובכמה צריך אישור של שותף או של מותג?<span>ההנחה שלי היא שב-REPLAY, ב-NYOU ובאתר רזילי ההחלטה מקומית.</span></div></li>
-        <li><div>מה כבר נוסה שם ב-AI, ומה יצא מזה?<span>מדיניות הפרטיות שלהם כבר מזכירה שימוש בכלי AI.</span></div></li>
-        <li><div>מה הכי מפריע לבעלים עצמם היום?<span>אם התשובה שונה ממה שכתבתי בפרק 6, מתחילים ממנה.</span></div></li>
-        <li><div>מי האדם הנכון לשיחה ראשונה שם, ואיך נכון להציג את הרעיון?<span>פגישה ראשונה יש רק אחת, ואני רוצה להגיע אליה מוכן.</span></div></li>
+        <li data-q="q42" data-n="42" class="first"><div>כמה אנשים יושבים במטה, ובאילו תפקידים? <span class="tag first">קודם</span><span>במחשבון שבפרק 6 הנחתי 20 אנשים. זה המספר הראשון שכדאי להחליף במספר אמיתי.</span></div></li>
+        <li data-q="q43" data-n="43"><div>מה מהנתונים שפורסמו עדיין נכון: המחזור, מספר החנויות, רשימת המותגים?<span>חלק מהפרסומים הם מ-2019 ומ-2020.</span></div></li>
+        <li data-q="q44" data-n="44"><div>באיזו מערכת ניהול ובאיזו מערכת קופות עובדים, והאם היא אחת לכל המותגים?<span>זה קובע כמה קל לחבר סוכן, ולכמה פעילויות בבת אחת.</span></div></li>
+        <li data-q="q45" data-n="45"><div>איך מזמינים מכל מותג: בפורטל של המותג, בקובץ או במייל?<span>איפה שמזמינים בפורטל של המותג יש פחות מה לשפר.</span></div></li>
+        <li data-q="q46" data-n="46"><div>מי מטפל ביבוא ובמכס: צוות פנימי, משלח או עמיל מכס חיצוני? וכמה משלוחים יש בחודש?<span>מספר המשלוחים הוא המדד הטוב ביותר לכמות הניירת.</span></div></li>
+        <li data-q="q47" data-n="47"><div>הסחורה של אינטר פאשן עדיין מגיעה כל שבוע בהטסה? ואיך מגיעה הסחורה של REPLAY ושל NYOU?<span>משלוחים קטנים ותכופים פירושם הרבה תיקי יבוא.</span></div></li>
+        <li data-q="q48" data-n="48"><div>השותפה החדשה באינטר פאשן מביאה מערכות ונהלים משלה?<span>אם כן, חלק מההחלטות כבר לא מתקבלות במקום אחד.</span></div></li>
+        <li data-q="q49" data-n="49"><div>בכמה מהפעילויות ההחלטה על כלי עבודה חדש נמצאת בידי הבעלים בארץ, ובכמה צריך אישור של שותף או של מותג?<span>ההנחה שלי היא שב-REPLAY, ב-NYOU ובאתר רזילי ההחלטה מקומית.</span></div></li>
+        <li data-q="q50" data-n="50"><div>מה כבר נוסה שם ב-AI, ומה יצא מזה?<span>מדיניות הפרטיות שלהם כבר מזכירה שימוש בכלי AI.</span></div></li>
+        <li data-q="q51" data-n="51"><div>מה הכי מפריע לבעלים עצמם היום?<span>אם התשובה שונה ממה שכתבתי בפרק 6, מתחילים ממנה.</span></div></li>
+        <li data-q="q52" data-n="52"><div>מי האדם הנכון לשיחה ראשונה שם, ואיך נכון להציג את הרעיון?<span>פגישה ראשונה יש רק אחת, ואני רוצה להגיע אליה מוכן.</span></div></li>
       </ol>
     </div>
 
     <div class="qgroup">
       <h3>ט. העסק בינינו <span>עדיף לדבר על זה מוקדם</span></h3>
       <ol class="qlist cont">
-        <li><div>מה צריך לקרות בשלושת החודשים הקרובים כדי שתגיד שזה שווה את הזמן שלך? <span class="tag first">קודם</span><span>כדי ששנינו נמדוד את אותו דבר.</span></div></li>
-        <li><div>כמה זמן אתה רוצה ויכול להשקיע, ובמה: פתיחת דלתות, פגישות, ליווי של לקוח?<span>התוכנית צריכה להתאים למה שיש, לא למה שהייתי רוצה שיהיה.</span></div></li>
-        <li><div>איך אתה רואה את החלוקה בינינו: תפקידים, החלטות, כסף?<span>אין לי הצעה מוכנה. אני רוצה לשמוע קודם אותך.</span></div></li>
-        <li><div>מה מדאיג אותך ברעיון, ולא מופיע בפרק 9?<span>הסיכון שאתה רואה ואני לא הוא החשוב ביותר.</span></div></li>
-        <li><div>איזה שם ואיזה סיפור מתאימים לעסק כזה בעיני יבואן?<span>השם הנוכחי הוא שם עבודה.</span></div></li>
-        <li><div>את מי כדאי לשתף או לשאול לפני שמתחילים: עורך דין, רואה חשבון, איש ענף נוסף?<span>שתי בדיקות משפטיות מחכות, והן מפורטות בסיכון 7.</span></div></li>
+        <li data-q="q53" data-n="53" class="first"><div>מה צריך לקרות בחודש הקרוב כדי שתגיד שזה שווה את הזמן שלך? <span class="tag first">קודם</span><span>כדי ששנינו נמדוד את אותו דבר.</span></div></li>
+        <li data-q="q54" data-n="54"><div>כמה זמן אתה רוצה ויכול להשקיע, ובמה: פתיחת דלתות, פגישות, ליווי של לקוח?<span>התוכנית צריכה להתאים למה שיש, לא למה שהייתי רוצה שיהיה.</span></div></li>
+        <li data-q="q55" data-n="55"><div>איך אתה רואה את החלוקה בינינו: תפקידים, החלטות, כסף?<span>אין לי הצעה מוכנה. אני רוצה לשמוע קודם אותך.</span></div></li>
+        <li data-q="q56" data-n="56"><div>מה מדאיג אותך ברעיון, ולא מופיע בפרק 10?<span>הסיכון שאתה רואה ואני לא הוא החשוב ביותר.</span></div></li>
+        <li data-q="q57" data-n="57"><div>איזה שם ואיזה סיפור מתאימים לעסק כזה בעיני יבואן?<span>השם הנוכחי הוא שם עבודה.</span></div></li>
+        <li data-q="q58" data-n="58"><div>את מי כדאי לשתף או לשאול לפני שמתחילים: עורך דין, רואה חשבון, איש ענף נוסף?<span>שתי בדיקות משפטיות מחכות, והן מפורטות בסיכון 7.</span></div></li>
       </ol>
     </div>
 
@@ -2342,7 +2735,7 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
 
   <section id="next">
     <div class="chap-head">
-      <span class="n">פרק 11 · הצעד הבא</span>
+      <span class="n">פרק 12 · הצעד הבא</span>
       <h2>שעתיים, משלוח אחד, דף אחד</h2>
       <p class="gist">אני לא מבקש ממך להחליט על שותפות, על חברה או על כסף. אני מבקש בוקר אחד.</p>
     </div>
@@ -2356,16 +2749,17 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
       <p><b>זה כל הצעד הבא.</b> שעתיים, משלוח אחד ודף אחד.</p>
     </div>
 
-    <h3>ומה אחרי, אם הדף יצדיק את זה</h3>
+    <h3>החודש הקרוב, שבוע אחרי שבוע</h3>
+    <p>לא צריך לחכות רבעון כדי לדעת אם יש כאן עסק. חודש אחד מספיק כדי לראות סוכן ראשון עובד על הזמנות אמיתיות.</p>
     <ol class="timeline">
-      <li><span class="m">צעד 1</span><b>המשלוח האחד</b><span>שעתיים איתך, והדף שייצא מהן.</span></li>
-      <li><span class="m">צעד 2</span><b>שלוש שיחות</b><span>עם שלושה יבואנים או מפיצים שתבחר. באים ללמוד, לא למכור.</span></li>
-      <li><span class="m">צעד 3</span><b>אבחון ראשון</b><span>שבוע אצל עסק אחד שמסכים. עוקבים אחרי משלוחים אמיתיים ויוצאים עם מספרים.</span></li>
-      <li><span class="m">צעד 4</span><b>סוכן ראשון</b><span>תהליך אחד ומדד אחד. הסוכן מתחיל בקריאה בלבד, לצד הצוות.</span></li>
+      <li><span class="m">שבוע 1</span><b>המשלוח האחד</b><span>שעתיים איתך, והדף שייצא מהן. במקביל אתה עונה על תשע השאלות הדחופות <a href="#questions">שבפרק 11</a>.</span></li>
+      <li><span class="m">שבוע 2</span><b>שלוש שיחות</b><span>עם שלושה יבואנים או מפיצים שתבחר. באים ללמוד, לא למכור. אחד מהם מסכים שנעקוב אצלו אחרי הזמנות אמיתיות.</span></li>
+      <li><span class="m">שבוע 3</span><b>אבחון וסוכן ראשון</b><span>כמה ימים אצל העסק הזה, תהליך אחד ומדד אחד. הסוכן עולה בקריאה בלבד, לצד הצוות.</span></li>
+      <li><span class="m">שבוע 4</span><b>מספר ראשון</b><span>משווים את מה שהסוכן תפס למה שקרה בפועל. יוצאים עם מספר אמיתי אחד, ומחליטים יחד איך ממשיכים.</span></li>
     </ol>
-    <p class="note"><span class="chip guess">הערכה</span> אחרי כל צעד עוצרים ומחליטים אם ממשיכים. אף צעד לא מחייב את הבא.</p>
+    <p class="note"><span class="chip guess">הערכה</span> מה שתלוי בנו יקרה בזמן: הדף, השאלות והסוכן. מה שתלוי באחרים, ובעיקר עסק שיסכים לפתוח לנו את תיבת המייל של הרכש שלו, יכול לקחת יותר. לכן כדאי לחשוב כבר עכשיו למי פונים ראשון. אחרי כל שבוע עוצרים ומחליטים אם ממשיכים, ואף צעד לא מחייב את הבא.</p>
 
-    <h3>המסמך כולו, בשמונה שורות</h3>
+    <h3>המסמך כולו, בתשע שורות</h3>
     <ul class="caveats">
       <li><b>הטכנולוגיה כבר עושה עבודה, ורוב העסקים עוד לא התחילו.</b><span>סוכן מסיים היום לבד משימות של שעות. בישראל שני עסקי מסחר מכל שלושה עוד לא משתמשים ב-AI בכלל. פרק 1.</span></li>
       <li><b>ביבוא, רוב עבודת המשרד היא מסמכים ותיאום בין חברות.</b><span>ספק, משלח, עמיל מכס, מחסן ולקוח, וביניהם אנשים שמעתיקים, משווים ורודפים. פרקים 2 ו-3.</span></li>
@@ -2373,8 +2767,9 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
       <li><b>סוכן הוא מודל שכור, חיבורים, ונוהל.</b><span>את המודל כל אחד יכול לשכור. את הנוהל כותב מי שמכיר את הענף. פרק 5.</span></li>
       <li><b>אינטר ג׳ינס היא תרגיל, לא אבחון.</b><span>מה שגלוי מבחוץ מספיק כדי לשאול שאלות טובות, ולא מספיק כדי להציע פתרון. פרק 6.</span></li>
       <li><b>כל חלק מההצעה כבר נמכר איפשהו. את השלם לא מצאתי.</b><span>והכסף הגדול בעולם הולך עכשיו לשירות, לא לתוכנה. פרק 7.</span></li>
-      <li><b>מוכרים עבודה שנעשית.</b><span>סכום חודשי קבוע, ובונוס על כסף שאפשר לספור. שלושה לקוחות בשנה הראשונה. פרק 8.</span></li>
-      <li><b>מה שחסר לי נמצא אצלך.</b><span>אחד עשר סיכונים, חמישים ושמונה שאלות, ומשלוח אחד שעוד צריך לבחור. פרקים 9 עד 11.</span></li>
+      <li><b>עסק של אינטגרציה, שמוכר עבודה שנעשית.</b><span>הכלים קיימים, ואנחנו מחברים ומפעילים אותם. סכום חודשי קבוע, ובונוס על כסף שאפשר לספור. שלושה לקוחות בשנה הראשונה. פרק 8.</span></li>
+      <li><b>שני אנשים עם סוכנים יכולים לשרת הרבה לקוחות.</b><span>מתחילים בעסק אחד, בחודש הקרוב. הכיוון הוא שירות לאלפי עסקים, וכל מדרגה בדרך שווה בפני עצמה. פרק 9.</span></li>
+      <li><b>מה שחסר לי נמצא אצלך.</b><span>אחד עשר סיכונים, חמישים ושמונה שאלות, ומשלוח אחד שעוד צריך לבחור. פרקים 10 עד 12.</span></li>
     </ul>
 
     <details class="more">
@@ -2394,7 +2789,7 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
       </div>
     </details>
 
-    <div class="stamp"><span class="mono">גרסה 1.0 · 24.11.2026</span><span>המסמך יתעדכן אחרי כל שיחה, וכל תשובה שלך תשנה בו פרק.</span></div>
+    <div class="stamp"><span class="mono">גרסה 1.1 · 24.11.2026</span><span>המסמך יתעדכן אחרי כל שיחה, וכל תשובה שלך תשנה בו פרק.</span></div>
   </section>
 
   <footer class="foot" id="sources">
@@ -2423,6 +2818,10 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
 <li id="src-bhy"><a href="https://www.brookings.edu/wp-content/uploads/2002/01/2002a_bpea_brynjolfsson.pdf" target="_blank" rel="noopener">Brynjolfsson, Hitt &amp; Yang, Intangible Assets: Computers and Organizational Capital, Brookings Papers on Economic Activity, 2002</a></li>
 <li id="src-hapaar"><a href="https://hapaar.vercel.app" target="_blank" rel="noopener">הפער הגדול של עידן ה-AI: האתר שליווה את הסרטון הראשון, עם 39 מקורות</a></li>
 <li id="src-mck-genai"><a href="https://www.mckinsey.com/capabilities/tech-and-ai/our-insights/the-economic-potential-of-generative-ai-the-next-productivity-frontier" target="_blank" rel="noopener">McKinsey, The economic potential of generative AI: the next productivity frontier (2023)</a> <span class="note">האחוזים נקראו מסיכום הדוח ולא מהטבלה עצמה</span></li>
+<li id="src-fortune-altman"><a href="https://fortune.com/2024/02/04/sam-altman-one-person-unicorn-silicon-valley-founder-myth/" target="_blank" rel="noopener">Fortune: Could AI create a one-person unicorn? Sam Altman thinks so (4.2.2024)</a> <span class="note">הדברים נאמרו בריאיון מפברואר 2024. הנוסח המדויק שונה מעט בין כלי התקשורת, ולכן הם מובאים כאן בלשון עקיפה. ° העמוד לא נפתח. הדברים מתקצירים של מנוע חיפוש</span></li>
+<li id="src-amodei-2026"><a href="https://yourstory.com/ai-story/ai-billion-dollar-company-one-person-anthropic-dario-amodei" target="_blank" rel="noopener">YourStory: With AI, single person can operate billion dollar company: Anthropic CEO (5.2025)</a> <span class="note">° העמוד לא נפתח. הדברים מתקצירים של מנוע חיפוש</span></li>
+<li id="src-techtimes-solo"><a href="https://www.techtimes.com/articles/317073/20260524/ai-agents-solo-founders-genspark-manus-devin-raise-billions-before-proving-it-works.htm" target="_blank" rel="noopener">TechTimes: AI Agents, Solo Founders: Genspark, Manus, Devin Raise Billions Before Proving It Works (24.5.2026)</a> <span class="note">° העמוד לא נפתח. הדברים מתקצירים של מנוע חיפוש</span></li>
+<li id="src-sequoia-services"><a href="https://sequoiacap.com/article/services-the-new-software" target="_blank" rel="noopener">Sequoia Capital, Julien Bek: Services: The New Software (5.3.2026)</a> <span class="note">האתר חסום מסביבת העבודה שלי. משפט הפתיחה והטענה המרכזית מופיעים באותו נוסח בכמה סיכומים של המאמר. ° העמוד לא נפתח. הדברים מתקצירים של מנוע חיפוש</span></li>
 </ol>
 <h3>ישראל</h3><ol class="srclist">
 <li id="src-cbs-ai-2026"><a href="https://www.idi.org.il/media/31034/c2-prof-yaron-felus.pdf" target="_blank" rel="noopener">הלשכה המרכזית לסטטיסטיקה, אימוץ בינה מלאכותית במגזר העסקי: מצגת בכנס אלי הורביץ לכלכלה וחברה 2026 של המכון הישראלי לדמוקרטיה</a> <span class="note">שקפים 4 עד 6. סקר בקרב עסקים עם 10 משרות שכיר ומעלה, יוני 2025 מול מרץ 2026.</span></li>
@@ -2437,6 +2836,7 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
 <li id="src-mevaker-import"><a href="https://library.mevaker.gov.il/sites/DigitalLibrary/Pages/Reports/9139-3.aspx" target="_blank" rel="noopener">מבקר המדינה, היבטים בטיפול הממשלה ביבוא, אוקטובר 2025</a></li>
 <li id="src-tax-allocation"><a href="https://www.gov.il/he/service/request-assignment-number-for-tax-invoice" target="_blank" rel="noopener">רשות המסים, בקשה למספר הקצאה לחשבונית מס</a></li>
 <li id="src-dnb"><a href="https://dbisrael.co.il/wp-content/uploads/2026/01/%D7%A1%D7%A7%D7%99%D7%A8%D7%94-%D7%A9%D7%A0%D7%AA%D7%99%D7%AA-2025-5.pdf" target="_blank" rel="noopener">דן אנד ברדסטריט ישראל, סקירה שנתית 2025</a></li>
+<li id="src-tc-base44"><a href="https://techcrunch.com/2025/06/18/6-month-old-solo-owned-vibe-coder-base44-sells-to-wix-for-80m-cash/" target="_blank" rel="noopener">TechCrunch: 6-month-old, solo-owned vibe coder Base44 sells to Wix for $80M cash (18.6.2025)</a></li>
 </ol>
 <h3>הניירת והתהליך</h3><ol class="srclist">
 <li id="src-icc-toolkit"><a href="https://iccwbo.org/wp-content/uploads/sites/3/2022/06/icc-wto-dsi-toolkit-english.pdf" target="_blank" rel="noopener">ICC and WTO, Standards Toolkit for Cross-border Paperless Trade (2022)</a></li>
@@ -2481,10 +2881,10 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
 <li id="src-f54-import"><a href="https://www.drushim.co.il/job/38847346/dc3b0003/" target="_blank" rel="noopener">פקטורי 54, מתאמ/ת יבוא (מודעת דרושים באתר דרושים, נקראה ב-23.11.2026)</a> <span class="note">מודעות דרושים יורדות מהאתר אחרי זמן מה</span></li>
 <li id="src-decathlon-cdo"><a href="https://fashionunited.uk/news/business/decathlons-chief-digital-officer-on-making-digitisation-the-new-normal/2024031974675" target="_blank" rel="noopener">Decathlon&#x27;s Chief Digital Officer on making digitisation the new normal (FashionUnited, 19.3.2024)</a></li>
 <li id="src-ij-privacy"><a href="https://stevemadden.co.il/policies/privacy-policy" target="_blank" rel="noopener">מדיניות הפרטיות של קבוצת אינטר ג׳ינס, ינואר 2026 (באתר Steve Madden ישראל)</a> <span class="note">° העמוד לא נפתח שוב בגרסה הזאת. הנתון מהמחקר הקודם שלנו, מ-23.11.2026</span></li>
-<li id="src-ij-globes-2019"><a href="https://en.globes.co.il/news/article.aspx?did=1001290653" target="_blank" rel="noopener">Globes, נתוני פעילות ומחזור שמסרה קבוצת אינטר ג׳ינס (23.6.2019)</a> <span class="note">° העמוד לא נפתח שוב בגרסה הזאת. הנתון מהמחקר הקודם שלנו, מ-23.11.2026</span></li>
-<li id="src-ij-calcalist-2020"><a href="https://www.calcalist.co.il/articles/0,7340,L-3848276,00.html" target="_blank" rel="noopener">כלכליסט, רכישת רזילי והמודל המסחרי של קבוצת אינטר ג׳ינס (6.9.2020)</a> <span class="note">° העמוד לא נפתח שוב בגרסה הזאת. הנתון מהמחקר הקודם שלנו, מ-23.11.2026</span></li>
 <li id="src-ij-calcalist-2023"><a href="https://www.calcalist.co.il/shopping/article/s1ecdkpzn" target="_blank" rel="noopener">כלכליסט, קבלת הזיכיון האיטלקי ופריסת החנויות של הקבוצה (20.4.2023)</a> <span class="note">° העמוד לא נפתח שוב בגרסה הזאת. הנתון מהמחקר הקודם שלנו, מ-23.11.2026</span></li>
 <li id="src-ice-electra"><a href="https://www.ice.co.il/finance/news/article/1128174" target="_blank" rel="noopener">ICE, רשת האופנה הישראלית נמכרת לאלקטרה: עשרות סניפים חדשים בדרך (1.9.2026)</a></li>
+<li id="src-ij-globes-2019"><a href="https://en.globes.co.il/news/article.aspx?did=1001290653" target="_blank" rel="noopener">Globes, נתוני פעילות ומחזור שמסרה קבוצת אינטר ג׳ינס (23.6.2019)</a> <span class="note">° העמוד לא נפתח שוב בגרסה הזאת. הנתון מהמחקר הקודם שלנו, מ-23.11.2026</span></li>
+<li id="src-ij-calcalist-2020"><a href="https://www.calcalist.co.il/articles/0,7340,L-3848276,00.html" target="_blank" rel="noopener">כלכליסט, רכישת רזילי והמודל המסחרי של קבוצת אינטר ג׳ינס (6.9.2020)</a> <span class="note">° העמוד לא נפתח שוב בגרסה הזאת. הנתון מהמחקר הקודם שלנו, מ-23.11.2026</span></li>
 <li id="src-ij-shoo"><a href="https://www.sec.gov/Archives/edgar/data/913241/000162828020002674/shoo-20191231x10k.htm" target="_blank" rel="noopener">Steven Madden, Ltd., דוח שנתי לשנת 2019 (Form 10-K): המיזם המשותף בישראל</a> <span class="note">° העמוד לא נפתח שוב בגרסה הזאת. הנתון מהמחקר הקודם שלנו, מ-23.11.2026</span></li>
 <li id="src-ij-calcalist-2026"><a href="https://www.calcalist.co.il/shopping/article/sy9x4yrofg" target="_blank" rel="noopener">כלכליסט, סגירת חנויות רזילי והמשך הפעילות באתר (ספטמבר 2026)</a> <span class="note">° העמוד לא נפתח שוב בגרסה הזאת. הנתון מהמחקר הקודם שלנו, מ-23.11.2026</span></li>
 <li id="src-ice-interfashion"><a href="https://www.ice.co.il/consumerism/news/article/1061566" target="_blank" rel="noopener">ICE, ריאיון עם מנהלת קבוצת אינטר פאשן על המותגים האיטלקיים בישראל (25.4.2025)</a></li>
@@ -2721,6 +3121,148 @@ sup.unread{color:var(--box);font-family:var(--mono);font-size:.8em;margin-inline
       all.textContent = open ? 'לסגור את כל ההרחבות' : 'לפתוח את כל ההרחבות';
     });
   }
+})();
+
+/* Answers desk: with a personal link (…#k=CODE) every question gets an answer box that saves itself,
+   and shows what the interviewer already learned about it. Without a code the chapter stays as it was. */
+(function () {
+  'use strict';
+  var mount = document.getElementById('desk');
+  if (!mount) return;
+  var ENDPOINT = mount.getAttribute('data-endpoint') || '';
+  var LS_CODE = 'igx.desk.code', LS_DRAFT = 'igx.desk.drafts';
+  var mem = {};
+  var store = {
+    get: function (k) { try { var v = localStorage.getItem(k); return v == null ? (mem[k] || null) : v; } catch (e) { return mem[k] || null; } },
+    set: function (k, v) { mem[k] = v; try { localStorage.setItem(k, v); } catch (e) { /* private mode */ } },
+    del: function (k) { delete mem[k]; try { localStorage.removeItem(k); } catch (e) { /* private mode */ } }
+  };
+  var m = /[#&]k=([A-Za-z0-9]{8,80})/.exec(location.hash || '');
+  if (m) {
+    store.set(LS_CODE, m[1]);
+    try { history.replaceState(null, '', location.pathname + location.search); } catch (e) { /* ignore */ }
+  }
+  var code = store.get(LS_CODE);
+  var talk = document.getElementById('ido-link');
+  if (talk && code) talk.setAttribute('href', talk.getAttribute('href').split('#')[0] + '#k=' + code);
+  if (!ENDPOINT || !code) return;
+
+  function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function call(action, body) {
+    var payload = { action: action, code: code };
+    for (var k in body || {}) payload[k] = body[k];
+    return fetch(ENDPOINT, { method: 'POST', cache: 'no-store', credentials: 'omit', referrerPolicy: 'no-referrer',
+      headers: { 'content-type': 'text/plain;charset=UTF-8' }, body: JSON.stringify(payload) })
+      .then(function (r) { return r.json().then(function (j) { if (!j || !j.ok) { var e = new Error((j && j.error) || 'server'); e.status = r.status; throw e; } return j; }); });
+  }
+  var items = Array.prototype.slice.call(document.querySelectorAll('#questions li[data-q]'));
+  var boxes = {};          // qid → { ta, st, saved, ts }
+  var dirty = {};          // qid → { t, ts } waiting to be saved
+  var saving = false, retryTimer = 0, role = '', readOnly = false;
+  try { dirty = JSON.parse(store.get(LS_DRAFT) || '{}') || {}; } catch (e) { dirty = {}; }
+
+  function grow(ta) { ta.style.height = 'auto'; ta.style.height = Math.min(420, Math.max(44, ta.scrollHeight + 2)) + 'px'; }
+  function summary() {
+    var typed = 0, talked = 0;
+    items.forEach(function (li) {
+      var b = boxes[li.getAttribute('data-q')];
+      if (!b) return;
+      if ((b.ta ? b.ta.value : b.text || '').trim()) typed += 1; else if (b.noted) talked += 1;
+    });
+    var line = mount.querySelector('.desk-line');
+    if (!line) return;
+    if (readOnly) line.textContent = 'אתה רואה את התשובות של השותף, לקריאה בלבד. בכתב: ' + typed + '. מהשיחות עם המראיין: ' + talked + '.';
+    else line.textContent = 'התיבות שמתחת לשאלות נשמרות מעצמן. ענית בכתב על ' + typed + ' מתוך ' + items.length + (talked ? ', ועוד ' + talked + ' עלו בשיחה עם עידו.' : '.');
+  }
+  function mark(qid, state) {
+    var b = boxes[qid]; if (!b || !b.st) return;
+    b.st.dataset.s = state;
+    b.st.textContent = state === 'saving' ? 'שומר' : state === 'saved' ? 'נשמר' : state === 'error' ? 'עוד לא נשמר. אנסה שוב.' : '';
+  }
+  function flush() {
+    if (saving) return;
+    var batch = {}, n = 0;
+    for (var q in dirty) { batch[q] = dirty[q]; n += 1; }
+    if (!n) return;
+    saving = true;
+    for (var q2 in batch) mark(q2, 'saving');
+    call('save', { answers: batch }).then(function () {
+      for (var q in batch) {
+        if (dirty[q] && dirty[q].ts === batch[q].ts) { delete dirty[q]; mark(q, 'saved'); }
+      }
+      store.set(LS_DRAFT, JSON.stringify(dirty));
+      summary();
+    }).catch(function () {
+      for (var q in batch) mark(q, 'error');
+      clearTimeout(retryTimer); retryTimer = setTimeout(flush, 15000);
+    }).then(function () { saving = false; for (var q in dirty) { setTimeout(flush, 400); break; } });
+  }
+  function build(answers, qnotes) {
+    items.forEach(function (li, i) {
+      var qid = li.getAttribute('data-q');
+      var wrap = el('div', 'ans');
+      var a = answers && answers[qid];
+      var note = qnotes && qnotes[qid];
+      var b = { noted: !!(note && note.summary) };
+      if (readOnly) {
+        b.text = (a && a.t) || '';
+        if (b.text) wrap.appendChild(el('div', 'ans-ro', b.text));
+      } else {
+        var ta = el('textarea');
+        ta.rows = 1; ta.placeholder = 'התשובה שלך';
+        ta.setAttribute('aria-label', 'תשובה לשאלה ' + (i + 1));
+        ta.maxLength = 8000;
+        var local = dirty[qid];
+        ta.value = local && (!a || !a.ts || local.ts > a.ts) ? local.t : ((a && a.t) || '');
+        if (local && a && a.ts && local.ts <= a.ts) delete dirty[qid];
+        var st = el('span', 'ans-st'); st.setAttribute('role', 'status');
+        var timer = 0;
+        var changed = function () {
+          dirty[qid] = { t: ta.value.slice(0, 8000), ts: new Date().toISOString() };
+          store.set(LS_DRAFT, JSON.stringify(dirty));
+          mark(qid, '');
+        };
+        ta.addEventListener('input', function () { grow(ta); changed(); clearTimeout(timer); timer = setTimeout(flush, 1400); });
+        ta.addEventListener('blur', function () { clearTimeout(timer); flush(); });
+        wrap.appendChild(ta); wrap.appendChild(st);
+        b.ta = ta; b.st = st;
+      }
+      if (b.noted) {
+        var n = el('div', 'ans-note');
+        n.appendChild(el('b', null, note.coverage === 'full' ? 'מהשיחה עם עידו: ' : 'מהשיחה עם עידו, חלקי: '));
+        n.appendChild(document.createTextNode(note.summary));
+        wrap.appendChild(n);
+      }
+      if (wrap.childNodes.length) li.appendChild(wrap);
+      boxes[qid] = b;
+    });
+    document.documentElement.classList.add('has-desk');
+    mount.appendChild(el('p', 'desk-line note'));
+    mount.hidden = false;
+    items.forEach(function (li) { var b = boxes[li.getAttribute('data-q')]; if (b && b.ta) grow(b.ta); });
+    summary();
+    flush();
+  }
+  // a folded chapter measures as zero height: size the boxes again whenever a fold opens
+  document.addEventListener('toggle', function (e) {
+    if (e.target && e.target.open) Array.prototype.forEach.call(e.target.querySelectorAll('.ans textarea'), grow);
+  }, true);
+  window.addEventListener('online', flush);
+  window.addEventListener('pagehide', function () {
+    var n = 0, q; for (q in dirty) n += 1;
+    if (n && !readOnly) { try { navigator.sendBeacon(ENDPOINT, JSON.stringify({ action: 'save', code: code, answers: dirty })); } catch (e) { /* best effort */ } }
+  });
+
+  call('status').then(function (st) {
+    role = st.role || 'partner';
+    if (role === 'admin') {
+      readOnly = true;
+      return call('view', { space: 'avi' }).then(function (v) { build(v.answers || {}, v.qnotes || {}); });
+    }
+    build(st.answers || {}, st.qnotes || {});
+  }).catch(function (e) {
+    if (e && (e.status === 401 || e.status === 403)) store.del(LS_CODE);
+  });
 })();
 
 </script>
